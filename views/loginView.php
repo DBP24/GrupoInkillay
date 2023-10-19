@@ -22,6 +22,7 @@
     <title><?= $data['page_title']; ?></title>
      <!-- SweetAlert2 -->
      <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -55,6 +56,9 @@
                                 <div class="col-12">
                                     <label class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="g-recaptcha" data-sitekey="6LfQkbQoAAAAAGW08bs_tK9W167IHfCtcHH_5mdA"></div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="form-check form-switch">

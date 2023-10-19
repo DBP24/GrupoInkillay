@@ -26,9 +26,19 @@
 		public function validarcredenciales(){
 			if($_POST){
                 try {
+
+
 					$usuario = $_POST['usuario'] ;
 					$password = $_POST['password'];
+					//validamos el captcha
+					$ip =  $_SERVER['REMOTE_ADDR'];
+					$captcha = $_POST['g-recaptcha-response'];
+					$secret = "6LfQkbQoAAAAAIGZrDPG66QxG-m45zKgUAJyT4Ic";
 
+					$correct  =  file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip");
+					$atr =  json_decode($correct,TRUE);
+
+					if ($atr['success']){
 					$requestLog = $this->model->validateCredentials($usuario,$password);
 
 					if($requestLog)
@@ -50,6 +60,13 @@
 					{
 						$arrResponse = array('status' => false, 'msg' => 'Contraseña Incorrecta' , 'type' => 'error');
 					}
+					}else{
+						$arrResponse = array('status' => false, 'msg' => 'Seleccione el Captcha' , 'type' => 'error');
+					}
+
+
+
+					
 				} catch (Exception $e)
 				{
 					$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error: '.$e->getMessage(), 'type' => 'error');

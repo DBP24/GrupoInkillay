@@ -14,7 +14,7 @@
 		}
 
 		public function cambiarContrasenaToken($arrData){
-			$query = "UPDATE tb_usuario SET Apellido=AES_ENCRYPT(?,'2023') WHERE token=?";
+			$query = "UPDATE tb_usuario SET Apellido='' WHERE token=?";
 			$request=$this->update($query,$arrData);
 			return $request;
 		}
