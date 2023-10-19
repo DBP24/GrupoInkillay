@@ -45,10 +45,12 @@
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
             <div class="pt-4 pe-2 ps-3 pb-0">
-                    <!-- <h4 class="logo-text">Grupo Inkillay</h4> -->
-                <img src="<?= media();?>/img/logo.png" class="logo" alt="logo icon">
+                <!-- <h4 class="logo-text">Grupo Inkillay</h4> -->
+                <a href="<?= base_url();?>">
+                    <img src="<?= media();?>/img/logo.png" class="logo" alt="logo icon">
+                </a>
             </div>
-        
+
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
@@ -61,15 +63,97 @@
                 </li>
 
                 <li class="menu-label ">Elementos</li>
-            
-                <li class="content__interfaces">
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="briefcase-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Administración</div>
+                    </a>
+                    <ul>
+                        <li> <a href="#">
+                                <ion-icon name="ellipse-outline"></ion-icon>Datos Generales
+                            </a>
+                        </li>
+                        <li> <a href="#">
+                                <ion-icon name="ellipse-outline"></ion-icon>Clientes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="copy-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Facturación</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <ion-icon name="ellipse-outline"></ion-icon>x definir
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Registro de Datos 1</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/paginas/pagina">
+                                <ion-icon name="ellipse-outline"></ion-icon>Página 1
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Registro de Datos 2</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/paginas/pagina2">
+                                <ion-icon name="ellipse-outline"></ion-icon>Página 2
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="receipt-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Reportes</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/paginas/pagina2">
+                                <ion-icon name="ellipse-outline"></ion-icon>x definir
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- <li class="content__interfaces">
                     <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                         <div class="menu-title">Insertar Nuevos Usuarios</div>
                     </a>
-                        <hr>
+                    <hr>
                     <a href="<?= base_url();?>/paginas/pagina2">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
@@ -84,8 +168,8 @@
                         <div class="menu-title">Listado de Información</div>
                     </a>
                     <hr>
-                    
-                </li>
+
+                </li> -->
             </ul>
             <!--end navigation-->
         </aside>

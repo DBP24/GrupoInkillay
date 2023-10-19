@@ -67,11 +67,11 @@
     <!-- end page content-->
 </div>
 
-<!--Start Back To Top Button-->
-<a href="javaScript:;" class="back-to-top">
-    <ion-icon name="arrow-up-outline"></ion-icon>
-</a>
 <!-- JS -->
-<script src="<?= media();?>/js/usuarios/actualizar.js"></script>
+
 <!--End Back To Top Button-->
 <?= footerAdmin($data);?>
+<script src="<?= media();?>/js/usuarios/actualizar.js"></script>
+
+</body>
+</html>

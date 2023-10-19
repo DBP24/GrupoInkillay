@@ -111,13 +111,12 @@
         </div>
         <!--end row-->
 
-
         <div class="row row-cols-1 row-cols-lg-3">
             <div class="col">
                 <div class="card radius-10 w-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <h6 class="mb-0">Sales by Countries</h6>
+                            <h6 class="mb-0">Ventas por países</h6>
                             <div class="dropdown options ms-auto">
                                 <div class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                                     <ion-icon name="ellipsis-horizontal-outline" class="md hydrated"></ion-icon>
@@ -132,10 +131,10 @@
                         <div class="countries-list">
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/usa.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/usa.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 84.5K</h5>
+                                    <h5 class="mb-0"> S/ 84.50</h5>
                                     <p class="mb-0 text-secondary">United states</p>
                                 </div>
                                 <div class="">
@@ -145,10 +144,10 @@
                             </div>
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/india.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/india.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 750</h5>
+                                    <h5 class="mb-0"> S/ 70.00</h5>
                                     <p class="mb-0 text-secondary">India</p>
                                 </div>
                                 <div class="">
@@ -158,10 +157,10 @@
                             </div>
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/china.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/china.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 38.5</h5>
+                                    <h5 class="mb-0"> S/ 38.50</h5>
                                     <p class="mb-0 text-secondary">China</p>
                                 </div>
                                 <div class="">
@@ -171,10 +170,10 @@
                             </div>
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/russia.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/russia.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 88.0K</h5>
+                                    <h5 class="mb-0"> S/ 88.00</h5>
                                     <p class="mb-0 text-secondary">France</p>
                                 </div>
                                 <div class="">
@@ -184,10 +183,10 @@
                             </div>
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/australia.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/australia.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 78.3K</h5>
+                                    <h5 class="mb-0"> S/ 78.39</h5>
                                     <p class="mb-0 text-secondary">Australia</p>
                                 </div>
                                 <div class="">
@@ -197,10 +196,10 @@
                             </div>
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/brazil.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/brazil.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 10.5K</h5>
+                                    <h5 class="mb-0"> S/ 10.50</h5>
                                     <p class="mb-0 text-secondary">Brazil</p>
                                 </div>
                                 <div class="">
@@ -208,12 +207,12 @@
                                             class='bx bx-up-arrow-alt'></i><span>25%</span></p>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center gap-3 mb-0">
+                            <div class="d-flex align-items-center gap-3">
                                 <div class="country-icon">
-                                    <img src="assets/images/icons/UAE.png" alt="" width="35">
+                                    <img src="<?= media();?>/img/UAE.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0"> S/ 30.5K</h5>
+                                    <h5 class="mb-0"> S/ 30.50</h5>
                                     <p class="mb-0 text-secondary">UAE</p>
                                 </div>
                                 <div class="">
@@ -229,7 +228,7 @@
                 <div class="card radius-10">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <h6 class="mb-0">Total Earning</h6>
+                            <h6 class="mb-0">Total de Ganancias</h6>
                             <div class="dropdown options ms-auto">
                                 <div class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                                     <ion-icon name="ellipsis-horizontal-outline" class="md hydrated"></ion-icon>
@@ -248,7 +247,11 @@
                                         class='bx bx-up-arrow-alt'></i><span>25%</span></p>
                             </div>
                         </div>
-                        <div id="chart1"></div>
+
+
+                        <canvas id="myChart"></canvas>
+
+
                         <div class="mt-4">
                             <div class="d-flex align-items-center gap-3 mb-3">
                                 <div class="widget-icon-small rounded bg-light-success text-success">
@@ -256,7 +259,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0"> S/ 545.69</h6>
-                                    <p class="mb-0 text-secondary">Last Month Sales</p>
+                                    <p class="mb-0 text-secondary">Ganancias del pasado mes</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500 fs-6"><i
@@ -269,7 +272,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0"> S/ 956.34</h6>
-                                    <p class="mb-0 text-secondary">Last Month Sales</p>
+                                    <p class="mb-0 text-secondary">Ganancias del pasado mes</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-danger d-flex gap-1 align-items-center fw-500 fs-6"><i
@@ -282,7 +285,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0"> S/ 6956.48</h6>
-                                    <p class="mb-0 text-secondary">Last Year Sales</p>
+                                    <p class="mb-0 text-secondary">Ganancias del pasado año</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500 fs-6"><i
@@ -297,7 +300,7 @@
                 <div class="card radius-10 overflow-hidden w-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <h6 class="mb-0">Total Traffic</h6>
+                            <h6 class="mb-0">Total de Tráfico</h6>
                             <div class="dropdown options ms-auto">
                                 <div class="dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">
                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
@@ -315,7 +318,9 @@
                             <span class="border px-1 rounded cursor-pointer"><i
                                     class="bx bxs-circle me-1 text-success"></i>Views</span>
                         </div>
-                        <div id="chart2"></div>
+
+                        <canvas id="myChart2"></canvas>
+                        <h6 class="mt-3 mb-0 text-center">Tráfico</h6>
                     </div>
                 </div>
             </div>
@@ -326,3 +331,11 @@
 </div>
 <!--end page content wrapper-->
 <?= footerAdmin($data);?>
+
+<!-- Chart -->
+<script src="<?= media();?>/js/chart.js"></script>
+<script src="<?= media();?>/js/index.js"></script>
+
+</body>
+
+</html>

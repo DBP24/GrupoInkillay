@@ -25,11 +25,11 @@
    </div>
    <!--end wrapper-->
 
-
+   <!-- Cerrar Sesión -->
    <script src="<?= media();?>/js/logout.js"></script>
-
+ 
    <!-- SweetAlert2 -->
-   <script src="<?= media();?>/js/sweetalert2.min.js"></script>
+   <script src="<?= media();?>/js/sweetalert2.min.js"></script> 
 
    <!-- JS Files-->
    <script src="<?= media();?>/js/jquery.min.js"></script>
@@ -40,21 +40,10 @@
 
    <!--plugins-->
    <script src="<?= media();?>/js/perfect-scrollbar.js"></script>
-
-   <!--DataTables-->
-   <script src="<?= media();?>/js/jquery.dataTables.min.js"></script>
-   <script src="<?= media();?>/js/dataTables.bootstrap5.min.js"></script>
-   <script src="<?= media();?>/js/table-datatable.js"></script>
-
-   <script src="<?= media();?>/js/apexcharts.min.js"></script>
-   <script src="<?= media();?>/js/jquery.easypiechart.js"></script>
-   <script src="<?= media();?>/ja/chart.min.js"></script>
-   <script src="<?= media();?>/js/index.js"></script>
+  
    <!-- Main JS-->
    <script src="<?= media();?>/js/main.js"></script>
 
   
 
-   </body>
-
-   </html>
+ 

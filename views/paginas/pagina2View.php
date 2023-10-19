@@ -20,10 +20,10 @@
                 <div class="table-responsive mt-2">
                     <!-- <table class="table align-middle mb-0"> -->
                     <table id="example2" class="table align-middle mb-0">
-                        
+
                         <thead class="text-center">
                             <tr>
-                                
+
                                 <th>Nombre</th>
                                 <th>Cargo</th>
                                 <th>Oficina</th>
@@ -946,72 +946,104 @@
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label>Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Max Orlando" required>
+            <form action="">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mt-3">Apellido Paterno:</label>
+                                <input type="text" class="form-control" placeholder="Rouillon"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mt-3">Apellido Materno:</label>
+                                <input type="text" class="form-control" placeholder="Lao"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="mt-3">Cargo:</label>
-                            <select class="form-select" required>
-                                <option value="" disabled selected>Seleccione</option>
-                                <option value="">Accountant</option>
-                                <option value="">Integration Specialist</option>
-                                <option value="">Junior Technical Author</option>
-                                <option value="">Sales Assistant</option>
-                                <option value="">Senior Javascript Developer</option>
-                                <option value="">Software Engineer</option>
-                                <option value="">System Architect</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="mt-3">Nombres:</label>
+                                <input type="text" class="form-control" placeholder="Ricardo"
+                                    pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mt-3">Cargo:</label>
+                                <select class="form-select" required>
+                                    <option value="" disabled selected>Seleccione</option>
+                                    <option value="">Administrador</option>
+                                    <option value="">Secretaria</option>
+                                    <option value="">Ingeniero</option>
+                                    <option value="">Contador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mt-3">Correo Electrónico:</label>
+                                <input type="text" class="form-control" placeholder="hola@grupoinkillay.com"
+                                    pattern="[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-]([\.]?[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-])+@[a-zA-Z0-9]([^@&%$\/\(\)=?¿!\.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+                                    title="Ingrese una dirección de correo electrónico válida" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="mt-3">Oficina:</label>
-                            <select class="form-select" required>
-                                <option value="" disabled selected>Seleccione</option>
-                                <option value="">Edinburgh</option>
-                                <option value="">New York</option>
-                                <option value="">San Francisco</option>
-                                <option value="">Tokyo</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mt-3">Teléfono:</label>
+                                <input type="text" class="form-control" placeholder="2321177" pattern="[0-9]+"
+                                    title="Solo se permiten números" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mt-3">Número Celular:</label>
+                                <input type="text" class="form-control" placeholder="987456321" pattern="[0-9]+"
+                                    title="Solo se permiten números" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="mt-3">Edad:</label>
-                            <input type="number" class="form-control" placeholder="0" required>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="mt-3">Fecha Registro:</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mt-3">Fecha Inicio:</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mt-3">Fecha Final:</label>
+                                <input type="date" class="form-control" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="mt-3">Fecha de Inicio:</label>
-                            <input type="date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <label class="mt-3">Sueldo (S/):</label>
-                            <input type="text" class="form-control" placeholder="320.00" required>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mt-3">Importe Contrato (S/):</label>
+                                <input type="text" class="form-control" placeholder="3320.00" pattern="[0-9]+"
+                                    title="Solo se permiten números" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mt-3">Estado:</label>
+                                <input type="text" class="form-control" value="Activo" disabled>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Agregar</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 <?= footerAdmin($data)?>
+<!-- DataTables -->
+<script src="<?= media();?>/js/jquery.dataTables.min.js"></script>
+<script src="<?= media();?>/js/dataTables.bootstrap5.min.js"></script>
+<script src="<?= media();?>/js/table-datatable.js"></script>
+</body>
+
+</html>
