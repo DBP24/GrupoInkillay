@@ -15,6 +15,9 @@
     <link href="<?= media();?>/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="<?= media();?>/css/metisMenu.min.css" rel="stylesheet" />
 
+    <!-- DataTables -->
+    <link href="<?= media();?>/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+
     <!-- CSS Files -->
     <link href="<?= media();?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= media();?>/css/bootstrap-extended.css" rel="stylesheet">
@@ -52,7 +55,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="index.html">
+                    <a href="<?= base_url();?>">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
@@ -70,54 +73,54 @@
                         <div class="menu-title">Charts</div>
                     </a>
                     <ul>
-                        <li> <a href="charts-apex-chart.html">
+                        <li> <a href="#">
                                 <ion-icon name="ellipse-outline"></ion-icon>Apex
                             </a>
                         </li>
-                        <li> <a href="charts-chartjs.html">
+                        <li> <a href="#">
                                 <ion-icon name="ellipse-outline"></ion-icon>Chartjs
                             </a>
                         </li>
-                        <li> <a href="charts-peity.html">
+                        <li> <a href="#">
                                 <ion-icon name="ellipse-outline"></ion-icon>Peity
                             </a>
                         </li>
-                        <li> <a href="charts-other.html">
+                        <li> <a href="#">
                                 <ion-icon name="ellipse-outline"></ion-icon>Other Charts
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="index.html">
+                    <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                         <div class="menu-title">Página 1</div>
                     </a>
 
-                    <a href="index.html">
+                    <a href="<?= base_url();?>/paginas/pagina2">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                         <div class="menu-title">Página 2</div>
                     </a>
 
-                    <a href="index.html">
+                    <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                         <div class="menu-title">Página 3</div>
                     </a>
 
-                    <a href="index.html">
+                    <a href="<?= base_url();?>/paginas/pagina2">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
                         <div class="menu-title">Página 4</div>
                     </a>
 
-                    <a href="index.html">
+                    <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
@@ -148,10 +151,13 @@
                 <div class="top-navbar-right ms-auto">
 
                     <ul class="navbar-nav align-items-center">
-                       
+                        <div class="nav-perfil me-3">
+                            <?php echo $_SESSION['Usuario']["Nombres"]?>
+                        </div>
                         <li class="nav-item dropdown dropdown-user-setting">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                                 data-bs-toggle="dropdown">
+
                                 <div class="user-setting">
                                     <img src="<?= media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>"
                                         class="user-img" alt="">

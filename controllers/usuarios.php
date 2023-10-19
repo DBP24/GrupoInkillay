@@ -1,5 +1,5 @@
 <?php 
-  
+    require_once("./models/usuariosModel.php");
 	class Usuarios extends Controller{
 		public function __construct()
 		{

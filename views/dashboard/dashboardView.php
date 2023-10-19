@@ -7,17 +7,6 @@
         <!--start breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">Dashboard</div>
-            <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0 align-items-center">
-                        <li class="breadcrumb-item"><a href="javascript:;">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">eCommerce</li>
-                    </ol>
-                </nav>
-            </div>
             <!-- <div class="ms-auto">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-primary">Settings</button>
@@ -52,7 +41,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div>
-                                <h4 class="mb-0">$92,854</h4>
+                                <h4 class="mb-0"> S/ 92,854</h4>
                             </div>
                             <div class="ms-auto">+6.32%</div>
                         </div>
@@ -146,7 +135,7 @@
                                     <img src="assets/images/icons/usa.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$84.5K</h5>
+                                    <h5 class="mb-0"> S/ 84.5K</h5>
                                     <p class="mb-0 text-secondary">United states</p>
                                 </div>
                                 <div class="">
@@ -159,7 +148,7 @@
                                     <img src="assets/images/icons/india.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$750</h5>
+                                    <h5 class="mb-0"> S/ 750</h5>
                                     <p class="mb-0 text-secondary">India</p>
                                 </div>
                                 <div class="">
@@ -172,7 +161,7 @@
                                     <img src="assets/images/icons/china.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$38.5</h5>
+                                    <h5 class="mb-0"> S/ 38.5</h5>
                                     <p class="mb-0 text-secondary">China</p>
                                 </div>
                                 <div class="">
@@ -185,7 +174,7 @@
                                     <img src="assets/images/icons/russia.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$88.0K</h5>
+                                    <h5 class="mb-0"> S/ 88.0K</h5>
                                     <p class="mb-0 text-secondary">France</p>
                                 </div>
                                 <div class="">
@@ -198,7 +187,7 @@
                                     <img src="assets/images/icons/australia.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$78.3K</h5>
+                                    <h5 class="mb-0"> S/ 78.3K</h5>
                                     <p class="mb-0 text-secondary">Australia</p>
                                 </div>
                                 <div class="">
@@ -211,7 +200,7 @@
                                     <img src="assets/images/icons/brazil.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$10.5K</h5>
+                                    <h5 class="mb-0"> S/ 10.5K</h5>
                                     <p class="mb-0 text-secondary">Brazil</p>
                                 </div>
                                 <div class="">
@@ -224,7 +213,7 @@
                                     <img src="assets/images/icons/UAE.png" alt="" width="35">
                                 </div>
                                 <div class="country-name flex-grow-1">
-                                    <h5 class="mb-0">$30.5K</h5>
+                                    <h5 class="mb-0"> S/ 30.5K</h5>
                                     <p class="mb-0 text-secondary">UAE</p>
                                 </div>
                                 <div class="">
@@ -266,7 +255,7 @@
                                     <ion-icon name="wallet-outline"></ion-icon>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="mb-0">$545.69</h6>
+                                    <h6 class="mb-0"> S/ 545.69</h6>
                                     <p class="mb-0 text-secondary">Last Month Sales</p>
                                 </div>
                                 <div class="">
@@ -279,7 +268,7 @@
                                     <ion-icon name="flag-outline"></ion-icon>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="mb-0">$956.34</h6>
+                                    <h6 class="mb-0"> S/ 956.34</h6>
                                     <p class="mb-0 text-secondary">Last Month Sales</p>
                                 </div>
                                 <div class="">
@@ -292,7 +281,7 @@
                                     <ion-icon name="school-outline"></ion-icon>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="mb-0">$6956.48</h6>
+                                    <h6 class="mb-0"> S/ 6956.48</h6>
                                     <p class="mb-0 text-secondary">Last Year Sales</p>
                                 </div>
                                 <div class="">

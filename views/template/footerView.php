@@ -13,7 +13,7 @@
    </a>
    <!--End Back To Top Button-->
 
-  
+
 
    <!--start overlay-->
    <div class="overlay nav-toggle-icon"></div>
@@ -23,8 +23,8 @@
    <!--end wrapper-->
 
    <script>
-    const base_url = "<?= base_url(); ?>";
-    const media_url = "<?= media(); ?>";
+const base_url = "<?= base_url(); ?>";
+const media_url = "<?= media(); ?>";
    </script>
 
    <script src="<?= media();?>/js/logout.js"></script>
@@ -38,8 +38,15 @@
    <script src="<?= media();?>/js/metisMenu.min.js"></script>
    <script src="<?= media();?>/js/bootstrap.bundle.min.js"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
    <!--plugins-->
    <script src="<?= media();?>/js/perfect-scrollbar.js"></script>
+
+   <!--DataTables-->
+   <script src="<?= media();?>/js/jquery.dataTables.min.js"></script>
+   <script src="<?= media();?>/js/dataTables.bootstrap5.min.js"></script>
+   <script src="<?= media();?>/js/table-datatable.js"></script>
+
    <script src="<?= media();?>/js/apexcharts.min.js"></script>
    <script src="<?= media();?>/js/jquery.easypiechart.js"></script>
    <script src="<?= media();?>/ja/chart.min.js"></script>
