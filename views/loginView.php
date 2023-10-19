@@ -42,20 +42,15 @@
                             <form class="form-body row g-3" id="formularioLogin" name="formularioLogin" method="POST">
                                 <div class="col-12">
                                     <label class="form-label">RUC</label>
-                                    <!-- <select class="form-select" name="" id="">
-                                        <option value="">Empresa 1</option>
-                                        <option value="">Empresa 2</option>
-                                        <option value="">Empresa 3</option>
-                                    </select> -->
-                                    <input type="text" class="form-control" id="usuario" name="usuario">
+                                    <input type="text" class="form-control" id="ruc" name="ruc">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" name="usuario">
+                                    <input type="text" class="form-control" id="usuario" name="usuario" value="<?=$data['usuario'];?>">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control" id="password" name="password" value="<?=$data['contrasena'];?>">
                                 </div>
                                 <div class="col-12 d-flex justify-content-center">
                                     <div class="g-recaptcha" data-sitekey="6LfQkbQoAAAAAGW08bs_tK9W167IHfCtcHH_5mdA"></div>
@@ -63,8 +58,8 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch"
-                                            id="flexSwitchCheckRemember">
-                                        <label class="form-check-label" for="flexSwitchCheckRemember">Recordar</label>
+                                        name="recordarme" value="1">
+                                        <label class="form-check-label"  for="flexSwitchCheckRemember">Recordar</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 text-end">

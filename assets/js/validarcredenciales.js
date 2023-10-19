@@ -31,10 +31,40 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
                             });
                         } else {
-                            Swal.fire("Atención", objData.msg, objData.type);
+                            Swal.fire({
+                                position: 'center',
+                                icon:  objData.type,
+                                title: objData.msg,
+                                showConfirmButton: true,
+                                allowOutsideClick : false,
+                                allowEscapeKey : false,
+                                allowEnterKey : false,
+                                iconColor: "#16e15d",
+                                confirmButtonColor:"#16e15d"
+                            })
+                            .then((result) => {
+                                if (result.isConfirmed) { 
+                                   window.location.reload();
+                                }
+                            });
                         }
                     } else {
-                       Swal.fire("Atención", objData.msg, objData.type);
+                        Swal.fire({
+                            position: 'center',
+                            icon:  objData.type,
+                            title: objData.msg,
+                            showConfirmButton: true,
+                            allowOutsideClick : false,
+                            allowEscapeKey : false,
+                            allowEnterKey : false,
+                            iconColor: "#16e15d",
+                            confirmButtonColor:"#16e15d"
+                        })
+                        .then((result) => {
+                            if (result.isConfirmed) { 
+                               window.location.reload();
+                            }
+                        });
                     }
                     return false;
                 }
