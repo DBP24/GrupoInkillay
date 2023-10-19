@@ -20,8 +20,10 @@
                 <div class="table-responsive mt-2">
                     <!-- <table class="table align-middle mb-0"> -->
                     <table id="example2" class="table align-middle mb-0">
+                        
                         <thead class="text-center">
                             <tr>
+                                
                                 <th>Nombre</th>
                                 <th>Cargo</th>
                                 <th>Oficina</th>
@@ -955,13 +957,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Max Orlando">
+                            <input type="text" class="form-control" placeholder="Max Orlando" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label class="mt-3">Cargo:</label>
-                            <select class="form-select">
+                            <select class="form-select" required>
                                 <option value="" disabled selected>Seleccione</option>
                                 <option value="">Accountant</option>
                                 <option value="">Integration Specialist</option>
@@ -976,7 +978,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label class="mt-3">Oficina:</label>
-                            <select class="form-select">
+                            <select class="form-select" required>
                                 <option value="" disabled selected>Seleccione</option>
                                 <option value="">Edinburgh</option>
                                 <option value="">New York</option>
@@ -988,19 +990,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label class="mt-3">Edad:</label>
-                            <input type="number" class="form-control" placeholder="0">
+                            <input type="number" class="form-control" placeholder="0" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label class="mt-3">Fecha de Inicio:</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <label class="mt-3">Sueldo (S/):</label>
-                            <input type="text" class="form-control" placeholder="320.00">
+                            <input type="text" class="form-control" placeholder="320.00" required>
                         </div>
                     </div>
                 </div>

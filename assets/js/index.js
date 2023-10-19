@@ -24,7 +24,7 @@ $(function() {
                 left: 14,
                 blur: 4,
                 opacity: .12,
-                color: "#429B1B"
+                color: "#16e15d"
             },
             sparkline: {
                 enabled: !0
@@ -32,7 +32,7 @@ $(function() {
         },
         markers: {
             size: 0,
-            colors: ["#429B1B"],
+            colors: ["#16e15d"],
             strokeColors: "#fff",
             strokeWidth: 2,
             hover: {
@@ -70,7 +70,7 @@ $(function() {
               //stops: [0, 100]
             }
           },
-        colors: ["#429B1B"],
+        colors: ["#16e15d"],
         tooltip: {
             theme: "dark",
             fixed: {
@@ -222,7 +222,7 @@ $(function() {
                 left: 14,
                 blur: 4,
                 opacity: .12,
-                color: "#429B1B"
+                color: "#16e15d"
             },
             sparkline: {
                 enabled: !1
@@ -230,7 +230,7 @@ $(function() {
         },
         markers: {
             size: 0,
-            colors: ["#429B1B"],
+            colors: ["#16e15d"],
             strokeColors: "#fff",
             strokeWidth: 2,
             hover: {

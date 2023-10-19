@@ -40,12 +40,13 @@
                             </div>
                             <form class="form-body row g-3" id="formularioLogin" name="formularioLogin" method="POST">
                                 <div class="col-12">
-                                    <label class="form-label">Usuario</label>
-                                    <select class="form-select" name="" id="">
+                                    <label class="form-label">RUC</label>
+                                    <!-- <select class="form-select" name="" id="">
                                         <option value="">Empresa 1</option>
                                         <option value="">Empresa 2</option>
                                         <option value="">Empresa 3</option>
-                                    </select>
+                                    </select> -->
+                                    <input type="text" class="form-control" id="usuario" name="usuario">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Usuario</label>

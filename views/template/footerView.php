@@ -14,7 +14,10 @@
    <!--End Back To Top Button-->
 
 
-
+   <script>
+    const base_url = "<?= base_url(); ?>";
+    const media_url = "<?= media(); ?>";
+   </script>
    <!--start overlay-->
    <div class="overlay nav-toggle-icon"></div>
    <!--end overlay-->
@@ -22,10 +25,6 @@
    </div>
    <!--end wrapper-->
 
-   <script>
-const base_url = "<?= base_url(); ?>";
-const media_url = "<?= media(); ?>";
-   </script>
 
    <script src="<?= media();?>/js/logout.js"></script>
 
@@ -54,6 +53,7 @@ const media_url = "<?= media(); ?>";
    <!-- Main JS-->
    <script src="<?= media();?>/js/main.js"></script>
 
+  
 
    </body>
 

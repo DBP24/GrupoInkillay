@@ -55,10 +55,10 @@
 		public function update(string $query, array $arrValues)
 		{
 			$this->strquery = $query;
-			$this->arrVAlues = $arrValues;
+			$this->arrValues = $arrValues; // Corregido aquí
 			$update = $this->conexion->prepare($this->strquery);
-			$resExecute = $update->execute($this->arrVAlues);
-	        return $resExecute;
+			$resExecute = $update->execute($this->arrValues); // Y aquí
+			return $resExecute;
 		}
 
 		//Eliminar un registro

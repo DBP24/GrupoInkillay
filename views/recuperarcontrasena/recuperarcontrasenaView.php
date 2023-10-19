@@ -21,6 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
   <title><?= $data['page_title'];?></title>
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
+  <!--plugins-->
+  <link href="<?= media();?>/css/simplebar.css" rel="stylesheet" />
+  <link href="<?= media();?>/css/perfect-scrollbar.css" rel="stylesheet" />
+  <link href="<?= media();?>/css/metisMenu.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -42,10 +50,10 @@
                   <h4>Resetear Contraseña</h4>
                   <p>Recibirás un correo electrónico en máximo 60 segundos.</p>
                 </div>
-                <form class="form-body row g-3" method="POST">
+                <form id="recovery" name="recovery" class="form-body row g-3" method="POST">
                   <div class="col-12">
                     <label class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="correo" placeholder="usuario@grupoinkillay.com">
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="usuario@grupoinkillay.com">
                   </div>
                   <div class="col-6 col-lg-6">
                     <div class="d-grid">
@@ -54,7 +62,7 @@
                   </div>
                   <div class="col-6 col-lg-6">
                     <div class="d-grid">
-                      <button type="button" class="btn btn-primary">Enviar</button>
+                      <button id="enviar" name="enviar" type="button" class="btn btn-primary">Enviar</button>
                     </div>
                   </div>
                 </form>
@@ -77,7 +85,25 @@
 
 
   <script src="<?= media();?>/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+  <script src="<?= media();?>/js/recuperarContrasena.js"></script>
+  <script>
+    const base_url = "<?= base_url(); ?>";
+    const media_url = "<?= media(); ?>";
+   </script>
+  <!-- SweetAlert2 -->
+    <script src="<?= media();?>/js/sweetalert2.min.js"></script>
+
+    <!-- JS Files-->
+    <script src="<?= media();?>/js/jquery.min.js"></script>
+    <script src="<?= media();?>/js/simplebar.min.js"></script>
+    <script src="<?= media();?>/js/metisMenu.min.js"></script>
+    <script src="<?= media();?>/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    <!--plugins-->
+    <script src="<?= media();?>/js/perfect-scrollbar.js"></script>
 </body>
 
 </html>

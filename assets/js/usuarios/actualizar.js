@@ -21,8 +21,8 @@ $("#modificar_usuario").click(function() {
                           allowOutsideClick : false,
                           allowEscapeKey : false,
                           allowEnterKey : false,
-                          iconColor: "#429B1B",
-                          confirmButtonColor:"#429B1B"
+                          iconColor: "#16e15d",
+                          confirmButtonColor:"#16e15d"
                       })
                       .then((result) => {
                           if (result.isConfirmed) { 

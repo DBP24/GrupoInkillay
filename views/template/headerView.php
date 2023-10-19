@@ -44,88 +44,47 @@
 
         <!--start sidebar -->
         <aside class="sidebar-wrapper" data-simplebar="true">
-            <div class="sidebar-header">
-                <div>
-                    <img src="<?= media();?>/img/logo-icon.png" class="logo-icon" alt="logo icon">
-                </div>
-                <div>
-                    <h4 class="logo-text">Grupo Inkillay</h4>
-                </div>
+            <div class="pt-4 pe-2 ps-3 pb-0">
+                    <!-- <h4 class="logo-text">Grupo Inkillay</h4> -->
+                <img src="<?= media();?>/img/logo.png" class="logo" alt="logo icon">
             </div>
+        
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="<?= base_url();?>">
+                    <a class="encabezado" href="<?= base_url();?>">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Dashboard</div>
+                        <div class="menu-title ">Dashboard</div>
                     </a>
                 </li>
 
-
-                <li class="menu-label">Páginas</li>
-                <li>
-                    <a class="has-arrow" href="javascript:;">
-                        <div class="parent-icon">
-                            <ion-icon name="bar-chart-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Charts</div>
-                    </a>
-                    <ul>
-                        <li> <a href="#">
-                                <ion-icon name="ellipse-outline"></ion-icon>Apex
-                            </a>
-                        </li>
-                        <li> <a href="#">
-                                <ion-icon name="ellipse-outline"></ion-icon>Chartjs
-                            </a>
-                        </li>
-                        <li> <a href="#">
-                                <ion-icon name="ellipse-outline"></ion-icon>Peity
-                            </a>
-                        </li>
-                        <li> <a href="#">
-                                <ion-icon name="ellipse-outline"></ion-icon>Other Charts
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
+                <li class="menu-label ">Elementos</li>
+            
+                <li class="content__interfaces">
                     <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Página 1</div>
+                        <div class="menu-title">Insertar Nuevos Usuarios</div>
                     </a>
-
+                        <hr>
                     <a href="<?= base_url();?>/paginas/pagina2">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Página 2</div>
+                        <div class="menu-title">Listado de Información</div>
                     </a>
-
+                    <hr>
                     <a href="<?= base_url();?>/paginas/pagina">
                         <div class="parent-icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Página 3</div>
+                        <div class="menu-title">Listado de Información</div>
                     </a>
-
-                    <a href="<?= base_url();?>/paginas/pagina2">
-                        <div class="parent-icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Página 4</div>
-                    </a>
-
-                    <a href="<?= base_url();?>/paginas/pagina">
-                        <div class="parent-icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Página 5</div>
-                    </a>
+                    <hr>
+                    
                 </li>
             </ul>
             <!--end navigation-->
@@ -152,7 +111,10 @@
 
                     <ul class="navbar-nav align-items-center">
                         <div class="nav-perfil me-3">
-                            <?php echo $_SESSION['Usuario']["Nombres"]?>
+                            <?php echo $_SESSION['Usuario']["Nombres"] ?>
+                        </div>
+                        <div class="nav-perfil ms-3 me-3">
+                            <?php echo  $_SESSION['Usuario']["Apellidos"]?>
                         </div>
                         <li class="nav-item dropdown dropdown-user-setting">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"

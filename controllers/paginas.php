@@ -16,7 +16,7 @@
 
         public function pagina(){
 			$data['page_title'] = "Página 1 - Grupo Inkillay";
-			$data['page_content'] = "Página 1";
+			$data['page_content'] = "Insertar Nuevos Usuarios";
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
@@ -25,7 +25,7 @@
 
         public function pagina2(){
 			$data['page_title'] = "Página 2 - Grupo Inkillay";
-			$data['page_content'] = "Página 2";
+			$data['page_content'] = "Listado de Información";
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
