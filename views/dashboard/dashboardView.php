@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-2">
                             <div>
-                                <p class="mb-0 fs-6">Total Revenue</p>
+                                <p class="mb-0 fs-6">Ingresos Totales</p>
                             </div>
                             <div class="ms-auto widget-icon-small text-white bg-gradient-purple">
                                 <ion-icon name="wallet-outline"></ion-icon>
@@ -53,7 +53,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-2">
                             <div>
-                                <p class="mb-0 fs-6">Total Customer</p>
+                                <p class="mb-0 fs-6">Total de Clientes</p>
                             </div>
                             <div class="ms-auto widget-icon-small text-white bg-gradient-info">
                                 <ion-icon name="people-outline"></ion-icon>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-2">
                             <div>
-                                <p class="mb-0 fs-6">Total Orders</p>
+                                <p class="mb-0 fs-6">Total de Órdenes</p>
                             </div>
                             <div class="ms-auto widget-icon-small text-white bg-gradient-danger">
                                 <ion-icon name="bag-handle-outline"></ion-icon>
@@ -93,7 +93,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start gap-2">
                             <div>
-                                <p class="mb-0 fs-6">Conversion Rate</p>
+                                <p class="mb-0 fs-6">Tasa de conversión</p>
                             </div>
                             <div class="ms-auto widget-icon-small text-white bg-gradient-success">
                                 <ion-icon name="bar-chart-outline"></ion-icon>
@@ -122,9 +122,7 @@
                                     <ion-icon name="ellipsis-horizontal-outline" class="md hydrated"></ion-icon>
                                 </div>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Ver</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -135,7 +133,7 @@
                                 </div>
                                 <div class="country-name flex-grow-1">
                                     <h5 class="mb-0"> S/ 84.50</h5>
-                                    <p class="mb-0 text-secondary">United states</p>
+                                    <p class="mb-0 text-secondary">USA</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500"><i
@@ -174,7 +172,7 @@
                                 </div>
                                 <div class="country-name flex-grow-1">
                                     <h5 class="mb-0"> S/ 88.00</h5>
-                                    <p class="mb-0 text-secondary">France</p>
+                                    <p class="mb-0 text-secondary">Francia</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500"><i
@@ -200,7 +198,7 @@
                                 </div>
                                 <div class="country-name flex-grow-1">
                                     <h5 class="mb-0"> S/ 10.50</h5>
-                                    <p class="mb-0 text-secondary">Brazil</p>
+                                    <p class="mb-0 text-secondary">Brasil</p>
                                 </div>
                                 <div class="">
                                     <p class="mb-0 text-success d-flex gap-1 align-items-center fw-500"><i
@@ -234,9 +232,7 @@
                                     <ion-icon name="ellipsis-horizontal-outline" class="md hydrated"></ion-icon>
                                 </div>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Ver</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -306,17 +302,15 @@
                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                                 </div>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="javascript:;">Action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Another action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:;">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="#">Ver</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="d-flex align-items-center font-13 gap-2">
                             <span class="border px-1 rounded cursor-pointer"><i
-                                    class="bx bxs-circle me-1 text-tiffany"></i>Cliks</span>
+                                    class="bx bxs-circle me-1 text-tiffany"></i>Clics</span>
                             <span class="border px-1 rounded cursor-pointer"><i
-                                    class="bx bxs-circle me-1 text-success"></i>Views</span>
+                                    class="bx bxs-circle me-1 text-success"></i>Vistas</span>
                         </div>
 
                         <canvas id="myChart2"></canvas>

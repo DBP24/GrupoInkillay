@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="light-theme">
+<html class="light-theme">
 
 <head>
     <!-- Required meta tags -->
@@ -38,7 +38,7 @@
                                 <!-- <h4 class="mt-3">Inicio de Sesión</h4> -->
                                 <!-- <p>Iniciar sesión con tu cuenta</p> -->
                             </div>
-                            <form id="recovery" name="recovery" class="form-body row g-3" method="POST">
+                            <form id="FormularioToken" name="FormularioToken" class="form-body row g-3" method="POST">
                               <div class="col-12">
                                 <label class="form-label">Ingrese Token</label>
                                 <input type="text" class="form-control" id="token" name="token" placeholder="token">
@@ -55,7 +55,7 @@
                             
                               <div class="col-12 col-lg-12 ">
                                 <div class="d-grid text-center">
-                                  <button id="cambiar" name="cambiar" type="button" class="btn btn-primary">Guardar Cambios</button>
+                                  <button id="cambiar" name="cambiar" type="submit" class="btn btn-primary">Guardar Cambios</button>
                                 </div>
                               </div>
                           </form>
@@ -73,12 +73,12 @@
         </footer>
     </div>
     <!--end wrapper-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<?= media(); ?>/js/cambiarContrasenaToken.js"></script>
     <!-- JS -->
     <script>
     const base_url = "<?= base_url(); ?>";
     </script>
-    <script src="<?= media(); ?>/js/validarcredenciales.js"></script>
-    <script src="<?= media(); ?>/js/cambiarContrasenaToken.js"></script>
     <!-- SweetAlert2 -->
     <script src="<?= media();?>/js/sweetalert2.min.js"></script>
     <script src="<?= media();?>/js/bootstrap.bundle.min.js"></script>

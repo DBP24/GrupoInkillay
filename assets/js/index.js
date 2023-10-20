@@ -4,9 +4,9 @@ const ctx2 = document.getElementById('myChart2');
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
     datasets: [{
-      label: '# of Votes',
+      label: '# de Votos',
       data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1
     }]
@@ -23,9 +23,9 @@ new Chart(ctx, {
 new Chart(ctx2, {
   type: 'doughnut',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
     datasets: [{
-      label: '# of Votes',
+      label: '# de Votos',
       data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1
     }]

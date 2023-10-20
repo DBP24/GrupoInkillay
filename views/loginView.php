@@ -42,7 +42,8 @@
                             <form class="form-body row g-3" id="formularioLogin" name="formularioLogin" method="POST">
                                 <div class="col-12">
                                     <label class="form-label">RUC</label>
-                                    <input type="text" class="form-control" id="ruc" name="ruc">
+                                    <input type="text" class="form-control" id="ruc" name="ruc" maxlength="11" pattern="[0-9]+"
+                                        title="Solo se permiten números">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Usuario</label>

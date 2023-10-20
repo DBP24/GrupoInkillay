@@ -151,11 +151,9 @@ ion-icon {
 }
 
 .nav-perfil {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
     font-size: 18px;
     color: #293445;
     font-weight: 800;

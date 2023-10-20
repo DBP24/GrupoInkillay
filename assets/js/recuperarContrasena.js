@@ -21,20 +21,45 @@ $(document).ready(function() {
                     allowOutsideClick : false,
                     allowEscapeKey : false,
                     allowEnterKey : false,
+                    iconColor: "#16e15d",
+                    confirmButtonColor:"#16e15d"
                 }).then((result) => {
                         if (result.isConfirmed) { 
-                              window.location.href=base_url + '/recuperarcontrasena/CambiarContrasenaToken';
+                            token= getRandomInt(20);
+                            window.location.href=base_url + '/recuperarcontrasena/CambiarContrasenaToken?resp='+ token;
                         }
                     });
             } else {
-                    Swal.fire("error", objData.msg, objData.type);
-                }
+                Swal.fire({
+                    position: 'center',
+                    icon: objData.type,
+                    title: objData.msg,
+                    showConfirmButton: true,
+                    allowOutsideClick : false,
+                    allowEscapeKey : false,
+                    allowEnterKey : false,
+                    iconColor: "#16e15d",
+                    confirmButtonColor:"#16e15d"
+                })
+            }
         } else {
-            Swal.fire("Atención", objData.msg, objData.type);
+            Swal.fire({
+                position: 'center',
+                icon: objData.type,
+                title: objData.msg,
+                showConfirmButton: true,
+                allowOutsideClick : false,
+                allowEscapeKey : false,
+                allowEnterKey : false,
+                iconColor: "#16e15d",
+                confirmButtonColor:"#16e15d"
+            })
         }
         return false;
         }
     });
 });
   
-  
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }

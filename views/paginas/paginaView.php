@@ -18,19 +18,19 @@
                                 <div class="col-md-6">
                                     <label class="mt-3">Apellido Paterno:</label>
                                     <input type="text" class="form-control" placeholder="Rouillon"
-                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" maxlength="150" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="mt-3">Apellido Materno:</label>
                                     <input type="text" class="form-control" placeholder="Lao"
-                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" maxlength="150" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="mt-3">Nombres:</label>
                                     <input type="text" class="form-control" placeholder="Ricardo"
-                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" required>
+                                        pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+" title="Solo se permiten letras" maxlength="100" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="mt-3">Cargo:</label>
@@ -46,19 +46,19 @@
                                     <label class="mt-3">Correo Electrónico:</label>
                                     <input type="text" class="form-control" placeholder="hola@grupoinkillay.com"
                                         pattern="[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-]([\.]?[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-])+@[a-zA-Z0-9]([^@&%$\/\(\)=?¿!\.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
-                                        title="Ingrese una dirección de correo electrónico válida" required>
+                                        title="Ingrese una dirección de correo electrónico válida" maxlength="50" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="mt-3">Teléfono:</label>
                                     <input type="text" class="form-control" placeholder="2321177" pattern="[0-9]+"
-                                        title="Solo se permiten números" required>
+                                        title="Solo se permiten números" maxlength="50" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="mt-3">Número Celular:</label>
                                     <input type="text" class="form-control" placeholder="987456321" pattern="[0-9]+"
-                                        title="Solo se permiten números" required>
+                                        title="Solo se permiten números" maxlength="50" required>
                                 </div>
                             </div>
                             <div class="row">

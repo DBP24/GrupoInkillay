@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $('#cambiar').click(function(e) {
         e.preventDefault();
-        var correo = $('#correo').val();
+        var token = $('#token').val();
         var pass_1 = $('#pass_1').val();
         var pass_2 = $('#pass_2').val();
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/recuperarcontrasena/recuperar';
+        var ajaxUrl = base_url + '/recuperarcontrasena/validarToken';
         var formData = new FormData();
-        formData.append('correo', correo);
+        formData.append('token', token);
         formData.append('pass_1', pass_1);
         formData.append('pass_2', pass_2);
         request.open("POST", ajaxUrl, true);
@@ -25,16 +25,46 @@ $(document).ready(function() {
                     allowOutsideClick : false,
                     allowEscapeKey : false,
                     allowEnterKey : false,
+                    iconColor: "#16e15d",
+                    confirmButtonColor:"#16e15d"
                 }).then((result) => {
                         if (result.isConfirmed) { 
-                              window.location.href=base_url + '/recuperarcontrasena/CambiarContrasenaToken';
+                              window.location.href=base_url ;
                         }
                     });
             } else {
-                    Swal.fire("error", objData.msg, objData.type);
-                }
+                Swal.fire({
+                    position: 'center',
+                    icon: objData.type,
+                    title: objData.msg,
+                    showConfirmButton: true,
+                    allowOutsideClick : false,
+                    allowEscapeKey : false,
+                    allowEnterKey : false,
+                    iconColor: "#16e15d",
+                    confirmButtonColor:"#16e15d"
+                }).then((result) => {
+                    if (result.isConfirmed) { 
+                          window.location.reload();
+                    }
+                });
+            }
         } else {
-            Swal.fire("Atención", objData.msg, objData.type);
+            Swal.fire({
+                position: 'center',
+                icon: objData.type,
+                title: objData.msg,
+                showConfirmButton: true,
+                allowOutsideClick : false,
+                allowEscapeKey : false,
+                allowEnterKey : false,
+                iconColor: "#16e15d",
+                confirmButtonColor:"#16e15d"
+            }).then((result) => {
+                if (result.isConfirmed) { 
+                      window.location.reload();
+                }
+            });
         }
         return false;
         }

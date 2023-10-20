@@ -146,30 +146,7 @@
                     </ul>
                 </li>
 
-                <!-- <li class="content__interfaces">
-                    <a href="<?= base_url();?>/paginas/pagina">
-                        <div class="parent-icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Insertar Nuevos Usuarios</div>
-                    </a>
-                    <hr>
-                    <a href="<?= base_url();?>/paginas/pagina2">
-                        <div class="parent-icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Listado de Información</div>
-                    </a>
-                    <hr>
-                    <a href="<?= base_url();?>/paginas/pagina">
-                        <div class="parent-icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </div>
-                        <div class="menu-title">Listado de Información</div>
-                    </a>
-                    <hr>
-
-                </li> -->
+               
             </ul>
             <!--end navigation-->
         </aside>
@@ -196,14 +173,11 @@
                     <ul class="navbar-nav align-items-center">
                         <div class="nav-perfil me-3">
                             <?php echo $_SESSION['Usuario']["Nombres"] ?>
-                        </div>
-                        <div class="nav-perfil ms-3 me-3">
                             <?php echo  $_SESSION['Usuario']["Apellidos"]?>
                         </div>
                         <li class="nav-item dropdown dropdown-user-setting">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                                 data-bs-toggle="dropdown">
-
                                 <div class="user-setting">
                                     <img src="<?= media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>"
                                         class="user-img" alt="">

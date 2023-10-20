@@ -53,7 +53,9 @@
                 <form id="recovery" name="recovery" class="form-body row g-3" method="POST">
                   <div class="col-12">
                     <label class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="correo" name="correo" placeholder="usuario@grupoinkillay.com">
+                    <input type="text" class="form-control" id="correo" name="correo" placeholder="hola@grupoinkillay.com"
+                                        pattern="[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-]([\.]?[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-])+@[a-zA-Z0-9]([^@&%$\/\(\)=?¿!\.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
+                                        title="Ingrese una dirección de correo electrónico válida" maxlength="50" required>
                   </div>
                   <div class="col-6 col-lg-6">
                     <div class="d-grid">
@@ -62,7 +64,7 @@
                   </div>
                   <div class="col-6 col-lg-6">
                     <div class="d-grid">
-                      <button id="enviar" name="enviar" type="button" class="btn btn-primary">Enviar</button>
+                      <button id="enviar" name="enviar" type="submit" class="btn btn-primary">Enviar</button>
                     </div>
                   </div>
                 </form>
