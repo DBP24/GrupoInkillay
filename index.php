@@ -1,7 +1,7 @@
 <?php 
 	require_once("config/config.php");
 	require_once("helpers/helpers.php");
-	$url = !empty($_GET['url']) ? $_GET['url'] : 'login/login';
+	$url = !empty($_GET['url']) ? $_GET['url'] : 'Login/Login';
     
     //Eliminar los / en la URL
 	$arrUrl = explode("/", $url);
@@ -28,7 +28,7 @@
 			$params = trim($params,',');
 		}
 	}
-	require_once("libraries/core/autoload.php");
-	require_once("libraries/core/load.php");
+	require_once("libraries/core/Autoload.php");
+	require_once("libraries/core/Load.php");
 
  ?>

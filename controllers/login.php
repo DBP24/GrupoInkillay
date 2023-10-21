@@ -1,5 +1,5 @@
 <?php
-
+   require_once("./models/loginModel.php");
 class Login extends Controller
 {
 	public function __construct()
@@ -8,7 +8,7 @@ class Login extends Controller
 		if (isset($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/dashboard');
 		}
-
+        $this->model=new loginModel();
 		parent::__construct();
 	}
 
@@ -35,8 +35,7 @@ class Login extends Controller
 	public function validarcredenciales(){
 		if($_POST){
 			try {
-
-
+                //print("hola");
 				$usuario = $_POST['usuario'] ;
 				$password = $_POST['password'];
 				$recordarme = isset($_POST['recordarme']) ? true : false;
@@ -62,27 +61,26 @@ class Login extends Controller
 						setcookie("contrasena", $password, time() + 604800);
 					}
 					
-					$arrResponse = array('status' => true, 'msg' => 'Es correcto las credenciales', 'type' => 'success');
-				} else if($requestLog == 'exist')
-				{
-					$arrResponse = array('status' => false, 'msg' => 'Credenciales incorrectas' , 'type' => 'error');
-				} else if(empty($usuario) && empty($password))
-				{
-					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos' , 'type' => 'warning');
-				} else if(empty($usuario) || empty($password))
-				{
-					$arrResponse = array('status' => false, 'msg' => 'Campo vacío' , 'type' => 'warning');
-				}else
-				{
-					$arrResponse = array('status' => false, 'msg' => 'Contraseña Incorrecta' , 'type' => 'error');
-				}
+    					$arrResponse = array('status' => true, 'msg' => 'Es correcto las credenciales', 'type' => 'success');
+    				} else if($requestLog == 'exist')
+    				{
+    					$arrResponse = array('status' => false, 'msg' => 'Credenciales incorrectas' , 'type' => 'error');
+    				} else if(empty($usuario) && empty($password))
+    				{
+    					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos' , 'type' => 'warning');
+    				} else if(empty($usuario) || empty($password))
+    				{
+    					$arrResponse = array('status' => false, 'msg' => 'Campo vacío' , 'type' => 'warning');
+    				}else
+    				{
+    					$arrResponse = array('status' => false, 'msg' => 'Contraseña Incorrecta' , 'type' => 'error');
+    				}
+    				
 				}else{
 					$arrResponse = array('status' => false, 'msg' => 'Seleccione el Captcha' , 'type' => 'error');
 				}
 
-
-
-				
+	
 			} catch (Exception $e)
 			{
 				$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error: '.$e->getMessage(), 'type' => 'error');

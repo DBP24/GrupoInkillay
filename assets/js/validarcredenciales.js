@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formLogin.onsubmit = function(e) {
                 e.preventDefault();
                 var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                var ajaxUrl = base_url + '/login/validarcredenciales';
+                var ajaxUrl = base_url + '/Login/validarcredenciales';
                 var formData = new FormData(formLogin);
                 request.open("POST", ajaxUrl, true);
                 request.send(formData);

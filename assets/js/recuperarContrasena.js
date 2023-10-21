@@ -3,7 +3,7 @@ $(document).ready(function() {
         e.preventDefault();
         var correo = $('#correo').val();
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/recuperarcontrasena/recuperar';
+        var ajaxUrl = base_url + '/Recuperarcontrasena/recuperar';
         var formData = new FormData();
         formData.append('correo', correo);
         request.open("POST", ajaxUrl, true);

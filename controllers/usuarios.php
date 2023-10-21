@@ -8,7 +8,7 @@
 			{
 				header('Location: '.base_url().'/login');
 			}
-			$this->model=new UsuariosModel();
+			$this->model=new usuariosModel();
 			
 			parent::__construct();
 		}

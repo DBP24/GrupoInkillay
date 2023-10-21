@@ -5,7 +5,7 @@ $(document).ready(function() {
         var pass_1 = $('#pass_1').val();
         var pass_2 = $('#pass_2').val();
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/recuperarcontrasena/validarToken';
+        var ajaxUrl = base_url + '/Recuperarcontrasena/validarToken';
         var formData = new FormData();
         formData.append('token', token);
         formData.append('pass_1', pass_1);

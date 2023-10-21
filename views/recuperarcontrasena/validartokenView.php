@@ -20,6 +20,7 @@
     <link href="<?= media();?>/css/icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <title><?= $data['page_title']; ?></title>
+        <link rel="icon" href="<?= media();?>/img/logo.ico">
      <!-- SweetAlert2 -->
      <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
 </head>

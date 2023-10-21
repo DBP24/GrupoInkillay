@@ -1,10 +1,11 @@
 <?php 
-
+   require_once("./models/recuperarcontrasenaModel.php");
 	class Recuperarcontrasena extends Controller{
 		public function __construct()
 		{
-			
+			$this->model=new recuperarcontrasenaModel();
 			parent::__construct();
+		
 		}
 
         public function recuperarcontrasena(){
@@ -51,7 +52,8 @@
 					$requestAdd = $this->model->recuperarContrasena($arrData);
 					
 					if($requestAdd == 1)
-					{	
+					{
+                	     
 						//enviar información al correo el token.....
 						$arrResponse = array('status' => true, 'msg' => 'Se le ha enviado el token a su correo electrónico', 'type' => 'success');
 						$this->envioToken($token,$correo);
@@ -110,28 +112,50 @@
 		}
 
 		private function envioToken($token_,$correo_){
-			//datos para el correo
-			$destinatario="hola@darematechnology.com";
-			$asunto ="Envío de Token";
-			$mensaje="
-			Hola,\n
-
-			Te enviamos un token de acceso para nuestro formulario:\n
-			Token: " . $token_. "\n
-
-			Por favor, copia el token y pégalo en el formulario en [Enlace al Formulario]. El token es válido por un tiempo limitado.\n
-
-			Gracias.\n
-
-			Ricardo Rouillon Lao\n
-			Grupo Inkillay\n";
-
-			$header="From: " . $correo_ . "\r\n";
-			$header.="Reply-To: " . $correo_ . "\r\n";
-			$header.="X-Mailer: PHP/". phpversion();
+		$to = $correo_;
+$subject = 'Envío de Token';
+$message = '
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Envío de Token</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      background-color: #f8f8f8;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="https://grupoinkillay.alexanderminaya.com/assets/img/logo.png" alt="Logo" style="width: 200px;">
+  </div>
+  <div class="content">
+    <p>Hola,</p>
+    <p>Te enviamos un token de acceso para nuestro formulario:</p>
+    <p>Token: '.$token_.'</p>
+    <p>Por favor, copia el token y pégalo en el formulario.</p>
+    <p>Ricardo Rouillon Lao</p>
+    <p>Grupo Inkillay</p>
+  </div>
+</body>
+</html>
+';
+$headers = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+$headers .= 'From: hola@darematechnology.com' . "\r\n" .
+    'Reply-To: hola@darematechnology.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 	 
 			//enviar mensaje
-			$mail=@mail($destinatario,$asunto,$mensaje,$header);
+			$mail=@mail($to, $subject, $message, $headers);
 			 
 			return $mail;
 		}
