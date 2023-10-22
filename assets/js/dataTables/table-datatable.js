@@ -15,12 +15,9 @@ $(function () {
                 sortable: false
             }],
             buttons: [{
-                text:'+',
-                className:'__buttonAgregar',
-                action: function(e, dt, node , config){
-                    $('#staticBackdrop2').modal('show');
-                }
-            },'excel'],
+                extend: 'excel',
+                text: 'Exportar en Excel' 
+            }],
             language: {
                 processing:     "Procesando...",
                 search:         "Buscar:",

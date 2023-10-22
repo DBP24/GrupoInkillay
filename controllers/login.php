@@ -35,7 +35,7 @@ class Login extends Controller
 	public function validarcredenciales(){
 		if($_POST){
 			try {
-                //print("hola");
+                $ruc = $_POST['ruc'] ;
 				$usuario = $_POST['usuario'] ;
 				$password = $_POST['password'];
 				$recordarme = isset($_POST['recordarme']) ? true : false;
@@ -47,8 +47,8 @@ class Login extends Controller
 				$correct  =  file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip");
 				$atr =  json_decode($correct,TRUE);
 
-				if ($atr['success']){
-				$requestLog = $this->model->validateCredentials($usuario,$password);
+			if ($atr['success']){
+				$requestLog = $this->model->validateCredentials($ruc,$usuario,$password);
 
 				if($requestLog)
 				{
@@ -62,23 +62,43 @@ class Login extends Controller
 					}
 					
     					$arrResponse = array('status' => true, 'msg' => 'Es correcto las credenciales', 'type' => 'success');
-    				} else if($requestLog == 'exist')
-    				{
-    					$arrResponse = array('status' => false, 'msg' => 'Credenciales incorrectas' , 'type' => 'error');
-    				} else if(empty($usuario) && empty($password))
-    				{
-    					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos' , 'type' => 'warning');
-    				} else if(empty($usuario) || empty($password))
-    				{
-    					$arrResponse = array('status' => false, 'msg' => 'Campo vacío' , 'type' => 'warning');
-    				}else
-    				{
-    					$arrResponse = array('status' => false, 'msg' => 'Contraseña Incorrecta' , 'type' => 'error');
-    				}
     				
-				}else{
-					$arrResponse = array('status' => false, 'msg' => 'Seleccione el Captcha' , 'type' => 'error');
+				} else if($requestLog == 'exist')
+    			{
+    				$arrResponse = array('status' => false, 'msg' => 'Credenciales incorrectas' , 'type' => 'error');
+    				
+				} else if(empty($ruc) && empty($usuario) && empty($password))
+    			{
+
+    				$arrResponse = array('status' => false, 'msg' => 'Campos vacíos' , 'type' => 'warning');
+
+    			} else if(empty($ruc) || empty($usuario) || empty($password))
+    			{
+
+    				$arrResponse = array('status' => false, 'msg' => 'Campo vacío' , 'type' => 'warning');
+
+				} else if(!is_numeric($ruc))
+    			{
+
+    				$arrResponse = array('status' => false, 'msg' => 'Solo se ingresan números' , 'type' => 'warning');	
+				
+				} else if(strlen($ruc) > 11 || strlen($ruc) < 11)
+    			{
+
+    				$arrResponse = array('status' => false, 'msg' => 'RUC inválido' , 'type' => 'warning');
+
+    			}else
+    			{
+
+    				$arrResponse = array('status' => false, 'msg' => 'Contraseña Incorrecta' , 'type' => 'error');
+    				
 				}
+    				
+			} else {
+
+				$arrResponse = array('status' => false, 'msg' => 'Seleccione el Captcha' , 'type' => 'error');
+				
+			}
 
 	
 			} catch (Exception $e)

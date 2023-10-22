@@ -327,8 +327,8 @@
 <?= footerAdmin($data);?>
 
 <!-- Chart -->
-<script src="<?= media();?>/js/chart.js"></script>
-<script src="<?= media();?>/js/index.js"></script>
+<script src="<?= media();?>/js/chart/chart.js"></script>
+<script src="<?= media();?>/js/chart/index.js"></script>
 
 </body>
 

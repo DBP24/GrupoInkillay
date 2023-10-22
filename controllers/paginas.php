@@ -1,5 +1,5 @@
 <?php 
-
+   //require_once("./models/usuariosModel.php");
 	class Paginas extends Controller{
 		public function __construct()
 		{
@@ -9,19 +9,20 @@
 			{
 				header('Location: '.base_url().'/login');
 			}
-			//$this->model=new PaginasModel();
+			//$this->model=new usuariosModel();
 			
 			parent::__construct();
 		}
 
-        public function pagina(){
+        /*public function pagina(){
 			$data['page_title'] = "Página 1 - Grupo Inkillay";
 			$data['page_content'] = "Insertar Nuevos Usuarios";
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
-			$this->views->getView($this,"pagina", $data);
-		}
+			$datos=$this->model->selectAllUsers();
+			$this->views->getView($this,"pagina", $data,$datos);
+		}*/
 
         public function pagina2(){
 			$data['page_title'] = "Página 2 - Grupo Inkillay";

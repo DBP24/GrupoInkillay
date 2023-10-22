@@ -20,9 +20,11 @@
     <link href="<?= media();?>/css/icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <title><?= $data['page_title']; ?></title>
-        <link rel="icon" href="<?= media();?>/img/logo.ico">
-     <!-- SweetAlert2 -->
-     <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
+
+    <link rel="icon" href="<?= media();?>/img/logo.ico">
+    
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
 </head>
 
 <body>
@@ -40,26 +42,29 @@
                                 <!-- <p>Iniciar sesión con tu cuenta</p> -->
                             </div>
                             <form id="FormularioToken" name="FormularioToken" class="form-body row g-3" method="POST">
-                              <div class="col-12">
-                                <label class="form-label">Ingrese Token</label>
-                                <input type="text" class="form-control" id="token" name="token" placeholder="token">
-                              </div>
-                              <hr>
-                              <div class="col-12">
-                                <label class="form-label">Nueva Contraseña</label>
-                                <input type="password" class="form-control" id="pass_1" name="pass_1" placeholder="************">
-                              </div>
-                              <div class="col-12">
-                                <label class="form-label">Repite Contraseña</label>
-                                <input type="password" class="form-control" id="pass_2" name="pass_2" placeholder="************">
-                              </div>
-                            
-                              <div class="col-12 col-lg-12 ">
-                                <div class="d-grid text-center">
-                                  <button id="cambiar" name="cambiar" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                <div class="col-12">
+                                    <label class="form-label">Ingrese Token</label>
+                                    <input type="text" class="form-control" id="token" name="token" placeholder="token">
                                 </div>
-                              </div>
-                          </form>
+                                <hr>
+                                <div class="col-12">
+                                    <label class="form-label">Nueva Contraseña</label>
+                                    <input type="password" class="form-control" id="pass_1" name="pass_1"
+                                        placeholder="************">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Repite Contraseña</label>
+                                    <input type="password" class="form-control" id="pass_2" name="pass_2"
+                                        placeholder="************">
+                                </div>
+
+                                <div class="col-12 col-lg-12 ">
+                                    <div class="d-grid text-center">
+                                        <button id="cambiar" name="cambiar" type="submit"
+                                            class="btn btn-primary">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

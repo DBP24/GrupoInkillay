@@ -1377,6 +1377,28 @@ ul.categories-list li {
     justify-content: center;
 }
 
+/* Estilo para el botón personalizado */
+.custom-file-upload {
+    border: 2px solid #16e15d;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #16e15d;
+}
+
+/* Cambiar el estilo al pasar el ratón por encima */
+.custom-file-upload:hover {
+    background-color: #16e15d;
+    color: #fff;
+}
+
+/* Estilo oculto para el elemento de entrada por defecto */
+input[type="file"] {
+    display: none;
+}
+
+
 
 .login-cover-img {
     background-image: url(https://img.freepik.com/free-vector/abstract-realistic-technology-particle-background_23-2148429738.jpg?w=1060&t=st=1687332715~exp=1687333315~hmac=2f095ecc353eddc9a4f933063c22183b04c700876077b94ad02c2261c85e96c2);

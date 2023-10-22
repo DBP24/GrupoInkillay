@@ -1041,9 +1041,9 @@
 
 <?= footerAdmin($data)?>
 <!-- DataTables -->
-<script src="<?= media();?>/js/jquery.dataTables.min.js"></script>
-<script src="<?= media();?>/js/dataTables.bootstrap5.min.js"></script>
-<script src="<?= media();?>/js/table-datatable.js"></script>
+<script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
+<script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
+<script src="<?= media();?>/js/dataTables/table-datatable.js"></script>
 </body>
 
 </html>

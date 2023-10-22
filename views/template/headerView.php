@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="<?= media();?>/img/logo.ico">
+
     <!-- loader-->
     <link href="<?= media();?>/css/pace.min.css" rel="stylesheet" />
     <script src="<?= media();?>/js/pace.min.js"></script>
@@ -107,8 +109,8 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="<?= base_url();?>/paginas/pagina">
-                                <ion-icon name="ellipse-outline"></ion-icon>Página 1
+                            <a href="<?= base_url();?>/usuarios">
+                                <ion-icon name="ellipse-outline"></ion-icon>Usuarios
                             </a>
                         </li>
                     </ul>
@@ -173,13 +175,13 @@
                     <ul class="navbar-nav align-items-center">
                         <div class="nav-perfil me-3">
                             <?php echo $_SESSION['Usuario']["Nombres"] ?>
-                            <?php echo  $_SESSION['Usuario']["Apellidos"]?>
+                            <?php echo  $_SESSION['Usuario']["ApellidoPaterno"]?>
                         </div>
                         <li class="nav-item dropdown dropdown-user-setting">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                                 data-bs-toggle="dropdown">
                                 <div class="user-setting">
-                                    <img src="<?= media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>"
+                                    <img src="<?= media();?>/img/usuarios/<?php echo $_SESSION['Usuario']['Foto']?>"
                                         class="user-img" alt="">
                                 </div>
                             </a>
@@ -187,7 +189,7 @@
                                 <li>
                                     <a class="dropdown-item" href="javascript:;">
                                         <div class="d-flex flex-row align-items-center gap-2">
-                                            <img src="<?= media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>"
+                                            <img src="<?= media();?>/img/usuarios/<?php echo $_SESSION['Usuario']['Foto']?>"
                                                 alt="" class="rounded-circle" width="54" height="54">
                                             <div class="">
                                                 <h6 class="mb-0 dropdown-user-name">

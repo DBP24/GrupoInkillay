@@ -14,22 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         var objData = JSON.parse(request.responseText);
         
                         if (objData.status) {
-                           Swal.fire({
-                                position: 'center',
-                                icon:  objData.type,
-                                title: objData.msg,
-                                showConfirmButton: true,
-                                allowOutsideClick : false,
-                                allowEscapeKey : false,
-                                allowEnterKey : false,
-                                iconColor: "#16e15d",
-                                confirmButtonColor:"#16e15d"
-                            })
-                            .then((result) => {
-                                if (result.isConfirmed) { 
-                                   window.location.reload();
-                                }
-                            });
+
+                            window.location.reload();
+
                         } else {
                             Swal.fire({
                                 position: 'center',

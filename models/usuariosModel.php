@@ -7,6 +7,37 @@ class UsuariosModel extends Mysql
 			parent::__construct();
 		}
 
+		public function selectAllUsers()
+		{
+			$query="SELECT ID, CONCAT(ApellidoPaterno,' ',ApellidoMaterno,', ',Nombres) AS Usuario, Cargo, CorreoElectronico, FechaRegistro, FechaInicio, FechaFinal FROM tb_usuario";
+			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function insertNewUser($arrData){
+			
+			$query="INSERT INTO tb_usuario(
+				ApellidoPaterno,
+				ApellidoMaterno,
+				Nombres,
+				Cargo,
+				CorreoElectronico,
+				Telefono,
+				NumeroCelular,
+				FechaRegistro,
+				FechaInicio,
+				FechaFinal,
+				ImporteContrato,
+				Usuario,
+				Password,
+				Foto,
+				Estado) 
+				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,AES_ENCRYPT(?,'2023'),?,?);";
+			
+			$request=$this->insert($query,$arrData);
+			return $request;
+		}
+
 		public function updateUser($arrData){
 			$query="UPDATE tb_usuario SET
 				Nombres=?,
@@ -24,18 +55,28 @@ class UsuariosModel extends Mysql
 			return $request;
 		}
 
-		/*public function viewPassword($id){
-			$query="SELECT cast(AES_DECRYPT(Password, '150129') AS CHAR) AS Contrasena_Actual FROM tb_usuario WHERE ID= '$id'";
+		public function loadCompany(){
+			$query="SELECT * FROM tb_empresa";
+			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function selectMaxIDUser(){
+			$query="SELECT MAX(ID) AS ID FROM tb_usuario";
 			$request=$this->select($query);
 			return $request;
-		}*/
+		}
 
-		/*public function changepassword($arrData){
-			$query="UPDATE tb_usuario SET Password=AES_ENCRYPT(?,'150129') 
-			WHERE ID= ?";
-			$request=$this->update($query,$arrData);
+		public function insertNewUserCompany($arrData){
+			
+			$query="INSERT INTO tb_usuario_empresa(
+				Usuario,
+				Empresa) 
+				VALUES (?,?);";
+			
+			$request=$this->insert($query,$arrData);
 			return $request;
-		}*/
+		}
 
     }
 ?>

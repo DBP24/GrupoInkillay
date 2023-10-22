@@ -20,10 +20,12 @@
     <link href="<?= media();?>/css/icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <title><?= $data['page_title']; ?></title>
-        <link rel="icon" href="<?= media();?>/img/logo.ico">
-     <!-- SweetAlert2 -->
-     <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link rel="icon" href="<?= media();?>/img/logo.ico">
+    
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="<?= media();?>/css/sweetalert2.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -43,25 +45,28 @@
                             <form class="form-body row g-3" id="formularioLogin" name="formularioLogin" method="POST">
                                 <div class="col-12">
                                     <label class="form-label">RUC</label>
-                                    <input type="text" class="form-control" id="ruc" name="ruc" maxlength="11" pattern="[0-9]+"
-                                        title="Solo se permiten números">
+                                    <input type="text" class="form-control" id="ruc" name="ruc" maxlength="11"
+                                        pattern="[0-9]+" title="Solo se permiten números">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" name="usuario" value="<?=$data['usuario'];?>">
+                                    <input type="text" class="form-control" id="usuario" name="usuario"
+                                        value="<?=$data['usuario'];?>">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" value="<?=$data['contrasena'];?>">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        value="<?=$data['contrasena'];?>">
                                 </div>
                                 <div class="col-12 d-flex justify-content-center">
-                                    <div class="g-recaptcha" data-sitekey="6LfQkbQoAAAAAGW08bs_tK9W167IHfCtcHH_5mdA"></div>
+                                    <div class="g-recaptcha" data-sitekey="6LfQkbQoAAAAAGW08bs_tK9W167IHfCtcHH_5mdA">
+                                    </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch"
-                                        name="recordarme" value="1">
-                                        <label class="form-check-label"  for="flexSwitchCheckRemember">Recordar</label>
+                                        <input class="form-check-input" type="checkbox" role="switch" name="recordarme"
+                                            value="1">
+                                        <label class="form-check-label" for="flexSwitchCheckRemember">Recordar</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6 text-end">

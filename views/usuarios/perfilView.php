@@ -17,7 +17,7 @@
                         <form id="formularioActualizarPerfil" name="formularioActualizarPerfil" method="POST" onsubmit="return false">
                             <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                 <div class="user-change-photo shadow">
-                                    <img src="<?=media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>" alt="...">
+                                    <img src="<?=media();?>/img/usuarios/<?php echo $_SESSION['Usuario']['Foto']?>" alt="...">
                                 </div>
                                 <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4">
                                     <ion-icon name="image-sharp"></ion-icon>Cambiar foto
@@ -27,28 +27,36 @@
                             <hr>
                             <div class="row g-3">
                                 <div class="col-6">
-                                    <label class="form-label">Nombres</label>
-                                    <input type="text" class="form-control" id="nombres" name="nombres"
+                                    <label class="form-label">Nombres:</label>
+                                    <input type="text" class="form-control" id="" name=""
                                         value="<?php echo $_SESSION['Usuario']['Nombres']?>">
                                 </div>
+
                                 <div class="col-6">
-                                    <label class="form-label">Apellidos</label>
-                                    <input type="text" class="form-control" id="apellidos" name="apellidos"
-                                        value="<?php echo $_SESSION['Usuario']['Apellidos']?>">
+                                    <label class="form-label">Apellido Paterno:</label>
+                                    <input type="text" class="form-control" id="" name=""
+                                        value="<?php echo $_SESSION['Usuario']['ApellidoPaterno']?>">
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Apellido Materno:</label>
+                                    <input type="text" class="form-control" id="" name=""
+                                        value="<?php echo $_SESSION['Usuario']['ApellidoMaterno']?>">
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Correo Electrónico:</label>
+                                    <input type="email" class="form-control" id="" name=""
+                                        value="<?php echo $_SESSION['Usuario']['CorreoElectronico']?>">
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label">Correo</label>
-                                    <input type="email" class="form-control" id="correo" name="correo"
-                                        value="<?php echo $_SESSION['Usuario']['Correo']?>">
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label">Celular</label>
-                                    <input type="text" class="form-control" id="celular" name="celular"
-                                        value="<?php echo $_SESSION['Usuario']['Celular']?>">
+                                    <label class="form-label">Número Celular:</label>
+                                    <input type="text" class="form-control" id="" name=""
+                                        value="<?php echo $_SESSION['Usuario']['NumeroCelular']?>">
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label">Usuario</label>
-                                    <input type="text" class="form-control" id="usuario" name="usuario"
+                                    <input type="text" class="form-control" id="" name=""
                                         value="<?php echo $_SESSION['Usuario']['Usuario']?>">
                                 </div>
                             </div>
