@@ -32,20 +32,9 @@ class UsuariosModel extends Mysql
 				Password,
 				Foto,
 				Estado) 
-				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,AES_ENCRYPT(?,'2023'),?,?);";
+				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			
 			$request=$this->insert($query,$arrData);
-			return $request;
-		}
-
-		public function updateUser($arrData){
-			$query="UPDATE tb_usuario SET
-				Nombres=?,
-				Apellidos=?,
-				Usuario=?,
-				Foto=? WHERE ID=?";
-			
-			$request=$this->update($query,$arrData);
 			return $request;
 		}
 

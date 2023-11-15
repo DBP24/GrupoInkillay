@@ -12,7 +12,7 @@ function cargarEmpresas(){
         success: function(response){
             var options = '<option value="0">Seleccione</option>';
             $.each(response, function(index, value){
-              options += '<option value="'+value.ID+'">'+value.RazonSocial+'</option>';
+              options += '<option value="'+value.DocumentoFiscal+'">'+value.RazonSocial+'</option>';
             }); 
             $('#empresa').html(options); 
           },

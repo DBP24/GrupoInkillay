@@ -11,7 +11,7 @@
         <hr class="mb-5">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="formularioAgregarUsuario" name="formularioAgregarUsuario" method="POST">
+                <form id="formularioAgregarUsuario" name="formularioAgregarUsuario" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
@@ -103,7 +103,7 @@
                                 
                                 <div class="col-md-5">
                                     <label class="mt-3">Usuario:</label>
-                                    <input type="text" class="form-control" placeholder="diego" id="usuario"
+                                    <input type="text" class="form-control" placeholder="ricardo" id="usuario"
                                         name="usuario">
                                 </div>
                                 <div class="col-md-5">

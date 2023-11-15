@@ -33,8 +33,10 @@
 		public function select(string $query)
 		{
 			$this->strquery = $query;
-        	$result = $this->conexion->prepare($this->strquery);
-			$result->execute();
+        	//$result = $this->conexion->prepare($this->strquery);
+			$result = $this->conexion->prepare($this->strquery);
+			//$result->execute();
+			$result ->execute();
             //(fetch) Solo me retorna un arreglo
         	$data = $result->fetch(PDO::FETCH_ASSOC);
         	return $data;

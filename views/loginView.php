@@ -39,8 +39,6 @@
                         <div class="card-body p-4">
                             <div class="text-center mb-4 mt-2">
                                 <img src="<?= media();?>/img/logo.png" alt="Logo de Grupo Inkillay" width="100%">
-                                <!-- <h4 class="mt-3">Inicio de Sesión</h4> -->
-                                <!-- <p>Iniciar sesión con tu cuenta</p> -->
                             </div>
                             <form class="form-body row g-3" id="formularioLogin" name="formularioLogin" method="POST">
                                 <div class="col-12">
@@ -77,22 +75,12 @@
                                         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                                     </div>
                                 </div>
-                                <!-- <div class="col-12 col-lg-12 text-center">
-                                    <p class="mb-0">¿No tienes cuenta? <a href="#">Crear cuenta</a></p>
-                                </div> -->
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="my-5">
-            <div class="container">
-                <div class="text-center">
-                    <p class="my-4">Copyright © 2023 Grupo Inkillay.</p>
-                </div>
-            </div>
-        </footer>
     </div>
     <!--end wrapper-->
     <!-- JS -->

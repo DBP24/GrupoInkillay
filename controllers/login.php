@@ -54,14 +54,13 @@ class Login extends Controller
 				{
 					$_SESSION['login']=true;
 					$_SESSION['Usuario'] = $requestLog;
-
 					//creamos las cookis
 					if ($recordarme) {
 						setcookie("usuario", $requestLog['Usuario'], time() + 604800);
 						setcookie("contrasena", $password, time() + 604800);
 					}
 					
-    					$arrResponse = array('status' => true, 'msg' => 'Es correcto las credenciales', 'type' => 'success');
+    				$arrResponse = array('status' => true, 'msg' => 'Es correcto las credenciales', 'type' => 'success');
     				
 				} else if($requestLog == 'exist')
     			{

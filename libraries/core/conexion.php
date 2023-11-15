@@ -5,9 +5,10 @@ class Conexion{
 	private $conect;
 
 	public function __construct(){
-		$connectionString = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET;
+		$serverName = "DESKTOP-CI62OJ1";
+		$database= "grupoinkillay";
 		try{
-			$this->conect = new PDO($connectionString, DB_USER, DB_PASSWORD);
+			$this->conect = new PDO("sqlsrv:Server=$serverName;Database=$database;ConnectionPooling=0", null, null);
             //Detecta errores específicos
 			$this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		    //echo "conexión exitosa";

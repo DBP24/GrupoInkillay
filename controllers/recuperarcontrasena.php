@@ -95,7 +95,7 @@
 					$tk = strval($token);
 					$arrData1 = array($pass_01,$tk);
 					$requestAdd1 = $this->model->cambiarContrasenaToken($arrData1);
-					// print_r($requestAdd1);
+
 					if($requestAdd1 == 1)
 						{
 							$arrResponse = array('status' => true, 'msg' => 'Su contraseña se a restablecido', 'type' => 'success');

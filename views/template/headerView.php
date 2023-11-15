@@ -194,8 +194,7 @@
                                             <div class="">
                                                 <h6 class="mb-0 dropdown-user-name">
                                                     <?php echo $_SESSION['Usuario']["Nombres"]?></h6>
-                                                <small class="mb-0 dropdown-user-designation text-secondary">UI
-                                                    Developer</small>
+                                                <small class="mb-0 dropdown-user-designation text-secondary"><?php echo $_SESSION['Usuario']['Cargo']?></small>
                                             </div>
                                         </div>
                                     </a>

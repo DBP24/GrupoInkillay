@@ -77,6 +77,8 @@
 				$imagen=$_FILES["fileInput"]["name"];
 				$tipo=$_FILES["fileInput"]["type"];
 				$temp=$_FILES["fileInput"]["tmp_name"];
+				$extensiones_permitidas = array('png', 'jpeg', 'jpg');
+                $extension = pathinfo($imagen, PATHINFO_EXTENSION);
 				$estado = isset($_POST['estado']) ? true : false;
 				$id_empresa = $_POST['empresa'];
 
@@ -84,13 +86,13 @@
 
 				$pattern_email = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 
-				if(empty($apellidopaterno) && empty($apellidomaterno) && empty($nombres) && empty($correoelectronico) && empty($telefono) && empty($numerocelular) && empty($fechainicio) && empty($fechafinal) && empty($importecontrato)
+				if(empty($apellidopaterno) && empty($apellidomaterno) && empty($nombres) && empty($correoelectronico) && empty($numerocelular) && empty($fechainicio) && empty($fechafinal) && empty($importecontrato)
 				&& empty($usuario) && empty($password))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos', 'type' => 'warning');
 
-				} else if(empty($apellidopaterno) || empty($apellidomaterno) || empty($nombres) || empty($correoelectronico) || empty($telefono) || empty($numerocelular) || empty($fechainicio) || empty($fechafinal) || empty($importecontrato) || empty($usuario) || empty($password))
+				} else if(empty($apellidopaterno) || empty($apellidomaterno) || empty($nombres) || empty($correoelectronico) || empty($numerocelular) || empty($fechainicio) || empty($fechafinal) || empty($importecontrato) || empty($usuario) || empty($password))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Campo vacío', 'type' => 'warning');
@@ -108,11 +110,11 @@
 				
 					$arrResponse = array('status' => false, 'msg' => 'Correo inválido', 'type' => 'warning');
 
-				} else if(!is_numeric($telefono) || !is_numeric($numerocelular) || !is_numeric($importecontrato)){
+				} else if(!is_numeric($numerocelular) || !is_numeric($importecontrato)){
 				
 					$arrResponse = array('status' => false, 'msg' => 'Solo se ingresan números', 'type' => 'warning');
 
-				} else if(strlen($telefono) > 7 || strlen($telefono) < 7){
+				} else if(!empty($telefono) && !is_numeric($telefono) || !empty($telefono) && strlen($telefono) > 7 || !empty($telefono) && strlen($telefono) < 7){
 				
 					$arrResponse = array('status' => false, 'msg' => 'Teléfono inválido', 'type' => 'warning');
 
@@ -122,7 +124,11 @@
 
 				} else if($fechainicio > $fechafinal || $fechainicio == $fechafinal){
 
-						$arrResponse = array('status' => false, 'msg' => 'Fecha final inválida', 'type' => 'warning');
+					$arrResponse = array('status' => false, 'msg' => 'Fecha final inválida', 'type' => 'warning');
+
+				} else if(!empty($imagen) && !in_array($extension, $extensiones_permitidas)){
+
+					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formatos como: .jpg, .png y .jpeg', 'type' => 'warning');
 
 				} else
 				{
@@ -151,6 +157,12 @@
 							$estado = "0";
 
 						}
+
+						if(empty($telefono)){
+
+							$telefono=null;
+							
+						}
 						
 						$arrData = array($apellidopaterno,$apellidomaterno,$nombres,$cargo,$correoelectronico,$telefono,$numerocelular,$fecharegistro,$fechainicio,$fechafinal,$importecontrato,$usuario,$password,$foto,$estado);
 
@@ -165,8 +177,6 @@
 
 						$this->model->insertNewUserCompany($arrData1);
 
-
-
 						if($requestAdd)
 						{
 
@@ -175,6 +185,7 @@
 						} else {
 							
 							$arrResponse = array('status' => false, 'msg' => 'Error al agregar el usuario', 'type' => 'error');
+						
 						}
 					} catch (Exception $e)
 					{

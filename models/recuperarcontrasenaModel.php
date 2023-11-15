@@ -8,7 +8,7 @@
 		}	
 
 		public function recuperarContrasena($arrData){
-			$query = "UPDATE tb_usuario SET Token=? WHERE Correo=?";
+			$query = "UPDATE tb_usuario SET Token=? WHERE CorreoElectronico=?";
 			$request=$this->update($query,$arrData);
 			return $request;
 		}

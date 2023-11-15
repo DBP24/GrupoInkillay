@@ -37,9 +37,6 @@
    <script src="<?= media();?>/js/metisMenu.min.js"></script>
    <script src="<?= media();?>/js/bootstrap.bundle.min.js"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-
-   <!--plugins-->
-   <script src="<?= media();?>/js/perfect-scrollbar.js"></script>
   
    <!-- Main JS-->
    <script src="<?= media();?>/js/main.js"></script>

@@ -163,25 +163,6 @@ $(function() {
   
   function theme8() {
     $('html').attr('class', 'color-sidebar sidebarcolor8');
-  }
-  
-  
-  
-  
-  
-  
-  
-    new PerfectScrollbar(".header-notifications-list")
-  
-  
-      // Tooltops
-      $(function () {
-        $('[data-bs-toggle="tooltip"]').tooltip();
-      })
-  
-  
-    
-  
-    
+  } 
       
   });

@@ -15,10 +15,8 @@
         <div class="card radius-10 w-100">
             <div class="card-body">
                 <div class="d-flex align-items-center">
-                    <!-- <h6 class="mb-0">Recent Orders</h6> -->
                 </div>
                 <div class="table-responsive mt-2">
-                    <!-- <table class="table align-middle mb-0"> -->
                     <table id="example2" class="table align-middle mb-0">
 
                         <thead class="text-center">
