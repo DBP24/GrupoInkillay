@@ -89,12 +89,44 @@
                         <div class="parent-icon">
                             <ion-icon name="copy-outline"></ion-icon>
                         </div>
-                        <div class="menu-title">Facturación</div>
+                        <div class="menu-title">Tickets</div>
                     </a>
                     <ul>
                         <li>
-                            <a href="#">
-                                <ion-icon name="ellipse-outline"></ion-icon>x definir
+                            <a href="<?= base_url();?>/tickets">
+                                <ion-icon name="ellipse-outline"></ion-icon>Registro
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="copy-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Compras</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/compras">
+                                <ion-icon name="ellipse-outline"></ion-icon>Registro
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <hr>
+                <li>
+                    <a class="has-arrow" href="#">
+                        <div class="parent-icon">
+                            <ion-icon name="copy-outline"></ion-icon>
+                        </div>
+                        <div class="menu-title">Ventas</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/ventas">
+                                <ion-icon name="ellipse-outline"></ion-icon>Registro
                             </a>
                         </li>
                     </ul>
