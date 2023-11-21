@@ -17,7 +17,7 @@
                         <form id="formularioActualizarPerfil" name="formularioActualizarPerfil" method="POST" onsubmit="return false">
                             <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                 <div class="user-change-photo shadow">
-                                    <img src="<?=media();?>/img/usuarios/<?php echo $_SESSION['Usuario']['Foto']?>" alt="...">
+                                    <img src="<?=media();?>/img/<?php echo $_SESSION['Usuario']['Foto']?>" alt="...">
                                 </div>
                                 <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4">
                                     <ion-icon name="image-sharp"></ion-icon>Cambiar foto

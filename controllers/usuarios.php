@@ -68,9 +68,15 @@
 				$correoelectronico = $_POST['correoelectronico'];
 				$telefono = $_POST['telefono'];
 				$numerocelular = $_POST['numerocelular'];
-				$fecharegistro = date('Y-m-d H:i:s');;
-				$fechainicio = $_POST['fechainicio'];
-				$fechafinal = $_POST['fechafinal'];
+				$fecharegistro = date('Y-m-d H:i:s');
+
+				// CAMBIOS
+
+				$fechainicio = date('Y-m-d H:i:s', strtotime($_POST['fechainicio']));
+				$fechafinal = date('Y-m-d H:i:s', strtotime($_POST['fechafinal']));
+
+				// END
+
 				$importecontrato = $_POST['importecontrato'];
 				$usuario = $_POST['usuario'];
 				$password = $_POST['password'];

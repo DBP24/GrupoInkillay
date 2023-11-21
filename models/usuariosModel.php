@@ -16,7 +16,7 @@ class UsuariosModel extends Mysql
 
 		public function insertNewUser($arrData){
 			
-			$query="INSERT INTO tb_usuario(
+			$query="INSERT INTO dbo.tb_usuario(
 				ApellidoPaterno,
 				ApellidoMaterno,
 				Nombres,

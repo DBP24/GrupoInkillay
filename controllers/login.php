@@ -46,7 +46,9 @@ class Login extends Controller
 
 				$correct  =  file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip");
 				$atr =  json_decode($correct,TRUE);
-
+				// $atr =  'darema';
+				// print_r( "Usuario actual: " . get_current_user());
+				
 			if ($atr['success']){
 				$requestLog = $this->model->validateCredentials($ruc,$usuario,$password);
 

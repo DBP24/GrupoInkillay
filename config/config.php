@@ -8,9 +8,10 @@
 
 	//Datos de conexión a Base de Datos
 	const DB_HOST = "localhost";
+	const SERVER_NAME = "DESKTOP-CI62OJ1";
 	const DB_NAME = "grupoinkillay";
-	const DB_USER = "root";
-	const DB_PASSWORD = "";
+	const DB_USER = "alexander";
+	const DB_PASSWORD = "Minaya02/";
 	const DB_CHARSET = "utf8";
 
 

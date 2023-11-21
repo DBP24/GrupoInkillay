@@ -49,17 +49,17 @@
                                 <div class="col-12">
                                     <label class="form-label">Usuario</label>
                                     <input type="text" class="form-control" id="usuario" name="usuario"
-                                        value="<?=$data['usuario'];?>">
+                                        value="">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="password" name="password"
-                                        value="<?=$data['contrasena'];?>">
+                                        value="">
                                 </div>
                                 <div class="col-12 d-flex justify-content-center">
                                     <div class="g-recaptcha" data-sitekey="6LfQkbQoAAAAAGW08bs_tK9W167IHfCtcHH_5mdA">
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-12 col-lg-6">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch" name="recordarme"

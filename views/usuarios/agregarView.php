@@ -19,7 +19,7 @@
                                     <img src="<?= media();?>/img/usuarios/defecto.png" alt="..." name="foto" id="foto">
                                 </div>
                                 <label for="fileInput" class="custom-file-upload">
-                                    Cambiar foto
+                                    Subir foto
                                 </label>
                                 <input type="file" id="fileInput" name="fileInput" style="display: none;">
                             </div>
@@ -27,13 +27,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="mt-3">Apellido Paterno:</label>
-                                    <input type="text" class="form-control" placeholder="Rouillon" id="apellidopaterno"
+                                    <input type="text" class="form-control"  id="apellidopaterno"
                                         name="apellidopaterno" pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+"
                                         title="Solo se permiten letras" maxlength="150">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="mt-3">Apellido Materno:</label>
-                                    <input type="text" class="form-control" placeholder="Lao" id="apellidomaterno"
+                                    <input type="text" class="form-control"  id="apellidomaterno"
                                         name="apellidomaterno" pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+"
                                         title="Solo se permiten letras" maxlength="150">
                                 </div>
@@ -42,7 +42,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="mt-3">Nombres:</label>
-                                    <input type="text" class="form-control" placeholder="Ricardo" id="nombres"
+                                    <input type="text" class="form-control"  id="nombres"
                                         name="nombres" pattern="[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+"
                                         title="Solo se permiten letras" maxlength="100">
                                 </div>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="mt-3">Correo Electrónico:</label>
-                                    <input type="text" class="form-control" placeholder="hola@grupoinkillay.com"
+                                    <input type="text" class="form-control" 
                                         id="correoelectronico" name="correoelectronico"
                                         pattern="[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-]([\.]?[a-zA-Z0-9!#$%&'*\/=?^_`\{\|\}~\+\-])+@[a-zA-Z0-9]([^@&%$\/\(\)=?¿!\.,:;]|\d)+[a-zA-Z0-9][\.][a-zA-Z]{2,4}([\.][a-zA-Z]{2})?"
                                         title="Ingrese una dirección de correo electrónico válida" maxlength="50">
