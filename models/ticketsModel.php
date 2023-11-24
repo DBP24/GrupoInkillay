@@ -9,8 +9,26 @@ class TicketsModel extends Mysql
 
 		public function selectAllTickets()
 		{
-			$query="SELECT * FROM tb_ticket";
+			$query="SELECT ID_Ticket, Periodo, NumTicket, Secuencia, FechaProceso, TipoProceso, NumeroRegistros FROM SIRE_ticket";
 			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function insertNewTicket($arrData){
+			
+			$query="INSERT INTO SIRE_ticket(
+				CompaniaCodigo,		
+				Periodo,		
+				NumTicket,			
+				Secuencia,			
+				TipoProceso,		
+				FechaProceso,	
+				NumeroRegistros,
+				NombreArchivo,	
+				Correlativo) 
+				VALUES (?,?,?,?,?,?,?,?,?);";
+			
+			$request=$this->insert($query,$arrData);
 			return $request;
 		}
 
