@@ -3,7 +3,7 @@
 	class View
 	{
         //Crear la funcion con parametros
-		function getView($controller,$view,$data="",$datos="")
+		function getView($controller,$view,$data="",$datos="",$dato="")
 		{
             //Verificar el controlador
 			$controller = get_class($controller);

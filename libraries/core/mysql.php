@@ -33,10 +33,8 @@
 		public function select(string $query)
 		{
 			$this->strquery = $query;
-        	//$result = $this->conexion->prepare($this->strquery);
-			$result = $this->conexion->prepare($this->strquery);
-			//$result->execute();
-			$result ->execute();
+        	$result = $this->conexion->prepare($this->strquery);
+			$result->execute();
             //(fetch) Solo me retorna un arreglo
         	$data = $result->fetch(PDO::FETCH_ASSOC);
         	return $data;
@@ -75,6 +73,13 @@
         	$result = $this->conexion->prepare($this->strquery);
 			$del = $result->execute();
         	return $del;
+		}	
+
+		public function bulkinsert(string $query)
+		{
+			$this->strquery = $query;
+			$result = $this->conexion->prepare($this->strquery);
+			$result ->execute();
 		}
 	}
 

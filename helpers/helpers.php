@@ -28,9 +28,9 @@
         require_once ($view_footer);        
     }
 
-    function getModal(string $nameModal, $data)
+    function getModal(string $nameFolder, $nameModal, $data)
     {
-        $view_modal = "views/template/modals/{$nameModal}.php";
+        $view_modal = "Views/Template/Modals/{$nameFolder}/{$nameModal}.php";
         require_once $view_modal;        
     }
 

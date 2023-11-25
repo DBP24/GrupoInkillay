@@ -24,6 +24,7 @@
     <link href="<?= media();?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= media();?>/css/bootstrap-extended.css" rel="stylesheet">
     <link href="<?= media();?>/css/style.css" rel="stylesheet">
+    <link href="<?= media();?>/css/fancy-file.css" rel="stylesheet">
     <link href="<?= media();?>/css/icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
