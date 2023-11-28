@@ -95,7 +95,14 @@
                     <ul>
                         <li>
                             <a href="<?= base_url();?>/tickets">
-                                <ion-icon name="ellipse-outline"></ion-icon>Registro
+                                <ion-icon name="ellipse-outline"></ion-icon>Compras
+                            </a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="<?= base_url();?>/tickets">
+                                <ion-icon name="ellipse-outline"></ion-icon>Ventas
                             </a>
                         </li>
                     </ul>

@@ -77,12 +77,23 @@ class TicketsModel extends Mysql
 			return $request;
 		}*/
 
-		public function insertNewSunatPurchaseRecord($archivo){
-			$query = "BULK INSERT SIRE_RegistroCompras_SUNAT_Prueba FROM '".$archivo."' with(FIELDTERMINATOR='|',ROWTERMINATOR='\n',FIRSTROW=2)";
-			$request=$this->bulkinsert($query);
+		// public function insertNewSunatPurchaseRecord($archivo){
+		// 	$query = "BULK INSERT SIRE_RegistroCompras_SUNAT_Prueba FROM '".$archivo."' with(FIELDTERMINATOR='|',ROWTERMINATOR='\n',FIRSTROW=1)";
+		// 	$request=$this->bulkinsert($query);
+		// 	return $request;
+		// }
+		public function insertNewSunatPurchaseRecord($archivo,$name_table){
+			$query = "EXEC Sire_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
-
+		public function insertNewEntreprisePurchaseRecord($archivo,$name_table){
+			$query = "EXEC Sire_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+			return $request;
+		}
+		
+		
 		public function selectMaxIDTicket(){
 			$query="SELECT MAX(ID_Ticket) AS ID FROM SIRE_Ticket";
 			$request=$this->select($query);

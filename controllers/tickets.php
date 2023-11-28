@@ -77,13 +77,13 @@
 
 				$archivo=$_FILES["archivo"]["name"];
 				$tipo=$_FILES["archivo"]["type"];
-				$temp=$_FILES["archivo"]["tmp_name"];
+				$temp_empresa=$_FILES["archivo"]["tmp_name"];
 				$extension = pathinfo($archivo, PATHINFO_EXTENSION);
 				
 
 				$archivo_sunat=$_FILES["archivo_sunat"]["name"];
 				$tipo1=$_FILES["archivo_sunat"]["type"];
-				$temp1=$_FILES["archivo_sunat"]["tmp_name"];
+				$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
 				$extension1 = pathinfo($archivo_sunat, PATHINFO_EXTENSION);
 
 				$extensiones_permitidas = array('csv');
@@ -139,104 +139,13 @@
 						$numeroregistros,
 						$correlativo);
 						
-                        
-						/*$csvData = file_get_contents($temp1);
-						$registros = $this->parsearCSV($csvData);
-						
-						foreach ($registros as $registro) {
-							// Validar que haya dos columnas en cada registro
-							if (count($registro) === 37) {
-								$FechaEmision = $registro[0];
-								$FechaVencimiento = $registro[1];
-								$TipoDocumento = $registro[2];
-								$SerieDcoumento = $registro[3];
-								$NumeroDocumento = $registro[4];
-								$Ticket = $registro[5];
-								$TipDocIdentidad = $registro[6];
-								$NroDocIdentidad = $registro[7];
-								$RazonSocial = $registro[8];
-								$MontoExportacion = $registro[9];
-								$BaseImponibleGravado = $registro[10];
-								$BaseImponibleDsct = $registro[11];
-								$BaseIgvIpm = $registro[12];
-								$DsctoIgvIpm = $registro[13];
-								$MontoExonerado = $registro[14];
-								$MontoInafecto = $registro[15];
-								$MontoISC = $registro[16];
-								$BaseImponibleIvap = $registro[17];
-								$MontoIvap = $registro[18];
-								$MontoICBPER = $registro[19];
-								$MontoOtrostributos = $registro[20];
-								$MontoTotal = $registro[21];
-								$Moneda = $registro[22];
-								$TipoCambio = $registro[23];
-								$FecEmisionDocModificado = $registro[24];
-								$TipoDocModificado = $registro[25];
-								$SerieDocModificado = $registro[26];
-								$NumeroDocModificado = $registro[27];
-								$ProyectoOperadosAtribucion = $registro[28];
-								$TipodeNota = $registro[29];
-								$EstadoComprobante = $registro[30];
-								$ValorFOBEmbarcado = $registro[31];
-								$ValorOperacionGratuito = $registro[32];
-								$TipoOperacion = $registro[33];
-								$DamCP = $registro[34];
-								$CLU = $registro[35];
-								$CarSunat = $registro[36];
-
-								$arrData1 = array(
-									date("Y-m-d", strtotime($FechaEmision)),
-									
-									intval($FechaVencimiento),
-									$TipoDocumento,
-									$SerieDcoumento,
-									$NumeroDocumento,
-									$Ticket,
-									$TipDocIdentidad,
-									$NroDocIdentidad,
-									$RazonSocial,
-
-									intval($MontoExportacion),
-									intval($BaseImponibleGravado),
-									intval($BaseImponibleDsct),
-									intval($BaseIgvIpm),
-									intval($DsctoIgvIpm),
-									intval($MontoExonerado),
-									intval($MontoInafecto),
-									intval($MontoISC),
-									intval($BaseImponibleIvap),
-									intval($MontoIvap),
-									intval($MontoICBPER),
-									intval($MontoOtrostributos),
-									intval($MontoTotal),
-									intval($Moneda),
-									intval($TipoCambio),
-
-									$FecEmisionDocModificado,
-									$TipoDocModificado,
-									$SerieDocModificado,
-									$NumeroDocModificado,
-									$ProyectoOperadosAtribucion,
-									$TipodeNota,
-									$EstadoComprobante,
-									$ValorFOBEmbarcado,
-									$ValorOperacionGratuito,
-									$TipoOperacion,
-									$DamCP,
-									$CLU,
-									$CarSunat
-								);
-								//$this->model->insertNewSunatPurchaseRecord($arrData1);
-							
-								
-								//print_r($arrData1);
-							}
-
-						}*/
-
-						$this->model->insertNewSunatPurchaseRecord($temp1);
+						$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
+						$name_table_empresa = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
+						$this->model->insertNewSunatPurchaseRecord($temp_sunat,$name_table);
+						$this->model->insertNewEntreprisePurchaseRecord($temp_empresa,$name_table_empresa);
 
 						$requestAdd = $this->model->insertNewTicket($arrData);
+						
 
 						if($requestAdd)
 						{

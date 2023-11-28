@@ -81,6 +81,13 @@
 			$result = $this->conexion->prepare($this->strquery);
 			$result ->execute();
 		}
+
+		public function bulkinsert_prueba(string $query, array $params = []) {
+			$this->strquery = $query;
+			$result = $this->conexion->prepare($this->strquery);
+			$result->execute($params);
+		}
+		
 	}
 
 
