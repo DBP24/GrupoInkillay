@@ -9,7 +9,7 @@ class TicketsModel extends Mysql
 
 		public function selectAllTickets()
 		{
-			$query="SELECT ID_Ticket, Periodo, NumTicket, Secuencia, FechaProceso, TipoProceso, NumeroRegistros FROM SIRE_ticket";
+			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, TipoProceso, NumeroRegistros FROM SIRE_ticket";
 			$request=$this->select_all($query);
 			return $request;
 		}
@@ -20,7 +20,7 @@ class TicketsModel extends Mysql
 				CompaniaCodigo,		
 				Periodo,		
 				NumTicket,			
-				Secuencia,			
+				-- Secuencia,			
 				TipoProceso,		
 				FechaProceso,	
 				NumeroRegistros,	

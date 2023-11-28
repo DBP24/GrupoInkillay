@@ -39,7 +39,7 @@ getModal('tickets','editar',$data); ?>
                                     <br><input type="text" name="busqueda_fecha_proceso" id="busqueda_fecha_proceso"
                                         class="form-control">
                                 </th>
-                                <th>Tipo Proceso
+                                <th>Tipo Libro
                                     <br>
                                     <select class="form-select" name="busqueda_tipo_proceso" id="busqueda_tipo_proceso">
                                         <option value="TODOS">TODOS</option>
@@ -70,7 +70,7 @@ getModal('tickets','editar',$data); ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($datos as $datos_tickets) { ?>
+                            <!-- <?php foreach ($datos as $datos_tickets) { ?>
                             <tr class="text-center">
                                 <td>
                                     <a class="icon_e" href="#"
@@ -86,7 +86,7 @@ getModal('tickets','editar',$data); ?>
                                 <td>ACTIVO</td>
                                 <td hidden><?php echo $datos_tickets['Periodo']?></td>
                             </tr>
-                            <?php } ?>
+                            <?php } ?> -->
                         </tbody>
                     </table>
                 </div>
@@ -124,7 +124,7 @@ getModal('tickets','editar',$data); ?>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label class="form-label mt-3">Tipo Proceso:</label>
+                                <label class="form-label mt-3">Tipo Libro:</label>
                                 <select name="tipo_proceso" id="tipo_proceso" class="form-select">
                                     <option value="0">TODOS</option>
                                     <option value="P1">PROCESO 1</option>

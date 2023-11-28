@@ -133,7 +133,7 @@
 						$arrData = array($companiacodigo,
 						$periodo,
 						$numticket,
-						$secuencia,
+						// $secuencia,
 						$tipoproceso,
 						$fechaproceso,
 						$numeroregistros,
