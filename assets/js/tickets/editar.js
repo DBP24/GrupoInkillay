@@ -15,22 +15,10 @@ function verDatos(id) {
           document.querySelector("#periodo").value = objData.ticket.Periodo;
           document.querySelector("#fechaproceso").value = objData.ticket.FechaProceso;
           document.querySelector("#numero_ticket").value = objData.ticket.NumTicket;
-          document.querySelector("#nro_registros").value = objData.ticket.NumeroRegistros;
+          document.querySelector("#nro_registros_sunat").value = objData.ticket.NumeroRegistrosSUNAT;
+          //document.querySelector("#nro_registros").value = objData.ticket.NumeroRegistrosEmpresa;
           document.querySelector("#correlativo").value = objData.ticket.Correlativo;
 
-          // Obtén el valor del tipo de proceso desde la respuesta
-          let tipoProceso = objData.ticket.TipoProceso;
-
-          // Obtén el select
-          let selectTipoProceso = document.querySelector("#tipo_proceso");
-
-           // Recorre las opciones del select y selecciona la que coincida con el tipo de proceso
-           for (let i = 0; i < selectTipoProceso.options.length; i++) {
-            if (selectTipoProceso.options[i].value === tipoProceso) {
-              selectTipoProceso.options[i].selected = true;
-              break; // No es necesario seguir buscando
-            }
-          }
           
           document.querySelector("#id_ticket").value = objData.ticket.ID_Ticket;
   
@@ -41,4 +29,5 @@ function verDatos(id) {
         }
       }
     };
- }
+}
+

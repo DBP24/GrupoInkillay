@@ -9,86 +9,87 @@ class TicketsModel extends Mysql
 
 		public function selectAllTickets()
 		{
-			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, TipoProceso, NumeroRegistros FROM SIRE_ticket";
+			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, LibroNombre, NumeroRegistrosSUNAT FROM 
+			SIRE_ticket t INNER JOIN LibroMast lm ON lm.IdLibro= t.IdLibro WHERE t.Estado='1'";
 			$request=$this->select_all($query);
 			return $request;
 		}
 
+		public function viewFields($id)
+		{
+			$query="SELECT ImportaArchivo, ValidaTicket FROM LibroMast WHERE IdLibro=$id;";
+			$request=$this->select($query);
+			return $request;
+		}
+
+		public function loadMasterBook()
+		{
+			$query="SELECT * FROM LibroMast ORDER BY IdLibro ";
+			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function loadBookTypeSUNAT()
+		{
+			$query="SELECT * FROM LibroMast WHERE Estado = '1' AND IdLibro='1' OR IdLibro='3' ORDER BY IdLibro ";
+			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function loadBookTypeCompany()
+		{
+			$query="SELECT * FROM LibroMast WHERE Estado = '1' AND IdLibro='2' OR IdLibro='4' ORDER BY IdLibro ";
+			$request=$this->select_all($query);
+			return $request;
+		}
+
+		public function loadBookType()
+		{
+			$query="SELECT * FROM LibroMast WHERE Estado = '1' ORDER BY IdLibro ";
+			$request=$this->select_all($query);
+			return $request;
+		}
+		
 		public function insertNewTicket($arrData){
 			
 			$query="INSERT INTO SIRE_ticket(
 				CompaniaCodigo,		
 				Periodo,		
-				NumTicket,			
-				-- Secuencia,			
-				TipoProceso,		
+				NumTicket,					
 				FechaProceso,	
-				NumeroRegistros,	
-				Correlativo) 
-				VALUES (?,?,?,?,?,?,?,?);";
+				NumeroRegistrosSUNAT,
+				NumeroRegistrosEmpresa,	
+				NombreArchivoSUNAT,
+				NombreArchivoEmpresa,
+				Correlativo,
+				Estado,
+				IdLibro) 
+				VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 			
 			$request=$this->insert($query,$arrData);
 			return $request;
 		}
 
-		/*public function insertNewSunatPurchaseRecord($arrData){
-			
-			$query="INSERT INTO SIRE_RegistroCompras_SUNAT(
-			FechaEmision
-			,FechaVencimiento
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
-			,Ticket
-			,TipDocIdentidad
-			,NroDocIdentidad
-			,RazonSocial
-			,MontoExportacion
-			,BaseImponibleGravado
-			,BaseImponibleDsct
-			,BaseIgvIpm
-			,DsctoIgvIpm
-			,MontoExonerado
-			,MontoInafecto
-			,MontoISC
-			,BaseImponibleIvap
-			,MontoIvap
-			,MontoICBPER
-			,MontoOtrostributos
-			,MontoTotal
-			,Moneda
-			,TipoCambio
-			,FecEmisionDocModificado
-			,TipoDocModificado
-			,SerieDocModificado
-			,NumeroDocModificado
-			,ProyectoOperadosAtribucion
-			,TipodeNota
-			,EstadoComprobante
-			,ValorFOBEmbarcado
-			,ValorOperacionGratuito
-			,TipoOperacion
-			,DamCP
-			,CLU
-			,CarSunat) 
-				VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-			
-			$request=$this->insert($query,$arrData);
-			return $request;
-		}*/
-
-		// public function insertNewSunatPurchaseRecord($archivo){
-		// 	$query = "BULK INSERT SIRE_RegistroCompras_SUNAT_Prueba FROM '".$archivo."' with(FIELDTERMINATOR='|',ROWTERMINATOR='\n',FIRSTROW=1)";
-		// 	$request=$this->bulkinsert($query);
-		// 	return $request;
-		// }
-		public function insertNewSunatPurchaseRecord($archivo,$name_table){
-			$query = "EXEC Sire_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
+		public function insertNewTemporaryRegistrationOfSUNATPurchases($archivo,$name_table){
+			$query = "EXEC SIRE_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
-		public function insertNewEntreprisePurchaseRecord($archivo,$name_table){
-			$query = "EXEC Sire_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?";
+
+		public function insertNewTemporaryRegistrationOfSUNATSales($archivo,$name_table){
+			$query = "EXEC SIRE_SP_RegistroVentas_SUNAT @ruta_archivo = ?,@name_table = ?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+			return $request;
+		}
+
+		public function insertNewTemporaryRegistrationOfCompanyPurchases($archivo,$name_table){
+			$query = "EXEC SIRE_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+			return $request;
+		}
+
+		public function insertNewTemporaryRegistrationOfCompanySales($archivo,$name_table){
+			$query = "EXEC SIRE_SP_RegistroVentas_EMPRESA @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
@@ -110,6 +111,14 @@ class TicketsModel extends Mysql
 		public function updateTicket($arrData){
 			$query="UPDATE SIRE_Ticket SET
 				NumeroRegistros=? WHERE ID_Ticket=?";
+			
+			$request=$this->update($query,$arrData);
+			return $request;
+		}
+
+		public function deleteTicket($arrData){
+			$query="UPDATE SIRE_Ticket SET
+				Estado='0' WHERE ID_Ticket=?";
 			
 			$request=$this->update($query,$arrData);
 			return $request;

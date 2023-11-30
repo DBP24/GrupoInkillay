@@ -26,31 +26,35 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label class="form-label mt-3">Tipo Proceso:</label>
-                                <select name="tipo_proceso" id="tipo_proceso" class="form-select">
-                                    <option value="0">TODOS</option>
-                                    <option value="P1">PROCESO 1</option>
-                                    <option value="P2">PROCESO 2</option>
-                                    <option value="P3">PROCESO 3</option>
-                                    <option value="P4">PROCESO 4</option>
-                                    <option value="P5">PROCESO 5</option>
-                                    <option value="P6">PROCESO 6</option>
+                                <label class="form-label mt-3">Tipo Libro:</label>
+                                <select name="tipo_libro_editar" id="tipo_libro_editar" class="form-select">
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label mt-3">Nro. Registros:</label>
-                                <input type="text" class="form-control" name="nro_registros" id="nro_registros">
+                                <label class="form-label mt-3">Número Ticket:</label>
+                                <input type="text" class="form-control" id="numero_ticket"
+                                    name="numero_ticket">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label class="form-label mt-3">Número Ticket:</label>
-                                <input type="text" class="form-control" placeholder="7894515" id="numero_ticket"
-                                    name="numero_ticket">
-                            </div>
-                            <div class="col-md-6">
                                 <label class="form-label mt-3">Estado:</label>
                                 <input type="text" class="form-control" value="ACTIVO" id="estado" name="estado">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label mt-3">Correlativo:</label>
+                                <input type="text" class="form-control" id="correlativo" name="correlativo">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <label class="form-label mt-3">Nro. Registros SUNAT:</label>
+                                <input type="text" class="form-control" name="nro_registros_sunat" id="nro_registros_sunat">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label mt-3">Nro. Registros:</label>
+                                <input type="text" class="form-control" name="nro_registros" id="nro_registros" value="0"/>
                             </div>
                         </div>
                         <div class="row">
@@ -61,17 +65,12 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label mt-3">Correlativo:</label>
-                                <input type="text" class="form-control" id="correlativo" name="correlativo">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div>
                                     <label class="form-label mt-3">Archivo:</label>
                                     <input type="file" class='fancy-file blue' id="archivo5" name="archivo" />
                                 </div>
                             </div>
+                           
                         </div>
                         <input type="text" id="id_ticket" name="id_ticket" hidden>
                     </div>

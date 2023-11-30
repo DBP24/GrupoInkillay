@@ -1615,9 +1615,17 @@ ul.categories-list li {
 .icon__e{ 
     font-size: 22px !important;
     font-weight: 900;
-    color: #636363;
+    color: #076e2b;
     cursor: pointer;
 }
+
+.icon__t{ 
+    font-size: 22px !important;
+    font-weight: 900;
+    color: #FF0000;
+    cursor: pointer;
+}
+
 
 .icon__a{
     font-size: 22px !important;
@@ -1633,6 +1641,10 @@ ul.categories-list li {
     color: #16e15d;
 }
 .icon__e:hover {
+    color: #16e15d;
+}
+
+.icon__t:hover {
     color: #16e15d;
 }
 

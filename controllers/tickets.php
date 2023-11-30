@@ -1,6 +1,7 @@
 <?php 
     require_once("./models/ticketsModel.php");
-	class Tickets extends Controller{
+	class Tickets extends Controller
+	{
 		public function __construct()
 		{
 			session_start();
@@ -60,8 +61,10 @@
 				$periodo_concatenado = $periodo_ano.$periodo_mes;
 
 				$numticket = $_POST['numero_ticket'];
-				$secuencia = 8;
-				$tipoproceso = $_POST['tipo_proceso'];
+				$idlibro = $_POST['tipo_libro'];
+				//Buscar el ValidaTicket y ImportaArchivo
+				$viewFields = $this->model->viewFields($idlibro);
+
 				$fechaproceso = date('Y-m-d h:m:s');
 
 				// Crear un objeto DateTime a partir de la cadena de fecha
@@ -72,38 +75,46 @@
 
 				$fechaproceso_concatenado=$ano.$mes;
 
-				$numeroregistros = $_POST['nro_registros'];
+				$numeroregistros_sunat = $_POST['nro_registros_sunat'];
 				$correlativo = $_POST['correlativo'];
-
-				$archivo=$_FILES["archivo"]["name"];
-				$tipo=$_FILES["archivo"]["type"];
-				$temp_empresa=$_FILES["archivo"]["tmp_name"];
-				$extension = pathinfo($archivo, PATHINFO_EXTENSION);
 				
-
-				$archivo_sunat=$_FILES["archivo_sunat"]["name"];
+				$nombrearchivo_sunat=$_FILES["archivo_sunat"]["name"];
 				$tipo1=$_FILES["archivo_sunat"]["type"];
 				$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
-				$extension1 = pathinfo($archivo_sunat, PATHINFO_EXTENSION);
+				
+				$extension1 = pathinfo($nombrearchivo_sunat, PATHINFO_EXTENSION);
 
-				$extensiones_permitidas = array('csv');
+				$extensiones_permitidas = array('txt');
              
+                $nombrearchivo=$nombrearchivo_sunat;
 
+				$estado='1';
 
-				if(empty($companiacodigo) && empty($periodo) && empty($numticket) && empty($secuencia) && empty($fechaproceso) && empty($numeroregistros) && empty($correlativo))
+				if(empty($companiacodigo) && empty($periodo) && empty($fechaproceso) && empty($numeroregistros) && empty($correlativo)
+				&& empty($numticket) && empty($nombrearchivo_sunat))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos', 'type' => 'warning');
 
-				} else if(empty($companiacodigo) || empty($periodo) || empty($numticket) || empty($secuencia) || empty($fechaproceso) || empty($correlativo))
+				} else if(empty($companiacodigo) || empty($periodo) || empty($fechaproceso) || empty($correlativo))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Campo vacío', 'type' => 'warning');
 
-				} else if($tipoproceso == 0)
+				} else if($idlibro == 0)
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Seleccione una opción', 'type' => 'warning');
+
+				} else 	if($viewFields['ValidaTicket'] === 'S' && empty($numticket))
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'Número de Ticket vacío', 'type' => 'warning');
+
+				} else 	if($viewFields['ImportaArchivo'] === 'S' && empty($nombrearchivo_sunat))
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'Por favor suba un archivo', 'type' => 'warning');
 
 				} else if(!empty($numeroregistros) && !is_numeric($numeroregistros) ||
 				!empty($correlativo) && !is_numeric($correlativo) ||
@@ -112,37 +123,63 @@
 				
 					$arrResponse = array('status' => false, 'msg' => 'Solo se ingresan números', 'type' => 'warning');
 
-				} else if(strlen($periodo) > 6 || strlen($periodo) < 6 || $periodo_mes>12 || $periodo_mes <1 || $periodo_concatenado != $fechaproceso_concatenado){
+				} else if(strlen($periodo) > 6 || strlen($periodo) < 6 || $periodo_mes>12 || $periodo_mes <1 || $periodo_concatenado >= $fechaproceso_concatenado){
 				
 					$arrResponse = array('status' => false, 'msg' => 'Periodo inválido', 'type' => 'warning');
 
-				} else if(empty($archivo) || empty($archivo_sunat))
+			    } else if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension1, $extensiones_permitidas))
 				{
 
-					$arrResponse = array('status' => false, 'msg' => 'Por favor, suba el archivo', 'type' => 'warning');
-				
-				} else if(!empty($archivo_sunat) && !in_array($extension1, $extensiones_permitidas) ||
-				!empty($archivo) && !in_array($extension, $extensiones_permitidas)){
+					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .TXT', 'type' => 'warning');
 
-					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .CSV', 'type' => 'warning');
+				} else if($this->validarArchivo($temp_sunat))
+				{
+
+				    $arrResponse = array('status' => false, 'msg' => 'El archivo está vacío', 'type' => 'warning');
+
+				} else if($this->validarColumnas($temp_sunat, 37))
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'Archivo inválido', 'type' => 'warning');
 
 				} else
 				{
 					try
 					{
+						// Contar los registros en el archivo
+						$numeroregistros_sunat = $this->contarRegistrosEnArchivo($temp_sunat);
+
+						if(empty($nombrearchivo_sunat))
+						{
+                            $nombrearchivo_sunat = null;
+						}
+
+						$numeroregistros_empresa = null;
+						$nombrearchivo_empresa = null;
+
+                        
+						if($idlibro == 1)
+						{
+                            //Registro Compras Propuesto
+							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfSUNATPurchases($temp_sunat,$name_table);
+						} else if($idlibro == 3){
+						    //Registro Ventas Propuesto
+							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfSUNATSales($temp_sunat,$name_table);
+						}
+
 						$arrData = array($companiacodigo,
 						$periodo,
 						$numticket,
-						// $secuencia,
-						$tipoproceso,
 						$fechaproceso,
-						$numeroregistros,
-						$correlativo);
-						
-						$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
-						$name_table_empresa = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
-						$this->model->insertNewSunatPurchaseRecord($temp_sunat,$name_table);
-						$this->model->insertNewEntreprisePurchaseRecord($temp_empresa,$name_table_empresa);
+						$numeroregistros_sunat,
+						$numeroregistros_empresa,
+						$nombrearchivo_sunat,
+						$nombrearchivo_empresa,
+						$correlativo,
+						$estado,
+					    $idlibro);
 
 						$requestAdd = $this->model->insertNewTicket($arrData);
 						
@@ -173,31 +210,67 @@
 
 		}
 
+
 		public function actualizar(){
 
 			if($_POST){
+				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
+                //SUNAT
+				$nombrearchivo_sunat=$_FILES["archivo_sunat"]["name"];
+				$tipo=$_FILES["archivo_sunat"]["type"];
+				$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
+                //Empresa
+				$nombrearchivo_empresa=$_FILES["archivo"]["name"];
+				$tipo1=$_FILES["archivo"]["type"];
+				$temp_empresa=$_FILES["archivo"]["tmp_name"];
 
-				$numeroregistros = $_POST['nro_registros']; 
+				$extension = pathinfo($nombrearchivo_sunat, PATHINFO_EXTENSION);
+				$extension1 = pathinfo($nombrearchivo_empresa, PATHINFO_EXTENSION);
 
+				$extensiones_permitidas = array('txt');
+
+				$idlibro = $_POST['tipo_libro_editar'];
+				//Buscar el ValidaTicket y ImportaArchivo
+				$viewFields = $this->model->viewFields($idlibro);
 				//Recibo el id
 				$id = intval($_POST['id_ticket']);
-
-				if(empty($numeroregistros)) 
+                
+				if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension1, $extensiones_permitidas))
 				{
 
-					$arrResponse = array('status' => false, 'msg' => 'Campos vacío', 'type' => 'warning');
+					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .TXT', 'type' => 'warning');
 
-				} else if(!is_numeric($numeroregistros))
+				} else if($this->validarArchivo($temp_empresa))
 				{
 
-					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten números', 'type' => 'warning');
+				    $arrResponse = array('status' => false, 'msg' => 'El archivo está vacío', 'type' => 'warning');
+
+				} else if($this->validarColumnas($temp_empresa, 37))
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'Archivo inválido', 'type' => 'warning');
 
 
 				} else
 				{
 					try
 					{
+						// Contar los registros en el archivo
+						$numeroregistros = $this->contarRegistrosEnArchivo($temp_empresa);
+
 						$arrData = array($numeroregistros,$id);
+
+						if($idlibro == 2)
+						{
+                            //Registro Compras Propuesto
+							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfCompanyPurchases($temp_empresa,$name_table);
+
+						} else if($idlibro == 4){
+						    //Registro Ventas Propuesto
+							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfCompanySales($temp_empresa,$name_table);
+						}
 
 						$requestUpd = $this->model->updateTicket($arrData);
 
@@ -223,17 +296,117 @@
 			die();
 
 		}
+
+		public function contarRegistrosEnArchivo($ruta_archivo) {
+			$contenido = file_get_contents($ruta_archivo);
 		
-		function parsearCSV($csvData) {
-			$lineas = explode("\n", $csvData);
-			$registros = [];
+			// Dividir el contenido en líneas
+			$lineas = explode("\n", $contenido);
 		
-			foreach ($lineas as $linea) {
-				$registros[] = explode("|", $linea);
-			}
+			// Excluir la primera línea (encabezado)
+			array_shift($lineas);
 		
-			return $registros;
+			// Contar las líneas restantes (registros)
+			$num_registros = count($lineas);
+		
+			return $num_registros;
 		}
+
 		
-	}
- ?>
+		public function validarArchivo($ruta_archivo) {
+     
+			if (file_exists($ruta_archivo)) {
+				//Verificar si el tamaño del archivo es igual a cero (está vacío)
+				if (filesize($ruta_archivo) == 0) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+			}
+
+			
+		}
+
+		function validarColumnas($rutaArchivo, $numeroColumnas) {
+			// Verificar si el archivo existe
+			if (file_exists($rutaArchivo)) {
+				// Abrir el archivo en modo lectura
+				$archivo = fopen($rutaArchivo, 'r');
+		
+				// Verificar si se pudo abrir el archivo
+				if ($archivo) {
+					// Iterar sobre cada línea del archivo
+					while (($linea = fgets($archivo)) !== false) {
+						// Obtener las columnas separando la línea por un delimitador (por ejemplo, '|')
+						$columnas = explode('|', $linea);
+		
+						// Verificar si el número de columnas es igual al esperado
+						if (count($columnas) !== $numeroColumnas) {
+							fclose($archivo);
+							return true; // La función devuelve falso si hay un error
+						}
+					}
+		
+					// Cerrar el archivo
+					fclose($archivo);
+		
+					return false; // La función devuelve verdadero si todas las líneas cumplen con el número de columnas
+				} else {
+					return true; // no se pudo abrir el archivo
+				}
+			} else {
+				return true; //archivo no existe
+			}
+		}
+
+
+		public function cargarcombos(){
+			if(isset($_POST['action'])){
+				switch ($_POST['action']){
+					case 'get-book_type-SUNAT':
+					$arrData=$this->model->loadBookTypeSUNAT();
+					echo json_encode($arrData);
+					break;
+
+					case 'get-book_type-Empresa':
+					$arrData=$this->model->loadBookTypeCompany();
+					echo json_encode($arrData);
+					break;
+
+					case 'get-book_type':
+					$arrData=$this->model->loadBookType();
+					echo json_encode($arrData);
+					break;
+			    }
+		    }
+        }
+
+		public function eliminar(){
+			if($_POST)
+			{
+				$id = $_POST['id'];
+
+				$requestDel = $this->model->deleteTicket(array($id));
+						
+
+				if($requestDel)
+				{
+
+					$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el ticket', 'type' => 'success');
+
+				} else {
+							
+					$arrResponse = array('status' => false, 'msg' => 'Error al eliminar el ticket', 'type' => 'error');
+						
+				}
+
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+
+			}
+		}
+
+    }
+
+?>

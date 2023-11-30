@@ -43,7 +43,7 @@ function agregar()
         formLogin.onsubmit = function(e) {
             e.preventDefault();
             var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            var ajaxUrl = base_url + '/Usuarios/crear';
+            var ajaxUrl = base_url + '/Usuarios/crearUsuario';
             var formData = new FormData(formLogin);
             request.open("POST", ajaxUrl, true);
             request.send(formData);

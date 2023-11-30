@@ -23,6 +23,11 @@
     <!-- CSS Files -->
     <link href="<?= media();?>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= media();?>/css/bootstrap-extended.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?= media();?>/css/select2.min.css" />
+	<link rel="stylesheet" href="<?= media();?>/css/select2-bootstrap-5.css" />
+
     <link href="<?= media();?>/css/style.css" rel="stylesheet">
     <link href="<?= media();?>/css/fancy-file.css" rel="stylesheet">
     <link href="<?= media();?>/css/icons.css" rel="stylesheet">
@@ -95,14 +100,7 @@
                     <ul>
                         <li>
                             <a href="<?= base_url();?>/tickets">
-                                <ion-icon name="ellipse-outline"></ion-icon>Compras
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="<?= base_url();?>/tickets">
-                                <ion-icon name="ellipse-outline"></ion-icon>Ventas
+                                <ion-icon name="ellipse-outline"></ion-icon>Registro
                             </a>
                         </li>
                     </ul>

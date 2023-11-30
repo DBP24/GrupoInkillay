@@ -9,13 +9,6 @@ getModal('tickets','editar',$data); ?>
             <div class="breadcrumb-title pe-3"><?=$data['page_content'];?></div>
         </div>
         <!--end breadcrumb-->
-        <div class="row">
-            <div class="col-4 d-flex justify-content-center align-items-center">
-                <label>Periodo</label>
-                <input type="text" id="busqueda_periodo" name="busqueda_periodo" class="form-control mx-2">
-                <button class="btn btn-primary realizar_busqueda">Buscar</button>
-            </div>
-        </div>
         <hr class="linea__separadora">
         <div class="card radius-10">
             <div class="card-body">
@@ -27,8 +20,8 @@ getModal('tickets','editar',$data); ?>
                                     <input type="button" class="icon__a" value="+" data-bs-toggle="modal"
                                         data-bs-target="#modalAgregarTicket">
                                 </th>
-                                <th>Sec
-                                    <br><input type="text" name="busqueda_secuencia" id="busqueda_secuencia"
+                                <th>Periodo
+                                    <br><input type="text" name="busqueda_periodo" id="busqueda_periodo"
                                         class="form-control">
                                 </th>
                                 <th>Número Ticket
@@ -41,14 +34,7 @@ getModal('tickets','editar',$data); ?>
                                 </th>
                                 <th>Tipo Libro
                                     <br>
-                                    <select class="form-select" name="busqueda_tipo_proceso" id="busqueda_tipo_proceso">
-                                        <option value="TODOS">TODOS</option>
-                                        <option value="P1">PROCESO 1</option>
-                                        <option value="P2">PROCESO 2</option>
-                                        <option value="P3">PROCESO 3</option>
-                                        <option value="P4">PROCESO 4</option>
-                                        <option value="P5">PROCESO 5</option>
-                                        <option value="P6">PROCESO 6</option>
+                                    <select class="form-select" name="busqueda_tipo_libro" id="busqueda_tipo_libro">
                                     </select>
                                 </th>
                                 <th>Nro Registros
@@ -63,30 +49,29 @@ getModal('tickets','editar',$data); ?>
                                         <option value="INACTIVO">INACTIVO</option>
                                     </select>
                                 </th>
-                                <th hidden>Periodo
-                                    <br><input type="text" name="busqueda_periodo2" id="busqueda_periodo2"
-                                        class="form-control">
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <?php foreach ($datos as $datos_tickets) { ?>
+                            <?php foreach ($datos as $datos_tickets) { ?>
                             <tr class="text-center">
                                 <td>
-                                    <a class="icon_e" href="#"
+                                    <a href="#"
                                         onclick="verDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
                                         <ion-icon class="icon__e" name="create-outline"></ion-icon>
                                     </a>
+                                    <a href="#"
+                                        onclick="eliDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
+                                        <ion-icon class="icon__t" name="trash-outline"></ion-icon>
+                                    </a>
                                 </td>
-                                <td><?php echo $datos_tickets['Secuencia']?></td>
+                                <td><?php echo $datos_tickets['Periodo']?></td>
                                 <td><?php echo $datos_tickets['NumTicket']?></td>
                                 <td><?php echo $datos_tickets['FechaProceso']?></td>
-                                <td><?php echo $datos_tickets['TipoProceso']?></td>
-                                <td><?php echo $datos_tickets['NumeroRegistros']?></td>
+                                <td><?php echo $datos_tickets['LibroNombre']?></td>
+                                <td><?php echo $datos_tickets['NumeroRegistrosSUNAT']?></td>
                                 <td>ACTIVO</td>
-                                <td hidden><?php echo $datos_tickets['Periodo']?></td>
                             </tr>
-                            <?php } ?> -->
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -114,7 +99,7 @@ getModal('tickets','editar',$data); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="mt-3">Periodo:</label>
-                                <input type="text" class="form-control" id="periodo" value="<?php echo  date('Ym')?>"
+                                <input type="text" class="form-control" id="periodo" value="<?php echo  date('Ym', strtotime('-1 month'));?>"
                                     name="periodo" placeholder="202310">
                             </div>
                             <div class="col-md-6">
@@ -125,27 +110,19 @@ getModal('tickets','editar',$data); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Tipo Libro:</label>
-                                <select name="tipo_proceso" id="tipo_proceso" class="form-select">
-                                    <option value="0">TODOS</option>
-                                    <option value="P1">PROCESO 1</option>
-                                    <option value="P2">PROCESO 2</option>
-                                    <option value="P3">PROCESO 3</option>
-                                    <option value="P4">PROCESO 4</option>
-                                    <option value="P5">PROCESO 5</option>
-                                    <option value="P6">PROCESO 6</option>
+                                <select name="tipo_libro" id="tipo_libro" class="form-select">
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Nro. Registros:</label>
-                                <input type="text" class="form-control" value="0" name="nro_registros"
-                                    id="nro_registros" readonly>
+                                <input type="text" class="form-control" value="0" name="nro_registros_sunat"
+                                    id="nro_registros_sunat" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Número Ticket:</label>
-                                <input type="text" class="form-control" placeholder="7894515" id="numero_ticket"
-                                    name="numero_ticket">
+                                <input type="text" class="form-control" id="numero_ticket" name="numero_ticket">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Estado:</label>
@@ -166,15 +143,6 @@ getModal('tickets','editar',$data); ?>
                                     value="<?php echo $dato?>" readonly>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div>
-                                    <label class="form-label mt-3">Archivo:</label>
-                                    <input type="file" class='fancy-file blue' id="archivo3" name="archivo"
-                                         />
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center align-items-center">
@@ -185,19 +153,28 @@ getModal('tickets','editar',$data); ?>
         </div>
     </div>
 </div>
-
+<style>
+.select2 {
+    width: 100% !important;
+}
+</style> 
 <?= footerAdmin($data)?>
+
 <!-- JS -->
+<script src="<?= media();?>/js/tickets/cargarCombos.js"></script>
 <script src="<?= media();?>/js/tickets/editar.js"></script>
+<script src="<?= media();?>/js/tickets/eliminar.js"></script>
 <script src="<?= media();?>/js/fancy-file.js"></script>
 <script src="<?= media();?>/js/tickets/actualizar.js"></script>
 <script src="<?= media(); ?>/js/tickets/busqueda.js"></script>
+
+<!-- <script src="<?= media(); ?>/js/tickets/validarcombo.js"></script> -->
 <script>
 $(document).ready(function() {
     // Función para establecer los campos en modo de solo lectura
     function setReadOnlyFields() {
         // Establecer el campo de nro_registros en modo de solo lectura
-        $("#modalAgregarTicket input[name='nro_registros']").prop("readonly", true);
+        $("#modalAgregarTicket input[name='nro_registros_sunat']").prop("readonly", true);
 
         // Establecer el campo de fecha en modo de solo lectura
         $("#modalAgregarTicket input[name='fecha']").prop("readonly", true);
@@ -216,7 +193,16 @@ $(document).ready(function() {
 });
 </script>
 <script src="<?= media(); ?>/js/tickets/agregar.js"></script>
+<script src="<?= media(); ?>/js/select2.min.js"></script>
+<script>
+$(function() {
+    //Initialize Select2 Elements
+    $('.form-select').select2({
+        theme: "bootstrap-5"
+    });
 
+});
+</script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>

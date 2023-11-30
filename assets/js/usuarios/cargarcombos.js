@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    cargarEmpresas(); 
-
-  });
+  cargarEmpresas();
+});
   
 function cargarEmpresas(){
     $.ajax({

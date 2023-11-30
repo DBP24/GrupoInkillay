@@ -58,9 +58,10 @@
 
 		}
 
-		public function crear(){
+		public function crearUsuario(){
 			
 			if($_POST){
+				print_r("hola");
 				$apellidopaterno = $_POST['apellidopaterno'];
 				$apellidomaterno = $_POST['apellidomaterno'];
 				$nombres = $_POST['nombres'];
@@ -92,8 +93,7 @@
 
 				$pattern_email = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 
-				if(empty($apellidopaterno) && empty($apellidomaterno) && empty($nombres) && empty($correoelectronico) && empty($numerocelular) && empty($fechainicio) && empty($fechafinal) && empty($importecontrato)
-				&& empty($usuario) && empty($password))
+				if(empty($apellidopaterno) && empty($apellidomaterno) && empty($nombres) && empty($correoelectronico) && empty($numerocelular) && empty($fechainicio) && empty($fechafinal) && empty($importecontrato) && empty($usuario) && empty($password))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Campos vacíos', 'type' => 'warning');
@@ -262,6 +262,8 @@
 				}
 			}
 		}
+
+		
 
 
     }
