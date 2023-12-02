@@ -56,7 +56,6 @@
 		public function crear(){
 			
 			if($_POST){
-				// print_r("hola");
 				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
 				$periodo = $_POST['periodo'];
 				// Obtener los primeros 4 caracteres (año) y los siguientes 2 caracteres (mes)
@@ -178,6 +177,10 @@
 							$this->model->insertNewTemporaryRegistrationOfSUNATSales($temp_sunat,$name_table);
 						}
 
+						$idlibrosunat = $idlibro;
+						
+						$idlibroempresa = null;
+
 						$arrData = array($companiacodigo,
 						$periodo,
 						$numticket,
@@ -188,7 +191,8 @@
 						$nombrearchivo_empresa,
 						$correlativo,
 						$estado,
-					    $idlibro);
+					    $idlibrosunat,
+					    $idlibroempresa);
 
 						$requestAdd = $this->model->insertNewTicket($arrData);
 						
@@ -204,7 +208,7 @@
 						
 						}
 
-					} catch (Exception $e)
+					} catch (PDOException $e)
 					{
 						$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error: '.$e->getMessage(), 'type' => 'error');
 					}
@@ -225,13 +229,29 @@
 			if($_POST){
 				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
                 //SUNAT
-				$nombrearchivo_sunat=$_FILES["archivo_sunat"]["name"];
-				$tipo=$_FILES["archivo_sunat"]["type"];
-				$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
+				if(isset($_FILES["archivo_sunat"]["tmp_name"]))
+				{
+					$nombrearchivo_sunat=$_FILES["archivo_sunat"]["name"];
+					$tipo=$_FILES["archivo_sunat"]["type"];
+					$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
+				} else {
+					$nombrearchivo_sunat=null;
+					$tipo=null;
+					$temp_sunat=null;
+				}
                 //Empresa
-				$nombrearchivo_empresa=$_FILES["archivo"]["name"];
-				$tipo1=$_FILES["archivo"]["type"];
-				$temp_empresa=$_FILES["archivo"]["tmp_name"];
+				if(isset($_FILES["archivo"]["tmp_name"]))
+				{
+					$nombrearchivo_empresa=$_FILES["archivo"]["name"];
+					$tipo1=$_FILES["archivo"]["type"];
+					$temp_empresa=$_FILES["archivo"]["tmp_name"];
+				} else 
+				{
+					$nombrearchivo_empresa=null;
+					$tipo1=null;
+					$temp_empresa=null;
+				}
+
 
 				$extension = pathinfo($nombrearchivo_sunat, PATHINFO_EXTENSION);
 				$extension1 = pathinfo($nombrearchivo_empresa, PATHINFO_EXTENSION);
@@ -241,6 +261,9 @@
 				$idlibro = $_POST['tipo_libro_editar'];
 				//Buscar el ValidaTicket y ImportaArchivo
 				$viewFields = $this->model->viewFields($idlibro);
+
+				$archivo_sunat_1 = $_POST['archivo_sunat_1'];
+
 				//Recibo el id
 				$id = intval($_POST['id_ticket']);
                 
@@ -248,31 +271,48 @@
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Seleccione una opción', 'type' => 'warning');
+
+				} else if($idlibro == 1 && empty($nombrearchivo_sunat) || $idlibro == 2 && empty($nombrearchivo_empresa)) {
+
+					$arrResponse = array('status' => false, 'msg' => 'Suba un archivo por favor', 'type' => 'warning');
 					
-				} else if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension1, $extensiones_permitidas))
+				} else if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension, $extensiones_permitidas) || $viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_empresa) && !in_array($extension1, $extensiones_permitidas))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .TXT', 'type' => 'warning');
 
-				} else if($this->validarArchivo($temp_empresa))
+				} else if($idlibro == 1 && $this->validarArchivo($temp_sunat) || $idlibro == 2 &&$this->validarArchivo($temp_empresa))
 				{
 
 				    $arrResponse = array('status' => false, 'msg' => 'El archivo está vacío', 'type' => 'warning');
 
-				} else if($this->validarColumnas($temp_empresa, 37))
+				} else if($idlibro == 1 && $this->validarColumnas($temp_sunat, 37) || $idlibro == 2 && $this->validarColumnas($temp_empresa, 37))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Archivo inválido', 'type' => 'warning');
 
+					
+				} else if($this->validarRUCdelArchivo($temp_sunat, $companiacodigo) || $this->validarRUCdelArchivo($temp_empresa, $companiacodigo))
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'El RUC que está en el archivo, es diferente a la empresa que estás logueado', 'type' => 'warning');
 
 				} else
 				{
 					try
 					{
 						// Contar los registros en el archivo
-						$numeroregistros = $this->contarRegistrosEnArchivo($temp_empresa);
+						$numeroregistros_sunat = $this->contarRegistrosEnArchivo($temp_sunat);
+						$numeroregistros_empresa = $this->contarRegistrosEnArchivo($temp_empresa);
 
-						$arrData = array($numeroregistros,$nombrearchivo_empresa,$id);
+						$idlibroempresa = $idlibro;
+
+						if($nombrearchivo_sunat == null || empty($nombrearchivo_sunat))
+						{
+							$nombrearchivo_sunat = $archivo_sunat_1;
+						}
+
+						$arrData = array($numeroregistros_sunat, $numeroregistros_empresa,$nombrearchivo_sunat,$nombrearchivo_empresa,$idlibroempresa,$id);
 
 						if($idlibro == 2)
 						{
@@ -343,7 +383,7 @@
 			
 		}
 
-		function validarColumnas($rutaArchivo, $numeroColumnas) {
+		public function validarColumnas($rutaArchivo, $numeroColumnas) {
 			// Verificar si el archivo existe
 			if (file_exists($rutaArchivo)) {
 				// Abrir el archivo en modo lectura

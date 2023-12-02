@@ -16,9 +16,8 @@ function verDatos(id) {
           document.querySelector("#fechaproceso").value = objData.ticket.FechaProceso;
           document.querySelector("#numero_ticket").value = objData.ticket.NumTicket;
           document.querySelector("#nro_registros_sunat").value = objData.ticket.NumeroRegistrosSUNAT;
-          //document.querySelector("#nro_registros").value = objData.ticket.NumeroRegistrosEmpresa;
           document.querySelector("#correlativo").value = objData.ticket.Correlativo;
-
+          document.querySelector("#archivo_sunat_1").value = objData.ticket.NombreArchivoSUNAT;
           
           document.querySelector("#id_ticket").value = objData.ticket.ID_Ticket;
           cargarTipoLibrosEditar(id);
@@ -47,40 +46,63 @@ function cargarTipoLibrosEditar(id) {
         options +=
           '<option value="' +
           value.IdLibro +
-          /*'" data-valida-ticket="' +
+          '" data-id-libro="' +
+          value.IdLibro +
+          '" data-valida-ticket="' +
           value.ValidaTicket +
           '" data-importa-archivo="' +
-          value.ImportaArchivo +*/
+          value.ImportaArchivo +
           '">' +
           value.LibroNombre +
           "</option>";
       });
       $("#tipo_libro_editar").html(options);
 
-     /* $("#tipo_libro_editar").change(function () {
+      $("#tipo_libro_editar").change(function () {
         // Obtener el valor de ValidaTicket seleccionado
         var validaTicket = $(this).find(":selected").data("valida-ticket");
         var importaArchivo = $(this).find(":selected").data("importa-archivo");
+        var idLibro = $(this).find(":selected").data("id-libro");
+
+        //console.log(idLibro);
+
+        //Validar Id Libro
+        if(idLibro === 1){
+          $('input[name="archivo"]').attr('disabled', true);
+          $('input[name="archivo_sunat"]').attr('disabled', false);
+        } else if(idLibro === 2){
+          $('input[name="archivo_sunat"]').attr('disabled', true);
+          $('input[name="archivo"]').attr('disabled', false);
+        } else if(idLibro === 3){
+          $('input[name="archivo_sunat"]').attr('disabled', false);
+          $('input[name="archivo"]').attr('disabled', true);
+        } else if(idLibro === 4){
+          $('input[name="archivo_sunat"]').attr('disabled', true);
+          $('input[name="archivo"]').attr('disabled', false);
+        } else {
+          $('input[name="archivo"]').attr('disabled', true);
+          $('input[name="archivo_sunat"]').attr('disabled', true);
+        }
         
         //Validar Nro de Ticket
         if (validaTicket === "N") {
-          $('input[name="numero_ticket"]').attr('disabled', true).val('');;
+          $('input[name="numero_ticket"]').attr('disabled', true);
         } else if(validaTicket === "S"){
           $('input[name="numero_ticket"]').attr('disabled', false);
         } else {
-          $('input[name="numero_ticket"]').attr('disabled', true).val('');;
+          $('input[name="numero_ticket"]').attr('disabled', true);
         }
 
         //Validar ImportaArchivo
-        if (importaArchivo === "N") {
+        /*if (importaArchivo === "N") {
           $('input[name="archivo"]').attr('disabled', true);
         } else if(importaArchivo === "S"){
           $('input[name="archivo"]').attr('disabled', false);
         } else {
           $('input[name="archivo"]').attr('disabled', true);
-        }
+        }*/
 
-      });*/
+      });
     },
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log(jqXHR);

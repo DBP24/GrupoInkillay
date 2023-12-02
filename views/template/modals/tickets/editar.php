@@ -63,6 +63,7 @@
                                     <label class="form-label mt-3">Archivo Sunat:</label>
                                     <input type="file" class='fancy-file green' id="archivo4" name="archivo_sunat" />
                                 </div>
+                                <input type="text" id="archivo_sunat_1" name="archivo_sunat_1" hidden>
                             </div>
                             <div class="col-md-6">
                                 <div>

@@ -50,7 +50,7 @@ class TicketsModel extends Mysql
 
 		public function loadBookTypeOfPurchasesOrSales($id)
 		{
-			$query="SELECT l.IdLibro, l.LibroNombre FROM SIRE_Ticket t JOIN LibroMast l ON (t.IdLibroSUNAT = 1 AND l.IdLibro IN (1, 2)) OR (t.IdLibroSUNAT = 3 AND l.IdLibro IN (3, 4)) WHERE t.IdLibroSUNAT IN (1, 3) AND t.ID_Ticket = $id";
+			$query="SELECT l.IdLibro, l.LibroNombre,l.ImportaArchivo, l.ValidaTicket FROM SIRE_Ticket t JOIN LibroMast l ON (t.IdLibroSUNAT = 1 AND l.IdLibro IN (1, 2)) OR (t.IdLibroSUNAT = 3 AND l.IdLibro IN (3, 4)) WHERE t.IdLibroSUNAT IN (1, 3) AND t.ID_Ticket = $id";
 			
 			$request=$this->select_all($query);
 			return $request;
@@ -117,7 +117,7 @@ class TicketsModel extends Mysql
 
 		public function updateTicket($arrData){
 			$query="UPDATE SIRE_Ticket SET
-				NumeroRegistrosEmpresa=?, NombreArchivoEmpresa=? WHERE ID_Ticket=?";
+				NumeroRegistrosSUNAT=?,NumeroRegistrosEmpresa=?, NombreArchivoSUNAT, NombreArchivoEmpresa=?, IdLibroEmpresa=? WHERE ID_Ticket=?";
 			
 			$request=$this->update($query,$arrData);
 			return $request;
