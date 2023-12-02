@@ -9,8 +9,13 @@ class TicketsModel extends Mysql
 
 		public function selectAllTickets()
 		{
-			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, LibroNombre, NumeroRegistrosSUNAT FROM 
-			SIRE_ticket t INNER JOIN LibroMast lm ON lm.IdLibro= t.IdLibro WHERE t.Estado='1'";
+			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, LibroNombre, NumeroRegistrosSUNAT,
+			CASE
+				WHEN t.Estado = 1 THEN 'Activo'
+				WHEN t.Estado = 0 THEN 'Inactivo'
+            END AS Estado
+	        FROM 
+			SIRE_ticket t INNER JOIN LibroMast lm ON lm.IdLibro= t.IdLibroSUNAT WHERE t.Estado='1'";
 			$request=$this->select_all($query);
 			return $request;
 		}
@@ -36,16 +41,17 @@ class TicketsModel extends Mysql
 			return $request;
 		}
 
-		public function loadBookTypeCompany()
+	     /*public function loadBookType()
 		{
 			$query="SELECT * FROM LibroMast WHERE Estado = '1' AND IdLibro='2' OR IdLibro='4' ORDER BY IdLibro ";
 			$request=$this->select_all($query);
 			return $request;
-		}
+		}*/
 
-		public function loadBookType()
+		public function loadBookTypeOfPurchasesOrSales($id)
 		{
-			$query="SELECT * FROM LibroMast WHERE Estado = '1' ORDER BY IdLibro ";
+			$query="SELECT l.IdLibro, l.LibroNombre FROM SIRE_Ticket t JOIN LibroMast l ON (t.IdLibroSUNAT = 1 AND l.IdLibro IN (1, 2)) OR (t.IdLibroSUNAT = 3 AND l.IdLibro IN (3, 4)) WHERE t.IdLibroSUNAT IN (1, 3) AND t.ID_Ticket = $id";
+			
 			$request=$this->select_all($query);
 			return $request;
 		}
@@ -63,8 +69,9 @@ class TicketsModel extends Mysql
 				NombreArchivoEmpresa,
 				Correlativo,
 				Estado,
-				IdLibro) 
-				VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+				IdLibroSUNAT,
+				IdLibroEmpresa) 
+				VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 			
 			$request=$this->insert($query,$arrData);
 			return $request;
@@ -110,7 +117,7 @@ class TicketsModel extends Mysql
 
 		public function updateTicket($arrData){
 			$query="UPDATE SIRE_Ticket SET
-				NumeroRegistros=? WHERE ID_Ticket=?";
+				NumeroRegistrosEmpresa=?, NombreArchivoEmpresa=? WHERE ID_Ticket=?";
 			
 			$request=$this->update($query,$arrData);
 			return $request;

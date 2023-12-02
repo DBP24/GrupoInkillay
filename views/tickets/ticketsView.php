@@ -44,9 +44,9 @@ getModal('tickets','editar',$data); ?>
                                 <th>Estado
                                     <br>
                                     <select class="form-select" name="busqueda_estado" id="busqueda_estado">
-                                        <option value="TODOS">TODOS</option>
-                                        <option value="ACTIVO">ACTIVO</option>
-                                        <option value="INACTIVO">INACTIVO</option>
+                                        <option value="0">Todos</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
                                     </select>
                                 </th>
                             </tr>
@@ -55,12 +55,10 @@ getModal('tickets','editar',$data); ?>
                             <?php foreach ($datos as $datos_tickets) { ?>
                             <tr class="text-center">
                                 <td>
-                                    <a href="#"
-                                        onclick="verDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
+                                    <a href="#" onclick="verDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
                                         <ion-icon class="icon__e" name="create-outline"></ion-icon>
                                     </a>
-                                    <a href="#"
-                                        onclick="eliDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
+                                    <a href="#" onclick="eliDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
                                         <ion-icon class="icon__t" name="trash-outline"></ion-icon>
                                     </a>
                                 </td>
@@ -69,7 +67,7 @@ getModal('tickets','editar',$data); ?>
                                 <td><?php echo $datos_tickets['FechaProceso']?></td>
                                 <td><?php echo $datos_tickets['LibroNombre']?></td>
                                 <td><?php echo $datos_tickets['NumeroRegistrosSUNAT']?></td>
-                                <td>ACTIVO</td>
+                                <td><?php echo $datos_tickets['Estado']?></td>
                             </tr>
                             <?php } ?>
                         </tbody>
@@ -99,12 +97,14 @@ getModal('tickets','editar',$data); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="mt-3">Periodo:</label>
-                                <input type="text" class="form-control" id="periodo" value="<?php echo  date('Ym', strtotime('-1 month'));?>"
-                                    name="periodo" placeholder="202310">
+                                <input type="text" class="form-control" id="periodo"
+                                    value="<?php echo  date('Ym', strtotime('-1 month'));?>" name="periodo"
+                                    placeholder="202310">
                             </div>
                             <div class="col-md-6">
                                 <label class="mt-3">Fecha:</label>
-                                <input type="text" class="form-control" id="fecha" name="fecha" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                <input type="text" class="form-control" id="fecha" name="fecha"
+                                    value="<?php echo date('Y-m-d'); ?>" readonly>
                             </div>
                         </div>
                         <div class="row">
@@ -126,15 +126,15 @@ getModal('tickets','editar',$data); ?>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Estado:</label>
-                                <input type="text" class="form-control" value="ACTIVO" id="estado" name="estado" readonly>
+                                <input type="text" class="form-control" value="Activo" id="estado" name="estado"
+                                    readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div>
                                     <label class="form-label mt-3">Archivo Sunat:</label>
-                                    <input type="file" class='fancy-file green' id="archivo2" name="archivo_sunat"
-                                         />
+                                    <input type="file" class='fancy-file green' id="archivo2" name="archivo_sunat" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -157,12 +157,12 @@ getModal('tickets','editar',$data); ?>
 .select2 {
     width: 100% !important;
 }
-</style> 
+</style>
 <?= footerAdmin($data)?>
 
 <!-- JS -->
-<script src="<?= media();?>/js/tickets/cargarCombos.js"></script>
 <script src="<?= media();?>/js/tickets/editar.js"></script>
+<script src="<?= media();?>/js/tickets/cargarCombos.js"></script>
 <script src="<?= media();?>/js/tickets/eliminar.js"></script>
 <script src="<?= media();?>/js/fancy-file.js"></script>
 <script src="<?= media();?>/js/tickets/actualizar.js"></script>
@@ -172,7 +172,7 @@ getModal('tickets','editar',$data); ?>
 <script>
 $(document).ready(function() {
     // Función para establecer los campos en modo de solo lectura
-    function setReadOnlyFields() {
+    function setReadOnlyFieldsAgregarTicket() {
         // Establecer el campo de nro_registros en modo de solo lectura
         $("#modalAgregarTicket input[name='nro_registros_sunat']").prop("readonly", true);
 
@@ -184,11 +184,36 @@ $(document).ready(function() {
 
         // Establecer el campo de correlativo en modo de solo lectura
         $("#modalAgregarTicket input[name='correlativo']").prop("readonly", true);
+      
+    }
+
+    function setReadOnlyFieldsEditarTicket(){
+
+        // Establecer el campo de nro_registros en modo de solo lectura
+        $("#modalEditarTicket input[name='nro_registros_sunat']").prop("readonly", true);
+
+         // Establecer el campo de nro_registros en modo de solo lectura
+         $("#modalEditarTicket input[name='nro_registros']").prop("readonly", true);
+
+        // Establecer el campo de fecha en modo de solo lectura
+        $("#modalEditarTicket input[name='fecha']").prop("readonly", true);
+
+        // Establecer el campo de estado en modo de solo lectura
+        $("#modalEditarTicket input[name='estado']").prop("readonly", true);
+
+        // Establecer el campo de correlativo en modo de solo lectura
+        $("#modalEditarTicket input[name='correlativo']").prop("readonly", true);
+
     }
 
     // Llamada a la función cuando se carga el modal
     $('#modalAgregarTicket').on('show.bs.modal', function(e) {
-        setReadOnlyFields();
+        setReadOnlyFieldsAgregarTicket();
+    });
+
+     // Llamada a la función cuando se carga el modal
+     $('#modalEditarTicket').on('show.bs.modal', function(e) {
+        setReadOnlyFieldsEditarTicket();
     });
 });
 </script>

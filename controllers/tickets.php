@@ -30,6 +30,10 @@
 
 		public function editar(){
 			$idd = intval($_POST['id']);
+
+			$_SESSION['idd'] = $idd;
+
+
 			if($idd>0)
 			{
 				$datos_ticket=$this->model->viewTicket($idd);
@@ -37,13 +41,17 @@
                 if(empty($datos_ticket)){
 					$arrResponse = array('status' => true, 'msg' => 'Datos no encontrados');
 				}else{
+
 					$arrResponse = array('status' => true, 
 					'msg' => 'Se muestran todos los clientes',
 					'ticket' => $datos_ticket); 
 				}
-					
+
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+
+				
 			}
+			
 			die();
 		}
 
@@ -51,7 +59,6 @@
 		public function crear(){
 			
 			if($_POST){
-
 				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
 				$periodo = $_POST['periodo'];
 				// Obtener los primeros 4 caracteres (año) y los siguientes 2 caracteres (mes)
@@ -141,6 +148,10 @@
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Archivo inválido', 'type' => 'warning');
+
+				} else if($this->validarRUCdelArchivo($temp_sunat, $companiacodigo)){
+
+					$arrResponse = array('status' => false, 'msg' => 'El RUC que está en el archivo, es diferente a la empresa que estás logueado', 'type' => 'warning');
 
 				} else
 				{
@@ -235,7 +246,12 @@
 				//Recibo el id
 				$id = intval($_POST['id_ticket']);
                 
-				if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension1, $extensiones_permitidas))
+				if($idlibro == 0)
+				{
+
+					$arrResponse = array('status' => false, 'msg' => 'Seleccione una opción', 'type' => 'warning');
+					
+				} else if($viewFields['ImportaArchivo']==='S' && !empty($nombrearchivo_sunat) && !in_array($extension1, $extensiones_permitidas))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .TXT', 'type' => 'warning');
@@ -258,7 +274,7 @@
 						// Contar los registros en el archivo
 						$numeroregistros = $this->contarRegistrosEnArchivo($temp_empresa);
 
-						$arrData = array($numeroregistros,$id);
+						$arrData = array($numeroregistros,$nombrearchivo_empresa,$id);
 
 						if($idlibro == 2)
 						{
@@ -341,7 +357,7 @@
 					while (($linea = fgets($archivo)) !== false) {
 						// Obtener las columnas separando la línea por un delimitador (por ejemplo, '|')
 						$columnas = explode('|', $linea);
-		
+		                
 						// Verificar si el número de columnas es igual al esperado
 						if (count($columnas) !== $numeroColumnas) {
 							fclose($archivo);
@@ -363,24 +379,30 @@
 
 
 		public function cargarcombos(){
-			if(isset($_POST['action'])){
-				switch ($_POST['action']){
-					case 'get-book_type-SUNAT':
-					$arrData=$this->model->loadBookTypeSUNAT();
-					echo json_encode($arrData);
-					break;
 
-					case 'get-book_type-Empresa':
-					$arrData=$this->model->loadBookTypeCompany();
-					echo json_encode($arrData);
-					break;
+			$idd = intval($_SESSION['idd']);
+			
 
-					case 'get-book_type':
-					$arrData=$this->model->loadBookType();
-					echo json_encode($arrData);
-					break;
-			    }
-		    }
+				if(isset($_POST['action'])){
+					switch ($_POST['action']){
+						case 'get-book_type-SUNAT':
+						$arrData=$this->model->loadBookTypeSUNAT();
+						echo json_encode($arrData);
+						break;
+
+						/*case 'get-book_type-Empresa':
+						$arrData=$this->model->loadBookTypeCompany();
+						echo json_encode($arrData);
+						break;*/
+
+						case 'get-book_type':
+						$arrData=$this->model->loadBookTypeOfPurchasesOrSales($idd);
+						unset($_SESSION['idd']);
+						echo json_encode($arrData);
+						break;
+					}
+				}
+	
         }
 
 		public function eliminar(){
@@ -406,6 +428,62 @@
 
 			}
 		}
+
+		public function validarRUCdelArchivo($rutaArchivo, $companiacodigo, $delimitador = '|') {
+			// Lee el contenido del archivo
+			$contenido = file_get_contents($rutaArchivo);
+		
+			// Divide el contenido en líneas
+			$lineas = explode("\n", $contenido);
+		
+			// Inicializa un array para almacenar los datos de la columna 37
+			$datosColumna37 = [];
+		
+			// Retorna
+			$bandera = false;
+		
+			// Verifica si hay al menos una línea en el archivo
+			if (!empty($lineas)) {
+				// Obtén la primera línea del archivo para determinar la cantidad de columnas
+				$primeraLinea = reset($lineas);
+		
+				// Divide la primera línea en columnas usando el delimitador
+				$columnasPrimeraLinea = explode($delimitador, $primeraLinea);
+		
+				// Obtén la cantidad de columnas
+				$cantidadColumnas = count($columnasPrimeraLinea);
+		
+				// Itera sobre cada línea y obtiene los datos de la columna 37
+				foreach ($lineas as $linea) {
+					// Divide la línea en columnas usando el delimitador
+					$columnas = explode($delimitador, $linea);
+		
+					// Obtiene los datos de la columna 37 (ajusta el índice según sea necesario)
+					$datoColumna37 = isset($columnas[$cantidadColumnas - 1]) ? trim($columnas[$cantidadColumnas - 1]) : null;
+		
+					// Extrae los 11 primeros dígitos
+					$primeros11Digitos = substr($datoColumna37, 0, 11);
+		
+					// Almacena los 11 primeros dígitos en el array
+					$datosColumna37[] = $primeros11Digitos;
+				}
+		
+				foreach ($datosColumna37 as $datoColumna37) {
+					if ($datoColumna37 != $companiacodigo) {
+						$bandera = true;
+						break;
+					} else {
+						$bandera = false;
+						break;
+					}
+				}
+			}
+		
+			return $bandera;
+		}
+		
+
+		
 
     }
 

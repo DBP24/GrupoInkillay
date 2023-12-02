@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Estado:</label>
-                                <input type="text" class="form-control" value="ACTIVO" id="estado" name="estado">
+                                <input type="text" class="form-control" value="Activo" id="estado" name="estado">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Correlativo:</label>

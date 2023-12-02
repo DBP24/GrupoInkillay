@@ -38,7 +38,7 @@ $(document).ready(function() {
             var valorEstado = $(this).find('td:eq(6)').text().trim();
             var mostrarFila =
                 (tipoLibro === '0' || valorTipoLibro.includes(tipoLibro)) &&
-                (estado === 'TODOS' || valorEstado.includes(estado));
+                (estado === '0' || valorEstado.includes(estado));
 
             // Mostrar u ocultar la fila según las condiciones de filtro
             $(this).toggle(mostrarFila);

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   cargarTipoLibrosAgregar();
   cargarTipoLibrosEditar();
-  cargarTipoLibrosAll();
+  //cargarTipoLibrosAll();
 });
 
 function cargarTipoLibrosAgregar() {
@@ -60,7 +60,7 @@ function cargarTipoLibrosEditar() {
   $.ajax({
     type: "POST",
     url: base_url + "/Tickets/cargarcombos/",
-    data: { action: "get-book_type-Empresa" },
+    data: { action: "get-book_type"},
     dataType: "JSON",
     success: function (response) {
       var options = '<option value="0">Todos</option>';
@@ -68,10 +68,10 @@ function cargarTipoLibrosEditar() {
         options +=
           '<option value="' +
           value.IdLibro +
-          '" data-valida-ticket="' +
+          /*'" data-valida-ticket="' +
           value.ValidaTicket +
           '" data-importa-archivo="' +
-          value.ImportaArchivo +
+          value.ImportaArchivo +*/
           '">' +
           value.LibroNombre +
           "</option>";
@@ -108,7 +108,7 @@ function cargarTipoLibrosEditar() {
   });
 }
 
-function cargarTipoLibrosAll() {
+/*function cargarTipoLibrosAll() {
   $.ajax({
     type: "POST",
     url: base_url + "/Tickets/cargarcombos/",
@@ -129,4 +129,4 @@ function cargarTipoLibrosAll() {
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log(jqXHR);
   });
-}
+}*/
