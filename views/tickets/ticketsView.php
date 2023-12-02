@@ -51,9 +51,18 @@ getModal('tickets','editar',$data); ?>
                                 </th>
                             </tr>
                         </thead>
+                        
                         <tbody>
-                            <?php foreach ($datos as $datos_tickets) { ?>
-                            <tr class="text-center">
+                            <?php foreach ($datos as $datos_tickets) {
+                                
+                                if($datos_tickets['IdLibroSUNAT'] == 1){
+                                    $class_x = 'fila_compras';
+                                }else{
+                                    $class_x = 'fila_ventas';
+                                }
+                                
+                                ?>
+                            <tr class="text-center <?php echo $class_x ?>">
                                 <td>
                                     <a href="#" onclick="verDatos(<?php echo $datos_tickets['ID_Ticket']?>)">
                                         <ion-icon class="icon__e" name="create-outline"></ion-icon>
@@ -62,7 +71,7 @@ getModal('tickets','editar',$data); ?>
                                         <ion-icon class="icon__t" name="trash-outline"></ion-icon>
                                     </a>
                                 </td>
-                                <td><?php echo $datos_tickets['Periodo']?></td>
+                                <td><?php echo $datos_tickets['Periodo'] ?></td>
                                 <td><?php echo $datos_tickets['NumTicket']?></td>
                                 <td><?php echo $datos_tickets['FechaProceso']?></td>
                                 <td><?php echo $datos_tickets['LibroNombre']?></td>
@@ -117,7 +126,7 @@ getModal('tickets','editar',$data); ?>
                                 <label class="form-label mt-3">Nro. Registros:</label>
                                 <input type="text" class="form-control" value="0" name="nro_registros_sunat"
                                     id="nro_registros_sunat" readonly>
-                            </div>
+                            </div>  
                         </div>
                         <div class="row">
                             <div class="col-md-6">

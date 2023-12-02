@@ -9,7 +9,7 @@ class TicketsModel extends Mysql
 
 		public function selectAllTickets()
 		{
-			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, LibroNombre, NumeroRegistrosSUNAT,
+			$query="SELECT ID_Ticket, Periodo, NumTicket, FechaProceso, t.IdLibroSUNAT, LibroNombre, NumeroRegistrosSUNAT,
 			CASE
 				WHEN t.Estado = 1 THEN 'Activo'
 				WHEN t.Estado = 0 THEN 'Inactivo'
@@ -41,12 +41,12 @@ class TicketsModel extends Mysql
 			return $request;
 		}
 
-	     /*public function loadBookType()
+	    public function loadBookType()
 		{
-			$query="SELECT * FROM LibroMast WHERE Estado = '1' AND IdLibro='2' OR IdLibro='4' ORDER BY IdLibro ";
+			$query="SELECT * FROM LibroMast WHERE Estado = '1' AND IdLibro='1' OR IdLibro='3' ORDER BY IdLibro ";
 			$request=$this->select_all($query);
 			return $request;
-		}*/
+		}
 
 		public function loadBookTypeOfPurchasesOrSales($id)
 		{

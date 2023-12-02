@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   cargarTipoLibrosAgregar();
-  cargarTipoLibrosEditar();
-  //cargarTipoLibrosAll();
+  cargarTipoLibrosAll();
 });
 
 function cargarTipoLibrosAgregar() {
@@ -56,59 +55,9 @@ function cargarTipoLibrosAgregar() {
   });
 }
 
-function cargarTipoLibrosEditar() {
-  $.ajax({
-    type: "POST",
-    url: base_url + "/Tickets/cargarcombos/",
-    data: { action: "get-book_type"},
-    dataType: "JSON",
-    success: function (response) {
-      var options = '<option value="0">Todos</option>';
-      $.each(response, function (index, value) {
-        options +=
-          '<option value="' +
-          value.IdLibro +
-          /*'" data-valida-ticket="' +
-          value.ValidaTicket +
-          '" data-importa-archivo="' +
-          value.ImportaArchivo +*/
-          '">' +
-          value.LibroNombre +
-          "</option>";
-      });
-      $("#tipo_libro_editar").html(options);
 
-      $("#tipo_libro_editar").change(function () {
-        // Obtener el valor de ValidaTicket seleccionado
-        var validaTicket = $(this).find(":selected").data("valida-ticket");
-        var importaArchivo = $(this).find(":selected").data("importa-archivo");
-        
-        //Validar Nro de Ticket
-        if (validaTicket === "N") {
-          $('input[name="numero_ticket"]').attr('disabled', true).val('');;
-        } else if(validaTicket === "S"){
-          $('input[name="numero_ticket"]').attr('disabled', false);
-        } else {
-          $('input[name="numero_ticket"]').attr('disabled', true).val('');;
-        }
 
-        //Validar ImportaArchivo
-        if (importaArchivo === "N") {
-          $('input[name="archivo"]').attr('disabled', true);
-        } else if(importaArchivo === "S"){
-          $('input[name="archivo"]').attr('disabled', false);
-        } else {
-          $('input[name="archivo"]').attr('disabled', true);
-        }
-
-      });
-    },
-  }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(jqXHR);
-  });
-}
-
-/*function cargarTipoLibrosAll() {
+function cargarTipoLibrosAll() {
   $.ajax({
     type: "POST",
     url: base_url + "/Tickets/cargarcombos/",
@@ -129,4 +78,4 @@ function cargarTipoLibrosEditar() {
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log(jqXHR);
   });
-}*/
+}

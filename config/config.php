@@ -1,6 +1,6 @@
 <?php 
 
-	const BASE_URL = " http://localhost/servicosdarema/grupoinkillay";
+	const BASE_URL = " http://localhost/grupoinkillay";
 	const NAME_EMPRESA = "Grupo Inkillay";
 
 	//Zona horaria
@@ -8,10 +8,10 @@
 
 	//Datos de conexión a Base de Datos
 	const DB_HOST = "localhost";
-	const SERVER_NAME = "DESKTOP-CI62OJ1";
+	const SERVER_NAME = "DESKTOP-V4RKOA4\SQLEXPRESS";
 	const DB_NAME = "grupoinkillay";
-	const DB_USER = "alexander";
-	const DB_PASSWORD = "Minaya02/";
+	const DB_USER = "esire";
+	const DB_PASSWORD = "esire2023";
 	const DB_CHARSET = "utf8";
 
 

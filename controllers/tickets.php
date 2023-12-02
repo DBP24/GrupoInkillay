@@ -31,15 +31,12 @@
 		public function editar(){
 			$idd = intval($_POST['id']);
 
-			$_SESSION['idd'] = $idd;
-
-
 			if($idd>0)
 			{
 				$datos_ticket=$this->model->viewTicket($idd);
 
                 if(empty($datos_ticket)){
-					$arrResponse = array('status' => true, 'msg' => 'Datos no encontrados');
+					$arrResponse = array('status' => true, 'msg' => 'Datos no encontrados','id' => $idd);
 				}else{
 
 					$arrResponse = array('status' => true, 
@@ -59,6 +56,7 @@
 		public function crear(){
 			
 			if($_POST){
+				// print_r("hola");
 				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
 				$periodo = $_POST['periodo'];
 				// Obtener los primeros 4 caracteres (año) y los siguientes 2 caracteres (mes)
@@ -379,27 +377,25 @@
 
 
 		public function cargarcombos(){
-
-			$idd = intval($_SESSION['idd']);
 			
-
 				if(isset($_POST['action'])){
 					switch ($_POST['action']){
 						case 'get-book_type-SUNAT':
-						$arrData=$this->model->loadBookTypeSUNAT();
-						echo json_encode($arrData);
-						break;
-
-						/*case 'get-book_type-Empresa':
-						$arrData=$this->model->loadBookTypeCompany();
-						echo json_encode($arrData);
-						break;*/
+							$arrData=$this->model->loadBookTypeSUNAT();
+							echo json_encode($arrData);
+							break;
 
 						case 'get-book_type':
-						$arrData=$this->model->loadBookTypeOfPurchasesOrSales($idd);
-						unset($_SESSION['idd']);
+						$arrData=$this->model->loadBookType();
 						echo json_encode($arrData);
 						break;
+
+						case 'get-book_type-Purchases-Or-Sales':
+							$id=addslashes(trim($_POST['id']));
+							$arrData=$this->model->loadBookTypeOfPurchasesOrSales($id);
+							//unset($_SESSION['idd']);
+							echo json_encode($arrData);
+							break;
 					}
 				}
 	
