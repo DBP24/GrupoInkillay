@@ -175,7 +175,6 @@ getModal('tickets','editar',$data); ?>
 <script src="<?= media();?>/js/tickets/eliminar.js"></script>
 <script src="<?= media();?>/js/fancy-file.js"></script>
 <script src="<?= media();?>/js/tickets/actualizar.js"></script>
-<script src="<?= media(); ?>/js/tickets/busqueda.js"></script>
 
 <!-- <script src="<?= media(); ?>/js/tickets/validarcombo.js"></script> -->
 <script>
@@ -237,6 +236,8 @@ $(function() {
 
 });
 </script>
+<!-- JS -->
+<script src="<?= media(); ?>/js/tickets/busqueda.js"></script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>

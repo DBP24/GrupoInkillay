@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label mt-3">Nro. Registros:</label>
-                                <input type="text" class="form-control" name="nro_registros" id="nro_registros" value="0"/>
+                                <input type="text" class="form-control" name="nro_registros" id="nro_registros"/>
                             </div>
                         </div>
                         <div class="row">
@@ -70,9 +70,11 @@
                                     <label class="form-label mt-3">Archivo:</label>
                                     <input type="file" class='fancy-file blue' id="archivo5" name="archivo" />
                                 </div>
+                                <input type="text" id="archivo_1" name="archivo_1" hidden>
                             </div>
                            
                         </div>
+                        <input type="text" id="id_libro_empresa" name="id_libro_empresa" hidden>
                         <input type="text" id="id_ticket" name="id_ticket" hidden>
                     </div>
                 </div>

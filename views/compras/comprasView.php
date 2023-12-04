@@ -42,12 +42,12 @@
                 <div class="card radius-10 w-100">
                     <div class="card-body">
                         <div class="table-responsive mt-2">
-                            <table id="example3" class="table table-hover" width="100%">
+                            <table id="example1" class="table table-hover" width="100%">
                                 <thead class="text-center table-light">
                                     <tr>
                                         <th>Tipo Doc.
                                             <br>
-                                            <select name="busqueda_tipo_documento" id="busqueda_tipo_documento" class="form-select">
+                                            <select name="busqueda_tipo_documento1" id="busqueda_tipo_documento1" class="form-select">
                                                 <option value="0">Todos</option>
                                                 <option value="01">DNI</option>
                                                 <option value="02">Pasaporte</option>
@@ -89,7 +89,54 @@
             </div>
             <div class="tab-pane fade" id="nav-registro-de-compras" role="tabpanel"
                 aria-labelledby="nav-registro-de-compras-tab" tabindex="0">
-                Registro de compras</div>
+                <div class="card radius-10 w-100">
+                    <div class="card-body">
+                        <div class="table-responsive mt-2">
+                            <table id="example2" class="table table-hover" width="100%">
+                                <thead class="text-center table-light">
+                                    <tr>
+                                        <th>Tipo Doc.
+                                            <br>
+                                            <select name="busqueda_tipo_documento2" id="busqueda_tipo_documento2" class="form-select">
+                                                <option value="0">Todos</option>
+                                                <option value="01">DNI</option>
+                                                <option value="02">Pasaporte</option>
+                                            </select>
+                                        </th>
+                                        <th>Serie
+                                            <br><input type="text" name="busqueda_serie2" id="busqueda_serie2" class="form-control">
+                                        </th>
+                                        <th>Comprobante
+                                            <br><input type="text" name="busqueda_comprobante2" id="busqueda_comprobante2" class="form-control">
+                                        </th>
+                                        <th>Tipo Libro
+                                            <br><input type="text" name="busqueda_tipo_libro2" id="busqueda_tipo_libro2" class="form-control">
+                                        </th>
+                                        <th>Nro Registros
+                                            <br><input type="text" name="busqueda_nro_registros2" id="busqueda_nro_registros2" class="form-control">
+                                        </th>
+                                        <th>Estado
+                                            <br><input type="text" name="busqueda_estado2" id="busqueda_estado2" class="form-control">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <?php foreach ($dato as $datos_registro_compras_empresa) {?>
+                                    <tr class="text-center" >
+                                        <td><?php echo $datos_registro_compras_empresa['TipoDocumento'] ?></td>
+                                        <td><?php echo $datos_registro_compras_empresa['SerieDcoumento'] ?></td>
+                                        <td><?php echo $datos_registro_compras_empresa['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registro_compras_empresa['LibroNombre']?></td>
+                                        <td><?php echo $datos_registro_compras_empresa['NumeroRegistrosEmpresa']?></td>
+                                        <td><?php echo $datos_registro_compras_empresa['Estado']?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane fade" id="nav-analisis" role="tabpanel" aria-labelledby="nav-analisis-tab"
                 tabindex="0">
                 Analisis</div>
@@ -359,15 +406,13 @@
 
 <?= footerAdmin($data)?>
 
-<!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script> -->
+<!-- JS -->
 <script src="<?= media(); ?>/js/compras/busqueda.js"></script>
+<!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
 <script src="<?= media();?>/js/dataTables/table-datatable.js"></script>
-<!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
-<!-- JS -->
 
-<!-- DataTables -->
 </body>
 
 </html>

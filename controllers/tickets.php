@@ -187,24 +187,22 @@
 
 						
 						//compras y ventas sunat 
-                        
 						if($idlibro == 1)
 						{
 							
                             //Registro Compras Propuesto
 							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfSUNATPurchases($temp_sunat, $name_table);
+							$this->model->insertNewRegistrationOfSUNATPurchases($temp_sunat, $name_table);
 
 						} else if($idlibro == 3){
 
 						    //Registro Ventas Propuesto
 							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfSUNATSales($temp_sunat, $name_table);
+							$this->model->insertNewRegistrationOfSUNATSales($temp_sunat, $name_table);
 						}
 
 									
-						
-
+					
 						if($requestAdd)
 						{
 
@@ -236,30 +234,15 @@
 
 			if($_POST){
 				$companiacodigo = $_SESSION['Usuario']['DocumentoFiscal'];
-                //SUNAT
-				if(isset($_FILES["archivo_sunat"]["tmp_name"]))
-				{
-					$nombrearchivo_sunat=$_FILES["archivo_sunat"]["name"];
-					$tipo=$_FILES["archivo_sunat"]["type"];
-					$temp_sunat=$_FILES["archivo_sunat"]["tmp_name"];
-				} else {
-					$nombrearchivo_sunat=null;
-					$tipo=null;
-					$temp_sunat=null;
-				}
-                //Empresa
-				if(isset($_FILES["archivo"]["tmp_name"]))
-				{
-					$nombrearchivo_empresa=$_FILES["archivo"]["name"];
-					$tipo1=$_FILES["archivo"]["type"];
-					$temp_empresa=$_FILES["archivo"]["tmp_name"];
-				} else 
-				{
-					$nombrearchivo_empresa=null;
-					$tipo1=null;
-					$temp_empresa=null;
-				}
 
+                //SUNAT
+				$nombrearchivo_sunat = isset($_FILES["archivo_sunat"]["name"]) ? $_FILES["archivo_sunat"]["name"] : null;
+				$tipo = isset($_FILES["archivo_sunat"]["type"]) ? $_FILES["archivo_sunat"]["type"] : null;
+				$temp_sunat = isset($_FILES["archivo_sunat"]["tmp_name"]) ? $_FILES["archivo_sunat"]["tmp_name"] : null;
+
+				$nombrearchivo_empresa = isset($_FILES["archivo"]["name"]) ? $_FILES["archivo"]["name"] : null;
+				$tipo1 = isset($_FILES["archivo"]["type"]) ? $_FILES["archivo"]["type"] : null;
+				$temp_empresa = isset($_FILES["archivo"]["tmp_name"]) ? $_FILES["archivo"]["tmp_name"] : null;
 
 				$extension = pathinfo($nombrearchivo_sunat, PATHINFO_EXTENSION);
 				$extension1 = pathinfo($nombrearchivo_empresa, PATHINFO_EXTENSION);
@@ -270,7 +253,13 @@
 				//Buscar el ValidaTicket y ImportaArchivo
 				$viewFields = $this->model->viewFields($idlibro);
 
+				$nro_registros_sunat = $_POST['nro_registros_sunat'];
+				$nro_registros_empresa = $_POST['nro_registros'];
+
 				$archivo_sunat_1 = $_POST['archivo_sunat_1'];
+				$archivo_empresa_1 = $_POST['archivo_1'];
+
+				$id_libro_empresa = $_POST['id_libro_empresa'];
 
 				//Recibo el id
 				$id = intval($_POST['id_ticket']);
@@ -280,7 +269,7 @@
 
 					$arrResponse = array('status' => false, 'msg' => 'Seleccione una opción', 'type' => 'warning');
 
-				} else if($idlibro == 1 && empty($nombrearchivo_sunat) || $idlibro == 2 && empty($nombrearchivo_empresa)) {
+				} else if($idlibro == 1 && $nombrearchivo_sunat==null || $idlibro == 2 && $nombrearchivo_empresa==null) {
 
 					$arrResponse = array('status' => false, 'msg' => 'Suba un archivo por favor', 'type' => 'warning');
 					
@@ -289,7 +278,7 @@
 
 					$arrResponse = array('status' => false, 'msg' => 'Solo se permiten formato .TXT', 'type' => 'warning');
 
-				} else if($idlibro == 1 && $this->validarArchivo($temp_sunat) || $idlibro == 2 &&$this->validarArchivo($temp_empresa))
+				} else if($idlibro == 1 && $this->validarArchivo($temp_sunat) || $idlibro == 2 && $this->validarArchivo($temp_empresa))
 				{
 
 				    $arrResponse = array('status' => false, 'msg' => 'El archivo está vacío', 'type' => 'warning');
@@ -300,7 +289,7 @@
 					$arrResponse = array('status' => false, 'msg' => 'Archivo inválido', 'type' => 'warning');
 
 					
-				} else if($this->validarRUCdelArchivo($temp_sunat, $companiacodigo) || $this->validarRUCdelArchivo($temp_empresa, $companiacodigo))
+				} else if($idlibro == 1 && $this->validarRUCdelArchivo($temp_sunat, $companiacodigo) || $idlibro == 2 && $this->validarRUCdelArchivo($temp_empresa, $companiacodigo))
 				{
 
 					$arrResponse = array('status' => false, 'msg' => 'El RUC que está en el archivo, es diferente a la empresa que estás logueado', 'type' => 'warning');
@@ -309,32 +298,107 @@
 				{
 					try
 					{
+
 						// Contar los registros en el archivo
-						$numeroregistros_sunat = $this->contarRegistrosEnArchivo($temp_sunat);
-						$numeroregistros_empresa = $this->contarRegistrosEnArchivo($temp_empresa);
+						if(!empty($temp_empresa))
+						{
+							
+							$numeroregistros_empresa = $this->contarRegistrosEnArchivo($temp_empresa);
 
-						$idlibroempresa = $idlibro;
+						} else {
 
-						if($nombrearchivo_sunat == null || empty($nombrearchivo_sunat))
+							$numeroregistros_empresa = $nro_registros_empresa;
+
+						}
+						
+						if(!empty($temp_sunat))
+						{
+
+							$numeroregistros_sunat = $this->contarRegistrosEnArchivo($temp_sunat);
+
+						} else {
+
+							$numeroregistros_sunat = $nro_registros_sunat;
+
+						}
+                        
+						if(!empty($archivo_sunat_1))
 						{
 							$nombrearchivo_sunat = $archivo_sunat_1;
 						}
 
-						$arrData = array($numeroregistros_sunat, $numeroregistros_empresa,$nombrearchivo_sunat,$nombrearchivo_empresa,$idlibroempresa,$id);
-
-						if($idlibro == 2)
+						if(!empty($archivo_empresa_1))
 						{
-                            //Registro Compras Propuesto
-							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfCompanyPurchases($temp_empresa,$name_table);
-
-						} else if($idlibro == 4){
-						    //Registro Ventas Propuesto
-							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfCompanySales($temp_empresa,$name_table);
+                            $nombrearchivo_empresa = $archivo_empresa_1;
 						}
 
-						$requestUpd = $this->model->updateTicket($arrData);
+						//Capturar el id para IdLibroEmpresa
+						if($id_libro_empresa == null)
+						{
+
+							$id_libro_empresa = $idlibro;
+
+						}
+
+						$arrData = array($numeroregistros_sunat, $numeroregistros_empresa,$nombrearchivo_sunat,$nombrearchivo_empresa,$id_libro_empresa,$id);
+
+						//Ver si COMPRAS (SUNAT - EMPRESA) tiene registros
+						$viewTicket = $this->model->viewTicket($id);
+
+						if($viewTicket['IdLibroSUNAT'] !=null && $idlibro == 1)
+						{
+							//Actualización Compras SUNAT
+							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
+							$this->model->updateNewRegistrationOfSUNATPurchases(array($temp_sunat,$name_table,$id));
+
+							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
+
+						} else if($viewTicket['IdLibroEmpresa'] !=null && $idlibro == 2)
+						{
+							//Actualización Compras Empresa
+							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
+							$this->model->updateNewRegistrationOfCompanyPurchases(array($temp_empresa,$name_table,$id));
+
+							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
+
+						} else if ($viewTicket['IdLibroEmpresa'] ==null && $idlibro == 2) {
+
+							//Registro Compras Empresa
+							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
+							$this->model->insertNewRegistrationOfCompanyPurchases($temp_empresa,$name_table);
+
+							$arrResponse = array('status' => true, 'msg' => 'Se ha insertado correctamente', 'type'=> 'success');
+
+						} else if($viewTicket['IdLibroSUNAT'] !=null && $idlibro == 3)
+						{
+
+							//Actualización Ventas SUNAT
+							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
+							$this->model->updateNewRegistrationOfSUNATSales(array($temp_sunat,$name_table,$id));
+
+							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
+
+						} else if($viewTicket['IdLibroEmpresa'] !=null && $idlibro == 4)
+						{
+							//Actualización Ventas Empresa
+							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
+							$this->model->updateNewRegistrationOfCompanySales(array($temp_empresa,$name_table,$id));
+	
+							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
+	
+						} else if($viewTicket['IdLibroEmpresa'] ==null && $idlibro == 4) {
+	
+							//Registro Ventas Empresa
+							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
+							$this->model->insertNewRegistrationOfCompanySales($temp_empresa,$name_table);
+	
+							$arrResponse = array('status' => true, 'msg' => 'Se ha insertado correctamente', 'type'=> 'success');
+	
+						}
+
+						$this->model->updateTicket($arrData);
+
+						/*$requestUpd = $this->model->updateTicket($arrData);
 
 						if($requestUpd)
 						{
@@ -343,7 +407,7 @@
 
 						} else {
 							$arrResponse = array('status' => false, 'msg' => 'Error al actualizar el ticket', 'type' => 'error');
-						}
+						}*/
 					} catch (Exception $e)
 					{
 						$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error: '.$e->getMessage(), 'type' => 'error');

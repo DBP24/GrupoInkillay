@@ -67,20 +67,20 @@
         	return $data;
 		}
 
-			//Actualiza registro
-			public function update(string $query, array $arrValues)
+		//Actualiza registro
+		public function update(string $query, array $arrValues)
+		{
+			$this->strquery = $query;
+			$this->arrValues = $arrValues;
+			$update = $this->conexion->prepare($this->strquery);
+			$resExecute = $update->execute($this->arrValues);
+			if($update->rowCount() > 0) // Verifica si alguna fila fue afectada
 			{
-				$this->strquery = $query;
-				$this->arrValues = $arrValues;
-				$update = $this->conexion->prepare($this->strquery);
-				$resExecute = $update->execute($this->arrValues);
-				if($update->rowCount() > 0) // Verifica si alguna fila fue afectada
-				{
-					return 1; // Devuelve 1 si la consulta afectó a alguna fila
-				}else{
-					return 0; // Devuelve 0 si la consulta no afectó a ninguna fila
-				}
+				return 1; // Devuelve 1 si la consulta afectó a alguna fila
+			}else{
+				return 0; // Devuelve 0 si la consulta no afectó a ninguna fila
 			}
+		}
 
 		//Eliminar un registro
 		public function delete(string $query)

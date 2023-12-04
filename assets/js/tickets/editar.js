@@ -16,9 +16,16 @@ function verDatos(id) {
           document.querySelector("#fechaproceso").value = objData.ticket.FechaProceso;
           document.querySelector("#numero_ticket").value = objData.ticket.NumTicket;
           document.querySelector("#nro_registros_sunat").value = objData.ticket.NumeroRegistrosSUNAT;
+          if(objData.ticket.NumeroRegistrosEmpresa != "")
+          {
+            document.querySelector("#nro_registros").value = objData.ticket.NumeroRegistrosEmpresa;
+          } else {
+            document.querySelector("#nro_registros").value = 0;
+          }
           document.querySelector("#correlativo").value = objData.ticket.Correlativo;
           document.querySelector("#archivo_sunat_1").value = objData.ticket.NombreArchivoSUNAT;
-          
+          document.querySelector("#archivo_1").value = objData.ticket.NombreArchivoEmpresa;
+          document.querySelector("#id_libro_empresa").value = objData.ticket.IdLibroEmpresa;
           document.querySelector("#id_ticket").value = objData.ticket.ID_Ticket;
           cargarTipoLibrosEditar(id);
   

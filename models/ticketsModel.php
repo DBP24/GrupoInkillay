@@ -77,31 +77,55 @@ class TicketsModel extends Mysql
 			return $request;
 		}
 		
-		// registro temporal de sunat
-		public function insertNewTemporaryRegistrationOfSUNATPurchases($archivo,$name_table){
+		//Insertar
+		public function insertNewRegistrationOfSUNATPurchases($archivo,$name_table){
 			$query = "EXEC SIRE_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
 
-		public function insertNewTemporaryRegistrationOfSUNATSales($archivo,$name_table){
+		public function insertNewRegistrationOfSUNATSales($archivo,$name_table){
 			$query = "EXEC SIRE_SP_RegistroVentas_SUNAT @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
 
-		public function insertNewTemporaryRegistrationOfCompanyPurchases($archivo,$name_table){
+		public function insertNewRegistrationOfCompanyPurchases($archivo,$name_table){
 			$query = "EXEC SIRE_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
 
-		public function insertNewTemporaryRegistrationOfCompanySales($archivo,$name_table){
+		public function insertNewRegistrationOfCompanySales($archivo,$name_table){
 			$query = "EXEC SIRE_SP_RegistroVentas_EMPRESA @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
 			return $request;
 		}
-		
+
+		//Actualizar
+		public function updateNewRegistrationOfSUNATPurchases($arrData){
+			$query = "EXEC SIRE_SP_ActualizarCompras_SUNAT @ruta_archivo = ?,@name_table = ?,@id_ticket = ?";
+			$request = $this->update($query, $arrData);
+			return $request;
+		}
+
+		public function updateNewRegistrationOfSUNATSales($arrData){
+			$query = "EXEC SIRE_SP_ActualizarVentas_SUNAT @ruta_archivo = ?,@name_table = ?,@id_ticket = ?";
+			$request = $this->update($query, $arrData);
+			return $request;
+		}
+
+		public function updateNewRegistrationOfCompanyPurchases($arrData){
+			$query = "EXEC SIRE_SP_ActualizarCompras_EMPRESA @ruta_archivo = ?,@name_table = ?,@id_ticket = ?";
+			$request = $this->update($query, $arrData);
+			return $request;
+		}
+
+		public function updateNewRegistrationOfCompanySales($arrData){
+			$query = "EXEC SIRE_SP_ActualizarVentas_EMPRESA @ruta_archivo = ?,@name_table = ?,@id_ticket = ?";
+			$request = $this->update($query, $arrData);
+			return $request;
+		}
 		
 		public function selectMaxIDTicket(){
 			$query="SELECT MAX(ID_Ticket) AS ID FROM SIRE_Ticket";
@@ -118,7 +142,7 @@ class TicketsModel extends Mysql
 
 		public function updateTicket($arrData){
 			$query="UPDATE SIRE_Ticket SET
-				NumeroRegistrosSUNAT=?,NumeroRegistrosEmpresa=?, NombreArchivoSUNAT, NombreArchivoEmpresa=?, IdLibroEmpresa=? WHERE ID_Ticket=?";
+				NumeroRegistrosSUNAT=?,NumeroRegistrosEmpresa=?, NombreArchivoSUNAT=?, NombreArchivoEmpresa=?, IdLibroEmpresa=? WHERE ID_Ticket=?";
 			
 			$request=$this->update($query,$arrData);
 			return $request;

@@ -21,8 +21,11 @@
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
-            //$datos=$this->model->selectAllTickets();
-			$this->views->getView($this,"ventas", $data);
+           //Ventas SUNAT
+		   $datos=$this->model->selectAllRegistrationOfSUNATSales();
+		   //Ventas EMPRESA
+		   $dato=$this->model->selectAllRegistrationOfCompanySales();
+		    $this->views->getView($this,"ventas", $data, $datos,$dato);
 		}
 
 	}

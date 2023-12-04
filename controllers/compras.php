@@ -17,12 +17,15 @@
 		{
 			
 			$data['page_title'] = "Compras - Grupo Inkillay";
-			$data['page_content'] = "Listado de Compras generados en SUNAT";
+			$data['page_content'] = "Listado de Compras generados";
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
+			//Compras SUNAT
             $datos=$this->model->selectAllRegistrationOfSUNATPurchases();
-			$this->views->getView($this,"compras", $data,$datos);
+			//Compras EMPRESA
+			$dato=$this->model->selectAllRegistrationOfCompanyPurchases();
+			$this->views->getView($this,"compras", $data,$datos,$dato);
 		}
 
 	}

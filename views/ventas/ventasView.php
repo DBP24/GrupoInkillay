@@ -42,45 +42,45 @@
                 <div class="card radius-10 w-100">
                     <div class="card-body">
                         <div class="table-responsive mt-2">
-                            <table class="table table-bordered">
+                            <table id="example1" class="table table-hover" width="100%">
                                 <thead class="text-center table-light">
                                     <tr>
                                         <th>Tipo Doc.
                                             <br>
-                                            <select name="" id="" class="form-select">
-                                                <option value="">TODOS</option>
-                                                <option value="">DNI</option>
-                                                <option value="">Pasaporte</option>
+                                            <select name="busqueda_tipo_documento1" id="busqueda_tipo_documento1" class="form-select">
+                                                <option value="0">Todos</option>
+                                                <option value="01">DNI</option>
+                                                <option value="02">Pasaporte</option>
                                             </select>
                                         </th>
                                         <th>Serie
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_serie1" id="busqueda_serie1" class="form-control">
                                         </th>
                                         <th>Comprobante
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_comprobante1" id="busqueda_comprobante1" class="form-control">
                                         </th>
-                                        <th>Tipo Proceso
-                                            <br><input type="text" name="" id="" class="form-control">
+                                        <th>Tipo Libro
+                                            <br><input type="text" name="busqueda_tipo_libro1" id="busqueda_tipo_libro1" class="form-control">
                                         </th>
                                         <th>Nro Registros
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_nro_registros1" id="busqueda_nro_registros1" class="form-control">
                                         </th>
                                         <th>Estado
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_estado1" id="busqueda_estado1" class="form-control">
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>788548</td>
-                                        <td>2020-03-20</td>
-                                        <td>Manual</td>
-                                        <td>125</td>
-                                        <td>Activo</td>
+                                <tbody >
+                                    <?php foreach ($datos as $datos_registro_ventas_sunat) {?>
+                                    <tr class="text-center" >
+                                        <td><?php echo $datos_registro_ventas_sunat['TipoDocumento'] ?></td>
+                                        <td><?php echo $datos_registro_ventas_sunat['SerieDcoumento'] ?></td>
+                                        <td><?php echo $datos_registro_ventas_sunat['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registro_ventas_sunat['LibroNombre']?></td>
+                                        <td><?php echo $datos_registro_ventas_sunat['NumeroRegistrosSUNAT']?></td>
+                                        <td><?php echo $datos_registro_ventas_sunat['Estado']?></td>
                                     </tr>
-                                    
-
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -89,7 +89,54 @@
             </div>
             <div class="tab-pane fade" id="nav-registro-de-compras" role="tabpanel"
                 aria-labelledby="nav-registro-de-compras-tab" tabindex="0">
-                Registro de compras</div>
+                <div class="card radius-10 w-100">
+                    <div class="card-body">
+                        <div class="table-responsive mt-2">
+                            <table id="example2" class="table table-hover" width="100%">
+                                <thead class="text-center table-light">
+                                    <tr>
+                                        <th>Tipo Doc.
+                                            <br>
+                                            <select name="busqueda_tipo_documento2" id="busqueda_tipo_documento2" class="form-select">
+                                                <option value="0">Todos</option>
+                                                <option value="01">DNI</option>
+                                                <option value="02">Pasaporte</option>
+                                            </select>
+                                        </th>
+                                        <th>Serie
+                                            <br><input type="text" name="busqueda_serie2" id="busqueda_serie2" class="form-control">
+                                        </th>
+                                        <th>Comprobante
+                                            <br><input type="text" name="busqueda_comprobante2" id="busqueda_comprobante2" class="form-control">
+                                        </th>
+                                        <th>Tipo Libro
+                                            <br><input type="text" name="busqueda_tipo_libro2" id="busqueda_tipo_libro2" class="form-control">
+                                        </th>
+                                        <th>Nro Registros
+                                            <br><input type="text" name="busqueda_nro_registros2" id="busqueda_nro_registros2" class="form-control">
+                                        </th>
+                                        <th>Estado
+                                            <br><input type="text" name="busqueda_estado2" id="busqueda_estado2" class="form-control">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <?php foreach ($dato as $datos_registro_ventas_empresa) {?>
+                                    <tr class="text-center" >
+                                        <td><?php echo $datos_registro_ventas_empresa['TipoDocumento'] ?></td>
+                                        <td><?php echo $datos_registro_ventas_empresa['SerieDcoumento'] ?></td>
+                                        <td><?php echo $datos_registro_ventas_empresa['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registro_ventas_empresa['LibroNombre']?></td>
+                                        <td><?php echo $datos_registro_ventas_empresa['NumeroRegistrosEmpresa']?></td>
+                                        <td><?php echo $datos_registro_ventas_empresa['Estado']?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane fade" id="nav-analisis" role="tabpanel" aria-labelledby="nav-analisis-tab"
                 tabindex="0">
                 Analisis</div>
@@ -358,6 +405,8 @@
 </div>
 
 <?= footerAdmin($data)?>
+<!-- JS -->
+<script src="<?= media(); ?>/js/ventas/busqueda.js"></script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
