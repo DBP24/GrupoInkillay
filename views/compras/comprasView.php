@@ -42,45 +42,45 @@
                 <div class="card radius-10 w-100">
                     <div class="card-body">
                         <div class="table-responsive mt-2">
-                            <table class="table table-bordered">
+                            <table id="example3" class="table table-hover" width="100%">
                                 <thead class="text-center table-light">
                                     <tr>
                                         <th>Tipo Doc.
                                             <br>
-                                            <select name="" id="" class="form-select">
-                                                <option value="">TODOS</option>
-                                                <option value="">DNI</option>
-                                                <option value="">Pasaporte</option>
+                                            <select name="busqueda_tipo_documento" id="busqueda_tipo_documento" class="form-select">
+                                                <option value="0">Todos</option>
+                                                <option value="01">DNI</option>
+                                                <option value="02">Pasaporte</option>
                                             </select>
                                         </th>
                                         <th>Serie
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_serie1" id="busqueda_serie1" class="form-control">
                                         </th>
                                         <th>Comprobante
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_comprobante1" id="busqueda_comprobante1" class="form-control">
                                         </th>
-                                        <th>Tipo Proceso
-                                            <br><input type="text" name="" id="" class="form-control">
+                                        <th>Tipo Libro
+                                            <br><input type="text" name="busqueda_tipo_libro1" id="busqueda_tipo_libro1" class="form-control">
                                         </th>
                                         <th>Nro Registros
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_nro_registros1" id="busqueda_nro_registros1" class="form-control">
                                         </th>
                                         <th>Estado
-                                            <br><input type="text" name="" id="" class="form-control">
+                                            <br><input type="text" name="busqueda_estado1" id="busqueda_estado1" class="form-control">
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>788548</td>
-                                        <td>2020-03-20</td>
-                                        <td>Manual</td>
-                                        <td>125</td>
-                                        <td>Activo</td>
+                                <tbody >
+                                    <?php foreach ($datos as $datos_registro_compras_sunat) {?>
+                                    <tr class="text-center" >
+                                        <td><?php echo $datos_registro_compras_sunat['TipoDocumento'] ?></td>
+                                        <td><?php echo $datos_registro_compras_sunat['SerieDcoumento'] ?></td>
+                                        <td><?php echo $datos_registro_compras_sunat['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registro_compras_sunat['LibroNombre']?></td>
+                                        <td><?php echo $datos_registro_compras_sunat['NumeroRegistrosSUNAT']?></td>
+                                        <td><?php echo $datos_registro_compras_sunat['Estado']?></td>
                                     </tr>
-                                    
-
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -358,10 +358,16 @@
 </div>
 
 <?= footerAdmin($data)?>
-<!-- DataTables -->
+
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script> -->
+<script src="<?= media(); ?>/js/compras/busqueda.js"></script>
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
 <script src="<?= media();?>/js/dataTables/table-datatable.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+<!-- JS -->
+
+<!-- DataTables -->
 </body>
 
 </html>

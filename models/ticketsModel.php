@@ -76,7 +76,8 @@ class TicketsModel extends Mysql
 			$request=$this->insert($query,$arrData);
 			return $request;
 		}
-
+		
+		// registro temporal de sunat
 		public function insertNewTemporaryRegistrationOfSUNATPurchases($archivo,$name_table){
 			$query = "EXEC SIRE_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
 			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);

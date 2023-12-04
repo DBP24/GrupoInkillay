@@ -164,21 +164,10 @@
 
 						$numeroregistros_empresa = null;
 						$nombrearchivo_empresa = null;
-
-                        
-						if($idlibro == 1)
-						{
-                            //Registro Compras Propuesto
-							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfSUNATPurchases($temp_sunat,$name_table);
-						} else if($idlibro == 3){
-						    //Registro Ventas Propuesto
-							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
-							$this->model->insertNewTemporaryRegistrationOfSUNATSales($temp_sunat,$name_table);
-						}
-
-						$idlibrosunat = $idlibro;
 						
+						// insertar ticket 
+						$idlibrosunat = $idlibro;
+												
 						$idlibroempresa = null;
 
 						$arrData = array($companiacodigo,
@@ -191,10 +180,29 @@
 						$nombrearchivo_empresa,
 						$correlativo,
 						$estado,
-					    $idlibrosunat,
-					    $idlibroempresa);
+						$idlibrosunat,
+						$idlibroempresa);
 
 						$requestAdd = $this->model->insertNewTicket($arrData);
+
+						
+						//compras y ventas sunat 
+                        
+						if($idlibro == 1)
+						{
+							
+                            //Registro Compras Propuesto
+							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfSUNATPurchases($temp_sunat, $name_table);
+
+						} else if($idlibro == 3){
+
+						    //Registro Ventas Propuesto
+							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
+							$this->model->insertNewTemporaryRegistrationOfSUNATSales($temp_sunat, $name_table);
+						}
+
+									
 						
 
 						if($requestAdd)
