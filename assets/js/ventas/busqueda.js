@@ -1,14 +1,7 @@
 $(document).ready(function () {
+
     var table1 = $('#example1').DataTable({
         ordering: false,
-        columnDefs: [
-            { width: '6%', targets: 0 },  // Tamaño de la primera columna
-            { width: '6%', targets: 1 }, // Tamaño de la segunda columna
-            { width: '10%', targets: 2 }, // Tamaño de la tercera columna
-            { width: '15%', targets: 3 }, // Tamaño de la cuarta columna
-            { width: '15%', targets: 4 }, // Tamaño de la quinta columna
-            { width: '10%', targets: 5 } // Tamaño de la sexta columna
-        ],
         language: {
             processing:     "Procesando...",
             search:         "Buscar:",
@@ -33,14 +26,44 @@ $(document).ready(function () {
         }
     });
 
-    $('#busqueda_tipo_documento1, #busqueda_serie1, #busqueda_comprobante1, #busqueda_tipo_libro1, #busqueda_nro_registros1, #busqueda_estado1').on('input', function () {
+    $('#busqueda_tipo_documento1,#busqueda_serie1,#busqueda_nro_de_documento1,#busqueda_ticket1,#busqueda_tipo_documento_identidad1,#busqueda_nro_documento_identidad1,#busqueda_razon_social1,#busqueda_monto_exportacion1,#busqueda_base_imponible_gravado1,#busqueda_base_imponible_dsct1,#busqueda_base_igv_ipm1,#busqueda_dscto_igv_ipm1,#busqueda_monto_exonerado1,#busqueda_monto_inafecto1,#busqueda_monto_isc1,#busqueda_base_imponible_ivap1,#busqueda_monto_ivap1,#busqueda_monto_icbper1,#busqueda_monto_otros_tributos1,#busqueda_monto_total1,#busqueda_moneda1,#busqueda_tipo_cambio1,#busqueda_fec_emision_doc_modificado1,#busqueda_tipo_doc_modificado1,#busqueda_serie_doc_modificado1,#busqueda_numero_doc_modificado1,#busqueda_proyecto_operados_atribucion1,#busqueda_tipo_de_nota1,#busqueda_estado_comprobante1,#busqueda_valor_fob_embarcado1,#busqueda_valor_operacion_gratuito1,#busqueda_tipo_operacion1,#busqueda_dam_cp1,#busqueda_clu1,#busqueda_car_sunat1').on('input', function () {
         // Obtener el valor de los campos de búsqueda
-        var tipoDocumento = $('#busqueda_tipo_documento1').val().toUpperCase();
-        var serie = $('#busqueda_serie1').val().toUpperCase();
-        var comprobante = $('#busqueda_comprobante1').val().toUpperCase();
-        var tipoLibro = $('#busqueda_tipo_libro1').val().toUpperCase();
-        var nroRegistros = $('#busqueda_nro_registros1').val().toUpperCase();
-        var estado = $('#busqueda_estado1').val().toUpperCase();
+        var busqueda_tipo_documento1=$('#busqueda_tipo_documento1').val().toUpperCase();
+        var busqueda_tipo_documento1=$('#busqueda_tipo_documento1').val().toUpperCase();
+        var busqueda_serie1=$('#busqueda_serie1').val().toUpperCase();
+        var busqueda_nro_de_documento1=$('#busqueda_nro_de_documento1').val().toUpperCase();
+        var busqueda_ticket1=$('#busqueda_ticket1').val().toUpperCase();
+        var busqueda_tipo_documento_identidad1=$('#busqueda_tipo_documento_identidad1').val().toUpperCase();
+        var busqueda_nro_documento_identidad1=$('#busqueda_nro_documento_identidad1').val().toUpperCase();
+        var busqueda_razon_social1=$('#busqueda_razon_social1').val().toUpperCase();
+        var busqueda_monto_exportacion1=$('#busqueda_monto_exportacion1').val().toUpperCase();
+        var busqueda_base_imponible_gravado1=$('#busqueda_base_imponible_gravado1').val().toUpperCase();
+        var busqueda_base_imponible_dsct1=$('#busqueda_base_imponible_dsct1').val().toUpperCase();
+        var busqueda_base_igv_ipm1=$('#busqueda_base_igv_ipm1').val().toUpperCase();
+        var busqueda_dscto_igv_ipm1=$('#busqueda_dscto_igv_ipm1').val().toUpperCase();
+        var busqueda_monto_exonerado1=$('#busqueda_monto_exonerado1').val().toUpperCase();
+        var busqueda_monto_inafecto1=$('#busqueda_monto_inafecto1').val().toUpperCase();
+        var busqueda_monto_isc1=$('#busqueda_monto_isc1').val().toUpperCase();
+        var busqueda_base_imponible_ivap1=$('#busqueda_base_imponible_ivap1').val().toUpperCase();
+        var busqueda_monto_ivap1=$('#busqueda_monto_ivap1').val().toUpperCase();
+        var busqueda_monto_icbper1=$('#busqueda_monto_icbper1').val().toUpperCase();
+        var busqueda_monto_otros_tributos1=$('#busqueda_monto_otros_tributos1').val().toUpperCase();
+        var busqueda_monto_total1=$('#busqueda_monto_total1').val().toUpperCase();
+        var busqueda_moneda1=$('#busqueda_moneda1').val().toUpperCase();
+        var busqueda_tipo_cambio1=$('#busqueda_tipo_cambio1').val().toUpperCase();
+        var busqueda_fec_emision_doc_modificado1=$('#busqueda_fec_emision_doc_modificado1').val().toUpperCase();
+        var busqueda_tipo_doc_modificado1=$('#busqueda_tipo_doc_modificado1').val().toUpperCase();
+        var busqueda_serie_doc_modificado1=$('#busqueda_serie_doc_modificado1').val().toUpperCase();
+        var busqueda_numero_doc_modificado1=$('#busqueda_numero_doc_modificado1').val().toUpperCase();
+        var busqueda_proyecto_operados_atribucion1=$('#busqueda_proyecto_operados_atribucion1').val().toUpperCase();
+        var busqueda_tipo_de_nota1=$('#busqueda_tipo_de_nota1').val().toUpperCase();
+        var busqueda_estado_comprobante1=$('#busqueda_estado_comprobante1').val().toUpperCase();
+        var busqueda_valor_fob_embarcado1=$('#busqueda_valor_fob_embarcado1').val().toUpperCase();
+        var busqueda_valor_operacion_gratuito1=$('#busqueda_valor_operacion_gratuito1').val().toUpperCase();
+        var busqueda_tipo_operacion1=$('#busqueda_tipo_operacion1').val().toUpperCase();
+        var busqueda_dam_cp1=$('#busqueda_dam_cp1').val().toUpperCase();
+        var busqueda_clu1=$('#busqueda_clu1').val().toUpperCase();
+        var busqueda_car_sunat1=$('#busqueda_car_sunat1').val().toUpperCase();
 
         // Limpiar la búsqueda actual
         table1.search('').draw();
@@ -51,36 +74,115 @@ $(document).ready(function () {
             column.search('').draw();
         });
 
-        if (tipoDocumento !== '0') {
-            table1.column(0).search(tipoDocumento).draw();
+        if (busqueda_tipo_documento1 !== '0') {
+            table1.column(1).search(busqueda_tipo_documento1).draw();
         }
-        if (serie !== '') {
-            table1.column(1).search(serie).draw();
+        if (busqueda_serie1 !== '') {
+            table1.column(2).search(busqueda_serie1).draw();
         }
-        if (comprobante !== '') {
-            table1.column(2).search(comprobante).draw();
+        if (busqueda_nro_de_documento1 !== '') {
+            table1.column(3).search(busqueda_nro_de_documento1).draw();
         }
-        if (tipoLibro !== '') {
-            table1.column(3).search(tipoLibro).draw();
+        if (busqueda_ticket1 !== '') {
+            table1.column(4).search(busqueda_ticket1).draw();
         }
-        if (nroRegistros !== '') {
-            table1.column(4).search(nroRegistros).draw();
+        if (busqueda_tipo_documento_identidad1 !== '') {
+            table1.column(5).search(busqueda_tipo_documento_identidad1).draw();
         }
-        if (estado !== '') {
-            table1.column(5).search(estado).draw();
+        if (busqueda_nro_documento_identidad1 !== '') {
+            table1.column(6).search(busqueda_nro_documento_identidad1).draw();
+        }
+        if (busqueda_razon_social1 !== '') {
+            table1.column(7).search(busqueda_razon_social1).draw();
+        }
+        if (busqueda_monto_exportacion1 !== '') {
+            table1.column(8).search(busqueda_monto_exportacion1).draw();
+        }
+        if (busqueda_base_imponible_gravado1 !== '') {
+            table1.column(9).search(busqueda_base_imponible_gravado1).draw();
+        }
+        if (busqueda_base_imponible_dsct1 !== '') {
+            table1.column(10).search(busqueda_base_imponible_dsct1).draw();
+        }
+        if (busqueda_base_igv_ipm1 !== '') {
+            table1.column(11).search(busqueda_base_igv_ipm1).draw();
+        }
+        if (busqueda_dscto_igv_ipm1 !== '') {
+            table1.column(12).search(busqueda_dscto_igv_ipm1).draw();
+        }
+        if (busqueda_monto_exonerado1 !== '') {
+            table1.column(13).search(busqueda_monto_exonerado1).draw();
+        }
+        if (busqueda_monto_inafecto1 !== '') {
+            table1.column(14).search(busqueda_monto_inafecto1).draw();
+        }
+        if (busqueda_monto_isc1 !== '') {
+            table1.column(15).search(busqueda_monto_isc1).draw();
+        }
+        if (busqueda_base_imponible_ivap1 !== '') {
+            table1.column(16).search(busqueda_base_imponible_ivap1).draw();
+        }
+        if (busqueda_monto_ivap1 !== '') {
+            table1.column(17).search(busqueda_monto_ivap1).draw();
+        }
+        if (busqueda_monto_icbper1 !== '') {
+            table1.column(18).search(busqueda_monto_icbper1).draw();
+        }
+        if (busqueda_monto_otros_tributos1 !== '') {
+            table1.column(19).search(busqueda_monto_otros_tributos1).draw();
+        }
+        if (busqueda_monto_total1 !== '') {
+            table1.column(20).search(busqueda_monto_total1).draw();
+        }
+        if (busqueda_moneda1 !== '') {
+            table1.column(21).search(busqueda_moneda1).draw();
+        }
+        if (busqueda_tipo_cambio1 !== '') {
+            table1.column(22).search(busqueda_tipo_cambio1).draw();
+        }
+        if (busqueda_fec_emision_doc_modificado1 !== '') {
+            table1.column(23).search(busqueda_fec_emision_doc_modificado1).draw();
+        }
+        if (busqueda_tipo_doc_modificado1 !== '') {
+            table1.column(24).search(busqueda_tipo_doc_modificado1).draw();
+        }
+        if (busqueda_serie_doc_modificado1 !== '') {
+            table1.column(25).search(busqueda_serie_doc_modificado1).draw();
+        }
+        if (busqueda_numero_doc_modificado1 !== '') {
+            table1.column(26).search(busqueda_numero_doc_modificado1).draw();
+        }
+        if (busqueda_proyecto_operados_atribucion1 !== '') {
+            table1.column(27).search(busqueda_proyecto_operados_atribucion1).draw();
+        }
+        if (busqueda_tipo_de_nota1 !== '') {
+            table1.column(28).search(busqueda_tipo_de_nota1).draw();
+        }
+        if (busqueda_estado_comprobante1 !== '') {
+            table1.column(29).search(busqueda_estado_comprobante1).draw();
+        }
+        if (busqueda_valor_fob_embarcado1 !== '') {
+            table1.column(30).search(busqueda_valor_fob_embarcado1).draw();
+        }
+        if (busqueda_valor_operacion_gratuito1 !== '') {
+            table1.column(31).search(busqueda_valor_operacion_gratuito1).draw();
+        }
+        if (busqueda_tipo_operacion1 !== '') {
+            table1.column(32).search(busqueda_tipo_operacion1).draw();
+        }
+        if (busqueda_dam_cp1 !== '') {
+            table1.column(33).search(busqueda_dam_cp1).draw();
+        }
+        if (busqueda_clu1 !== '') {
+            table1.column(34).search(busqueda_clu1).draw();
+        }
+        if (busqueda_car_sunat1 !== '') {
+            table1.column(35).search(busqueda_car_sunat1).draw();
         }
     });
 
     var table2 = $('#example2').DataTable({
         ordering: false,
-        columnDefs: [
-            { width: '6%', targets: 0 },  // Tamaño de la primera columna
-            { width: '6%', targets: 1 }, // Tamaño de la segunda columna
-            { width: '10%', targets: 2 }, // Tamaño de la tercera columna
-            { width: '15%', targets: 3 }, // Tamaño de la cuarta columna
-            { width: '15%', targets: 4 }, // Tamaño de la quinta columna
-            { width: '10%', targets: 5 } // Tamaño de la sexta columna
-        ],
         language: {
             processing:     "Procesando...",
             search:         "Buscar:",
@@ -105,14 +207,43 @@ $(document).ready(function () {
         }
     });
 
-    $('#busqueda_tipo_documento2, #busqueda_serie2, #busqueda_comprobante2, #busqueda_tipo_libro2, #busqueda_nro_registros2, #busqueda_estado2').on('input', function () {
+    $('#busqueda_tipo_documento2,#busqueda_serie2,#busqueda_nro_de_documento2,#busqueda_ticket2,#busqueda_tipo_documento_identidad2,#busqueda_nro_documento_identidad2,#busqueda_razon_social2,#busqueda_monto_exportacion2,#busqueda_base_imponible_gravado2,#busqueda_base_imponible_dsct2,#busqueda_base_igv_ipm2,#busqueda_dscto_igv_ipm2,#busqueda_monto_exonerado2,#busqueda_monto_inafecto2,#busqueda_monto_isc2,#busqueda_base_imponible_ivap2,#busqueda_monto_ivap2,#busqueda_monto_icbper2,#busqueda_monto_otros_tributos2,#busqueda_monto_total2,#busqueda_moneda2,#busqueda_tipo_cambio2,#busqueda_fec_emision_doc_modificado2,#busqueda_tipo_doc_modificado2,#busqueda_serie_doc_modificado2,#busqueda_numero_doc_modificado2,#busqueda_proyecto_operados_atribucion2,#busqueda_tipo_de_nota2,#busqueda_estado_comprobante2,#busqueda_valor_fob_embarcado2,#busqueda_valor_operacion_gratuito2,#busqueda_tipo_operacion2,#busqueda_dam_cp2,#busqueda_clu2,#busqueda_car_sunat2').on('input', function () {
         // Obtener el valor de los campos de búsqueda
-        var tipoDocumento2 = $('#busqueda_tipo_documento2').val().toUpperCase();
-        var serie2 = $('#busqueda_serie2').val().toUpperCase();
-        var comprobante2 = $('#busqueda_comprobante2').val().toUpperCase();
-        var tipoLibro2 = $('#busqueda_tipo_libro2').val().toUpperCase();
-        var nroRegistros2 = $('#busqueda_nro_registros2').val().toUpperCase();
-        var estado2 = $('#busqueda_estado2').val().toUpperCase();
+        var busqueda_tipo_documento2=$('#busqueda_tipo_documento2').val().toUpperCase();
+        var busqueda_serie2=$('#busqueda_serie2').val().toUpperCase();
+        var busqueda_nro_de_documento2=$('#busqueda_nro_de_documento2').val().toUpperCase();
+        var busqueda_ticket2=$('#busqueda_ticket2').val().toUpperCase();
+        var busqueda_tipo_documento_identidad2=$('#busqueda_tipo_documento_identidad2').val().toUpperCase();
+        var busqueda_nro_documento_identidad2=$('#busqueda_nro_documento_identidad2').val().toUpperCase();
+        var busqueda_razon_social2=$('#busqueda_razon_social2').val().toUpperCase();
+        var busqueda_monto_exportacion2=$('#busqueda_monto_exportacion2').val().toUpperCase();
+        var busqueda_base_imponible_gravado2=$('#busqueda_base_imponible_gravado2').val().toUpperCase();
+        var busqueda_base_imponible_dsct2=$('#busqueda_base_imponible_dsct2').val().toUpperCase();
+        var busqueda_base_igv_ipm2=$('#busqueda_base_igv_ipm2').val().toUpperCase();
+        var busqueda_dscto_igv_ipm2=$('#busqueda_dscto_igv_ipm2').val().toUpperCase();
+        var busqueda_monto_exonerado2=$('#busqueda_monto_exonerado2').val().toUpperCase();
+        var busqueda_monto_inafecto2=$('#busqueda_monto_inafecto2').val().toUpperCase();
+        var busqueda_monto_isc2=$('#busqueda_monto_isc2').val().toUpperCase();
+        var busqueda_base_imponible_ivap2=$('#busqueda_base_imponible_ivap2').val().toUpperCase();
+        var busqueda_monto_ivap2=$('#busqueda_monto_ivap2').val().toUpperCase();
+        var busqueda_monto_icbper2=$('#busqueda_monto_icbper2').val().toUpperCase();
+        var busqueda_monto_otros_tributos2=$('#busqueda_monto_otros_tributos2').val().toUpperCase();
+        var busqueda_monto_total2=$('#busqueda_monto_total2').val().toUpperCase();
+        var busqueda_moneda2=$('#busqueda_moneda2').val().toUpperCase();
+        var busqueda_tipo_cambio2=$('#busqueda_tipo_cambio2').val().toUpperCase();
+        var busqueda_fec_emision_doc_modificado2=$('#busqueda_fec_emision_doc_modificado2').val().toUpperCase();
+        var busqueda_tipo_doc_modificado2=$('#busqueda_tipo_doc_modificado2').val().toUpperCase();
+        var busqueda_serie_doc_modificado2=$('#busqueda_serie_doc_modificado2').val().toUpperCase();
+        var busqueda_numero_doc_modificado2=$('#busqueda_numero_doc_modificado2').val().toUpperCase();
+        var busqueda_proyecto_operados_atribucion2=$('#busqueda_proyecto_operados_atribucion2').val().toUpperCase();
+        var busqueda_tipo_de_nota2=$('#busqueda_tipo_de_nota2').val().toUpperCase();
+        var busqueda_estado_comprobante2=$('#busqueda_estado_comprobante2').val().toUpperCase();
+        var busqueda_valor_fob_embarcado2=$('#busqueda_valor_fob_embarcado2').val().toUpperCase();
+        var busqueda_valor_operacion_gratuito2=$('#busqueda_valor_operacion_gratuito2').val().toUpperCase();
+        var busqueda_tipo_operacion2=$('#busqueda_tipo_operacion2').val().toUpperCase();
+        var busqueda_dam_cp2=$('#busqueda_dam_cp2').val().toUpperCase();
+        var busqueda_clu2=$('#busqueda_clu2').val().toUpperCase();
+        var busqueda_car_sunat2=$('#busqueda_car_sunat2').val().toUpperCase();
 
         // Limpiar la búsqueda actual
         table2.search('').draw();
@@ -123,25 +254,283 @@ $(document).ready(function () {
             column.search('').draw();
         });
 
-        if (tipoDocumento2 !== '0') {
-            table2.column(0).search(tipoDocumento2).draw();
+        if (busqueda_tipo_documento2 !== '0') {
+            table2.column(1).search(busqueda_tipo_documento2).draw();
         }
-        if (serie2 !== '') {
-            table2.column(1).search(serie2).draw();
+        if (busqueda_serie2 !== '') {
+            table2.column(2).search(busqueda_serie2).draw();
         }
-        if (comprobante2 !== '') {
-            table2.column(2).search(comprobante2).draw();
+        if (busqueda_nro_de_documento2 !== '') {
+            table2.column(3).search(busqueda_nro_de_documento2).draw();
         }
-        if (tipoLibro2 !== '') {
-            table2.column(3).search(tipoLibro2).draw();
+        if (busqueda_ticket2 !== '') {
+            table2.column(4).search(busqueda_ticket2).draw();
         }
-        if (nroRegistros2 !== '') {
-            table2.column(4).search(nroRegistros2).draw();
+        if (busqueda_tipo_documento_identidad2 !== '') {
+            table2.column(5).search(busqueda_tipo_documento_identidad2).draw();
         }
-        if (estado2 !== '') {
-            table2.column(5).search(estado2).draw();
+        if (busqueda_nro_documento_identidad2 !== '') {
+            table2.column(6).search(busqueda_nro_documento_identidad2).draw();
+        }
+        if (busqueda_razon_social2 !== '') {
+            table2.column(7).search(busqueda_razon_social2).draw();
+        }
+        if (busqueda_monto_exportacion2 !== '') {
+            table2.column(8).search(busqueda_monto_exportacion2).draw();
+        }
+        if (busqueda_base_imponible_gravado2 !== '') {
+            table2.column(9).search(busqueda_base_imponible_gravado2).draw();
+        }
+        if (busqueda_base_imponible_dsct2 !== '') {
+            table2.column(10).search(busqueda_base_imponible_dsct2).draw();
+        }
+        if (busqueda_base_igv_ipm2 !== '') {
+            table2.column(11).search(busqueda_base_igv_ipm2).draw();
+        }
+        if (busqueda_dscto_igv_ipm2 !== '') {
+            table2.column(12).search(busqueda_dscto_igv_ipm2).draw();
+        }
+        if (busqueda_monto_exonerado2 !== '') {
+            table2.column(13).search(busqueda_monto_exonerado2).draw();
+        }
+        if (busqueda_monto_inafecto2 !== '') {
+            table2.column(14).search(busqueda_monto_inafecto2).draw();
+        }
+        if (busqueda_monto_isc2 !== '') {
+            table2.column(15).search(busqueda_monto_isc2).draw();
+        }
+        if (busqueda_base_imponible_ivap2 !== '') {
+            table2.column(16).search(busqueda_base_imponible_ivap2).draw();
+        }
+        if (busqueda_monto_ivap2 !== '') {
+            table2.column(17).search(busqueda_monto_ivap2).draw();
+        }
+        if (busqueda_monto_icbper2 !== '') {
+            table2.column(18).search(busqueda_monto_icbper2).draw();
+        }
+        if (busqueda_monto_otros_tributos2 !== '') {
+            table2.column(19).search(busqueda_monto_otros_tributos2).draw();
+        }
+        if (busqueda_monto_total2 !== '') {
+            table2.column(20).search(busqueda_monto_total2).draw();
+        }
+        if (busqueda_moneda2 !== '') {
+            table2.column(21).search(busqueda_moneda2).draw();
+        }
+        if (busqueda_tipo_cambio2 !== '') {
+            table2.column(22).search(busqueda_tipo_cambio2).draw();
+        }
+        if (busqueda_fec_emision_doc_modificado2 !== '') {
+            table2.column(23).search(busqueda_fec_emision_doc_modificado2).draw();
+        }
+        if (busqueda_tipo_doc_modificado2 !== '') {
+            table2.column(24).search(busqueda_tipo_doc_modificado2).draw();
+        }
+        if (busqueda_serie_doc_modificado2 !== '') {
+            table2.column(25).search(busqueda_serie_doc_modificado2).draw();
+        }
+        if (busqueda_numero_doc_modificado2 !== '') {
+            table2.column(26).search(busqueda_numero_doc_modificado2).draw();
+        }
+        if (busqueda_proyecto_operados_atribucion2 !== '') {
+            table2.column(27).search(busqueda_proyecto_operados_atribucion2).draw();
+        }
+        if (busqueda_tipo_de_nota2 !== '') {
+            table2.column(28).search(busqueda_tipo_de_nota2).draw();
+        }
+        if (busqueda_estado_comprobante2 !== '') {
+            table2.column(29).search(busqueda_estado_comprobante2).draw();
+        }
+        if (busqueda_valor_fob_embarcado2 !== '') {
+            table2.column(30).search(busqueda_valor_fob_embarcado2).draw();
+        }
+        if (busqueda_valor_operacion_gratuito2 !== '') {
+            table2.column(31).search(busqueda_valor_operacion_gratuito2).draw();
+        }
+        if (busqueda_tipo_operacion2 !== '') {
+            table2.column(32).search(busqueda_tipo_operacion2).draw();
+        }
+        if (busqueda_dam_cp2 !== '') {
+            table2.column(33).search(busqueda_dam_cp2).draw();
+        }
+        if (busqueda_clu2 !== '') {
+            table2.column(34).search(busqueda_clu2).draw();
+        }
+        if (busqueda_car_sunat2 !== '') {
+            table2.column(35).search(busqueda_car_sunat2).draw();
+        }
+    });
+    
+    function realizarBusqueda() {
+        var periodo = $('#busqueda_periodo').val();
+        if (periodo ==="" ){
+            periodo = obtenerUltimoPeriodo();
+        }
+
+     // Realizar la solicitud AJAX al servidor
+     $.ajax({
+        url: base_url + '/Ventas/buscarXPeriodoSUNAT', // Reemplaza con la ruta real de tu script PHP
+        method: 'POST',
+        dataType: 'json',
+        data: {
+            periodo: periodo
+        },
+        success: function (response) {
+        //limpiar
+        table1.clear().draw();
+
+        response.forEach(function (datos_registros_ventas_sunat) {
+            var row = '<tr class="text-center">';
+            row += '<td> <a onclick="verDatosSUNAT(' + datos_registros_ventas_sunat['ID_RegVentSunat'] + ')"> <ion-icon class="icon__e" name="eye-outline"></ion-icon></a></td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipoDocumento'] !== null ? datos_registros_ventas_sunat['TipoDocumento'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['SerieDcoumento'] !== null ? datos_registros_ventas_sunat['SerieDcoumento'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['NumeroDocumento'] !== null ? datos_registros_ventas_sunat['NumeroDocumento'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['Ticket'] !== null ? datos_registros_ventas_sunat['Ticket'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipDocIdentidad'] !== null ? datos_registros_ventas_sunat['TipDocIdentidad'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['NroDocIdentidad'] !== null ? datos_registros_ventas_sunat['NroDocIdentidad'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['RazonSocial'] !== null ? datos_registros_ventas_sunat['RazonSocial'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoExportacion'] !== null ? datos_registros_ventas_sunat['MontoExportacion'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['BaseImponibleGravado'] !== null ? datos_registros_ventas_sunat['BaseImponibleGravado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['BaseImponibleDsct'] !== null ? datos_registros_ventas_sunat['BaseImponibleDsct'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['BaseIgvIpm'] !== null ? datos_registros_ventas_sunat['BaseIgvIpm'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['DsctoIgvIpm'] !== null ? datos_registros_ventas_sunat['DsctoIgvIpm'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoExonerado'] !== null ? datos_registros_ventas_sunat['MontoExonerado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoInafecto'] !== null ? datos_registros_ventas_sunat['MontoInafecto'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoISC'] !== null ? datos_registros_ventas_sunat['MontoISC'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['BaseImponibleIvap'] !== null ? datos_registros_ventas_sunat['BaseImponibleIvap'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoIvap'] !== null ? datos_registros_ventas_sunat['MontoIvap'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoICBPER'] !== null ? datos_registros_ventas_sunat['MontoICBPER'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoOtrostributos'] !== null ? datos_registros_ventas_sunat['MontoOtrostributos'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['MontoTotal'] !== null ? datos_registros_ventas_sunat['MontoTotal'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['Moneda'] !== null ? datos_registros_ventas_sunat['Moneda'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipoCambio'] !== null ? datos_registros_ventas_sunat['TipoCambio'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['FecEmisionDocModificado'] !== null ? datos_registros_ventas_sunat['FecEmisionDocModificado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipoDocModificado'] !== null ? datos_registros_ventas_sunat['TipoDocModificado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['SerieDocModificado'] !== null ? datos_registros_ventas_sunat['SerieDocModificado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['NumeroDocModificado'] !== null ? datos_registros_ventas_sunat['NumeroDocModificado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['ProyectoOperadosAtribucion'] !== null ? datos_registros_ventas_sunat['ProyectoOperadosAtribucion'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipodeNota'] !== null ? datos_registros_ventas_sunat['TipodeNota'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['EstadoComprobante'] !== null ? datos_registros_ventas_sunat['EstadoComprobante'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['ValorFOBEmbarcado'] !== null ? datos_registros_ventas_sunat['ValorFOBEmbarcado'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['ValorOperacionGratuito'] !== null ? datos_registros_ventas_sunat['ValorOperacionGratuito'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['TipoOperacion'] !== null ? datos_registros_ventas_sunat['TipoOperacion'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['DamCP'] !== null ? datos_registros_ventas_sunat['DamCP'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['CLU'] !== null ? datos_registros_ventas_sunat['CLU'] : '') + '</td>';
+            row += '<td>' + (datos_registros_ventas_sunat['CarSunat'] !== null ? datos_registros_ventas_sunat['CarSunat'] : '') + '</td>';
+
+            
+            row += '</tr>';
+            table1.row.add($(row));
+        });
+
+
+        //dibujar
+        table1.draw();
+                    
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+    
+     // Realizar la solicitud AJAX al servidor
+     $.ajax({
+        url: base_url + '/Ventas/buscarXPeriodoEmpresa', // Reemplaza con la ruta real de tu script PHP
+        method: 'POST',
+        dataType: 'json',
+        data: {
+            periodo: periodo
+        },
+        success: function (response) {
+        //limpiar
+        table2.clear().draw();
+
+        response.forEach(function (datos_registros_ventas_empresa) {
+            var row2 = '<tr class="text-center">';
+            row2 += '<td> <a onclick="verDatosEmpresa(' + datos_registros_ventas_empresa['ID_RegVentEmpresa'] + ')"> <ion-icon class="icon__e" name="eye-outline"></ion-icon></a></td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipoDocumento'] !== null ? datos_registros_ventas_empresa['TipoDocumento'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['SerieDcoumento'] !== null ? datos_registros_ventas_empresa['SerieDcoumento'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['NumeroDocumento'] !== null ? datos_registros_ventas_empresa['NumeroDocumento'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['Ticket'] !== null ? datos_registros_ventas_empresa['Ticket'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipDocIdentidad'] !== null ? datos_registros_ventas_empresa['TipDocIdentidad'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['NroDocIdentidad'] !== null ? datos_registros_ventas_empresa['NroDocIdentidad'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['RazonSocial'] !== null ? datos_registros_ventas_empresa['RazonSocial'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoExportacion'] !== null ? datos_registros_ventas_empresa['MontoExportacion'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['BaseImponibleGravado'] !== null ? datos_registros_ventas_empresa['BaseImponibleGravado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['BaseImponibleDsct'] !== null ? datos_registros_ventas_empresa['BaseImponibleDsct'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['BaseIgvIpm'] !== null ? datos_registros_ventas_empresa['BaseIgvIpm'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['DsctoIgvIpm'] !== null ? datos_registros_ventas_empresa['DsctoIgvIpm'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoExonerado'] !== null ? datos_registros_ventas_empresa['MontoExonerado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoInafecto'] !== null ? datos_registros_ventas_empresa['MontoInafecto'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoISC'] !== null ? datos_registros_ventas_empresa['MontoISC'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['BaseImponibleIvap'] !== null ? datos_registros_ventas_empresa['BaseImponibleIvap'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoIvap'] !== null ? datos_registros_ventas_empresa['MontoIvap'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoICBPER'] !== null ? datos_registros_ventas_empresa['MontoICBPER'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoOtrostributos'] !== null ? datos_registros_ventas_empresa['MontoOtrostributos'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['MontoTotal'] !== null ? datos_registros_ventas_empresa['MontoTotal'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['Moneda'] !== null ? datos_registros_ventas_empresa['Moneda'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipoCambio'] !== null ? datos_registros_ventas_empresa['TipoCambio'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['FecEmisionDocModificado'] !== null ? datos_registros_ventas_empresa['FecEmisionDocModificado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipoDocModificado'] !== null ? datos_registros_ventas_empresa['TipoDocModificado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['SerieDocModificado'] !== null ? datos_registros_ventas_empresa['SerieDocModificado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['NumeroDocModificado'] !== null ? datos_registros_ventas_empresa['NumeroDocModificado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['ProyectoOperadosAtribucion'] !== null ? datos_registros_ventas_empresa['ProyectoOperadosAtribucion'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipodeNota'] !== null ? datos_registros_ventas_empresa['TipodeNota'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['EstadoComprobante'] !== null ? datos_registros_ventas_empresa['EstadoComprobante'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['ValorFOBEmbarcado'] !== null ? datos_registros_ventas_empresa['ValorFOBEmbarcado'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['ValorOperacionGratuito'] !== null ? datos_registros_ventas_empresa['ValorOperacionGratuito'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['TipoOperacion'] !== null ? datos_registros_ventas_empresa['TipoOperacion'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['DamCP'] !== null ? datos_registros_ventas_empresa['DamCP'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['CLU'] !== null ? datos_registros_ventas_empresa['CLU'] : '') + '</td>';
+            row2 += '<td>' + (datos_registros_ventas_empresa['CarSunat'] !== null ? datos_registros_ventas_empresa['CarSunat'] : '') + '</td>';
+        
+            row2 += '</tr>';
+            table2.row.add($(row2));
+        });
+
+        //dibujar
+        table2.draw();
+                    
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        }
+    });
+      
+    }
+    
+    // Llamar a realizarBusqueda cuando se haga clic en el botón
+    $('.realizar_busqueda').on('click', realizarBusqueda);
+    
+    // Llamar a realizarBusqueda cuando se escriba en el campo #busqueda_periodo
+    $('#busqueda_periodo').on('input', function () {
+        var periodo = $(this).val().trim();
+    
+        if (periodo === "") {
+            realizarBusqueda();
         }
     });
 
+    function obtenerUltimoPeriodo() {
+        const fechaActual = new Date();
+        let ultimoPeriodo;
+    
+        // Obtener año y mes actuales
+        const añoActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Nota: en JavaScript, los meses van de 0 a 11
+    
+        // Calcular el último periodo
+        if (mesActual === 1) {
+            // Si el mes actual es enero, restar 1 al año y establecer el mes a diciembre
+            ultimoPeriodo = (añoActual - 1).toString() + '12';
+        } else {
+            // Para otros meses, restar 1 al mes
+            const mesAnterior = (mesActual - 1).toString().padStart(2, '0');
+            ultimoPeriodo = añoActual.toString() + mesAnterior;
+        }
+    
+        return ultimoPeriodo;
+    }
+    
   
 });

@@ -61,7 +61,6 @@
 		public function crearUsuario(){
 			
 			if($_POST){
-				print_r("hola");
 				$apellidopaterno = $_POST['apellidopaterno'];
 				$apellidomaterno = $_POST['apellidomaterno'];
 				$nombres = $_POST['nombres'];

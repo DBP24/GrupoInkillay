@@ -1671,3 +1671,47 @@ ul.categories-list li {
 }
 
 
+.datos_del_proveedor{
+    padding: 20px 0;
+    border : 3px solid #F3F3F3;
+    margin-top: 20px !important;
+    border-radius: 5px;
+}
+
+.datos_del_proveedor::before {
+    content: "Datos del Proveedor";
+    position: absolute;
+    top: 3%;
+    left: 10%; 
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 0 10px; 
+    background-color: #0D65AC;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+
+.detalles_del_cp {
+    padding: 20px 0;
+    border : 3px solid #F3F3F3;
+    margin-top: 20px !important;
+    border-radius: 5px;
+}
+
+.detalles_del_cp::before {
+    content: "Detalles del CP";
+    position: absolute;
+    top: 21%;
+    left: 10%; 
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 0 10px; 
+    background-color: #0D65AC;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+}
+
+
+

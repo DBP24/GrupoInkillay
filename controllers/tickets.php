@@ -89,8 +89,6 @@
 				$extension1 = pathinfo($nombrearchivo_sunat, PATHINFO_EXTENSION);
 
 				$extensiones_permitidas = array('txt');
-             
-                $nombrearchivo=$nombrearchivo_sunat;
 
 				$estado='1';
 
@@ -156,11 +154,6 @@
 					{
 						// Contar los registros en el archivo
 						$numeroregistros_sunat = $this->contarRegistrosEnArchivo($temp_sunat);
-
-						if(empty($nombrearchivo_sunat))
-						{
-                            $nombrearchivo_sunat = null;
-						}
 
 						$numeroregistros_empresa = null;
 						$nombrearchivo_empresa = null;
@@ -259,7 +252,8 @@
 				$archivo_sunat_1 = $_POST['archivo_sunat_1'];
 				$archivo_empresa_1 = $_POST['archivo_1'];
 
-				$id_libro_empresa = $_POST['id_libro_empresa'];
+				//Recupero el id_libro_Empresa
+				$idlibroempresa = $_POST['id_libro_empresa'];
 
 				//Recibo el id
 				$id = intval($_POST['id_ticket']);
@@ -321,26 +315,40 @@
 							$numeroregistros_sunat = $nro_registros_sunat;
 
 						}
-                        
-						if(!empty($archivo_sunat_1))
+
+						if(empty($nombrearchivo_sunat))
 						{
-							$nombrearchivo_sunat = $archivo_sunat_1;
+
+							$nombre_archivo_sunat=$archivo_sunat_1;
+
+						} else {
+
+							$nombre_archivo_sunat=$nombrearchivo_sunat;
+
 						}
 
-						if(!empty($archivo_empresa_1))
+						if(empty($nombrearchivo_empresa))
 						{
-                            $nombrearchivo_empresa = $archivo_empresa_1;
+
+							$nombre_archivo_empresa=$archivo_empresa_1;
+
+						} else {
+							$nombre_archivo_empresa=$nombrearchivo_empresa;
 						}
 
 						//Capturar el id para IdLibroEmpresa
-						if($id_libro_empresa == null)
+						if($idlibro == 2 || $idlibro == 4)
 						{
 
 							$id_libro_empresa = $idlibro;
 
+						} else {
+
+							$id_libro_empresa = $idlibroempresa;
+
 						}
 
-						$arrData = array($numeroregistros_sunat, $numeroregistros_empresa,$nombrearchivo_sunat,$nombrearchivo_empresa,$id_libro_empresa,$id);
+						$arrData = array(intval($numeroregistros_sunat), intval($numeroregistros_empresa),$nombre_archivo_sunat,$nombre_archivo_empresa,intval($id_libro_empresa),$id);
 
 						//Ver si COMPRAS (SUNAT - EMPRESA) tiene registros
 						$viewTicket = $this->model->viewTicket($id);

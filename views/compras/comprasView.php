@@ -1,4 +1,5 @@
-<?= headerAdmin($data);?>
+<?= headerAdmin($data);
+getModal('compras','editar',$data); ?>
 <!-- start page content wrapper-->
 <div class="page-content-wrapper">
     <!-- start page content-->
@@ -11,10 +12,9 @@
         <div class="row">
             <div class="col-6 d-flex justify-content-center align-items-center">
                 <label>Periodo</label>
-                <input type="text" id="" name="" class="form-control ms-1 me-1">
-                <button class="btn btn-primary ms-2">Buscar</button>
-                <button class="btn btn-primary mx-2">Importar</button>
-                <button class="btn btn-primary ">Análisis</button>
+                <input type="text" id="busqueda_periodo" name="busqueda_periodo" class="form-control ms-1 me-1">
+                <button class="btn btn-primary ms-2 realizar_busqueda">Buscar</button>
+                <button class="btn btn-primary mx-2">Análisis</button>
             </div>
         </div>
         <nav class="mt-3">
@@ -45,40 +45,202 @@
                             <table id="example1" class="table table-hover" width="100%">
                                 <thead class="text-center table-light">
                                     <tr>
+                                        <th>
+
+                                        </th>
                                         <th>Tipo Doc.
-                                            <br>
-                                            <select name="busqueda_tipo_documento1" id="busqueda_tipo_documento1" class="form-select">
+                                            <br><br>
+                                            <select name="busqueda_tipo_documento1" id="busqueda_tipo_documento1"
+                                                class="form-select">
                                                 <option value="0">Todos</option>
                                                 <option value="01">DNI</option>
                                                 <option value="02">Pasaporte</option>
                                             </select>
                                         </th>
-                                        <th>Serie
-                                            <br><input type="text" name="busqueda_serie1" id="busqueda_serie1" class="form-control">
+                                        <th>Serie<br>
+                                            <br><input type="text" name="busqueda_serie1" id="busqueda_serie1"
+                                                class="form-control">
                                         </th>
-                                        <th>Comprobante
-                                            <br><input type="text" name="busqueda_comprobante1" id="busqueda_comprobante1" class="form-control">
+                                        <th>Nro de <br> Documento
+                                            <br><input type="text" name="busqueda_nro_de_documento1"
+                                                id="busqueda_nro_de_documento1" class="form-control">
                                         </th>
-                                        <th>Tipo Libro
-                                            <br><input type="text" name="busqueda_tipo_libro1" id="busqueda_tipo_libro1" class="form-control">
+                                        <th>Ticket<br>
+                                            <br><input type="text" name="busqueda_ticket1" id="busqueda_ticket1"
+                                                class="form-control">
                                         </th>
-                                        <th>Nro Registros
-                                            <br><input type="text" name="busqueda_nro_registros1" id="busqueda_nro_registros1" class="form-control">
+                                        <th>Tipo de Documento <br> de Identidad
+                                            <br><input type="text" name="busqueda_tipo_documento_identidad1"
+                                                id="busqueda_tipo_documento_identidad1" class="form-control">
                                         </th>
-                                        <th>Estado
-                                            <br><input type="text" name="busqueda_estado1" id="busqueda_estado1" class="form-control">
+                                        <th>Nro de Documento <br> de Identidad
+                                            <br><input type="text" name="busqueda_nro_documento_identidad1"
+                                                id="busqueda_nro_documento_identidad1" class="form-control">
+                                        </th>
+                                        <th>Razón Social <br>
+                                            <br><input type="text" name="busqueda_razon_social1"
+                                                id="busqueda_razon_social1" class="form-control">
+                                        </th>
+                                        <th>Monto Exportación <br>
+                                            <br><input type="text" name="busqueda_monto_exportacion1"
+                                                id="busqueda_monto_exportacion1" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Gravado
+                                            <br><input type="text" name="busqueda_base_imponible_gravado1"
+                                                id="busqueda_base_imponible_gravado1" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Dsct
+                                            <br><input type="text" name="busqueda_base_imponible_dsct1"
+                                                id="busqueda_base_imponible_dsct1" class="form-control">
+                                        </th>
+                                        <th>Base Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_base_igv_ipm1"
+                                                id="busqueda_base_igv_ipm1" class="form-control">
+                                        </th>
+                                        <th>Dscto Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_dscto_igv_ipm1"
+                                                id="busqueda_dscto_igv_ipm1" class="form-control">
+                                        </th>
+                                        <th>Monto Exonerado <br>
+                                            <br><input type="text" name="busqueda_monto_exonerado1"
+                                                id="busqueda_monto_exonerado1" class="form-control">
+                                        </th>
+                                        <th>Monto Inafecto <br>
+                                            <br><input type="text" name="busqueda_monto_inafecto1"
+                                                id="busqueda_monto_inafecto1" class="form-control">
+                                        </th>
+                                        <th>Monto ISC <br>
+                                            <br><input type="text" name="busqueda_monto_isc1" id="busqueda_monto_isc1"
+                                                class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Ivap
+                                            <br><input type="text" name="busqueda_base_imponible_ivap1"
+                                                id="busqueda_base_imponible_ivap1" class="form-control">
+                                        </th>
+                                        <th>Monto Ivap <br>
+                                            <br><input type="text" name="busqueda_monto_ivap1" id="busqueda_monto_ivap1"
+                                                class="form-control">
+                                        </th>
+                                        <th>Monto ICBPER <br>
+                                            <br><input type="text" name="busqueda_monto_icbper1"
+                                                id="busqueda_monto_icbper1" class="form-control">
+                                        </th>
+                                        <th>Monto Otros <br> tributos
+                                            <br><input type="text" name="busqueda_monto_otros_tributos1"
+                                                id="busqueda_monto_otros_tributos1" class="form-control">
+                                        </th>
+                                        <th>Monto Total <br>
+                                            <br><input type="text" name="busqueda_monto_total1"
+                                                id="busqueda_monto_total1" class="form-control">
+                                        </th>
+                                        <th>Moneda <br>
+                                            <br><input type="text" name="busqueda_moneda1" id="busqueda_moneda1"
+                                                class="form-control">
+                                        </th>
+                                        <th>Tipo Cambio <br>
+                                            <br><input type="text" name="busqueda_tipo_cambio1"
+                                                id="busqueda_tipo_cambio1" class="form-control">
+                                        </th>
+                                        <th>Fec Emision <br> Doc Modificado
+                                            <br><input type="text" name="busqueda_fec_emision_doc_modificado1"
+                                                id="busqueda_fec_emision_doc_modificado1" class="form-control">
+                                        </th>
+                                        <th>Tipo Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_tipo_doc_modificado1"
+                                                id="busqueda_tipo_doc_modificado1" class="form-control">
+                                        </th>
+                                        <th>Serie Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_serie_doc_modificado1"
+                                                id="busqueda_serie_doc_modificado1" class="form-control">
+                                        </th>
+                                        <th>Numero Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_numero_doc_modificado1"
+                                                id="busqueda_numero_doc_modificado1" class="form-control">
+                                        </th>
+                                        <th>Proyecto Operados <br> Atribucion
+                                            <br><input type="text" name="busqueda_proyecto_operados_atribucion1"
+                                                id="busqueda_proyecto_operados_atribucion1" class="form-control">
+                                        </th>
+                                        <th>Tipo de Nota <br>
+                                            <br><input type="text" name="busqueda_tipo_de_nota1"
+                                                id="busqueda_tipo_de_nota1" class="form-control">
+                                        </th>
+                                        <th>Estado Comprobante <br>
+                                            <br><input type="text" name="busqueda_estado_comprobante1"
+                                                id="busqueda_estado_comprobante1" class="form-control">
+                                        </th>
+                                        <th>Valor FOB <br> Embarcado
+                                            <br><input type="text" name="busqueda_valor_fob_embarcado1"
+                                                id="busqueda_valor_fob_embarcado1" class="form-control">
+                                        </th>
+                                        <th>Valor Operacion <br> Gratuito
+                                            <br><input type="text" name="busqueda_valor_operacion_gratuito1"
+                                                id="busqueda_valor_operacion_gratuito1" class="form-control">
+                                        </th>
+                                        <th>Tipo Operacion <br>
+                                            <br><input type="text" name="busqueda_tipo_operacion1"
+                                                id="busqueda_tipo_operacion1" class="form-control">
+                                        </th>
+                                        <th>Dam CP <br>
+                                            <br><input type="text" name="busqueda_dam_cp1" id="busqueda_dam_cp1"
+                                                class="form-control">
+                                        </th>
+                                        <th>CLU <br>
+                                            <br><input type="text" name="busqueda_clu1" id="busqueda_clu1"
+                                                class="form-control">
+                                        </th>
+                                        <th>Car Sunat <br>
+                                            <br><input type="text" name="busqueda_car_sunat1" id="busqueda_car_sunat1"
+                                                class="form-control">
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody >
-                                    <?php foreach ($datos as $datos_registro_compras_sunat) {?>
-                                    <tr class="text-center" >
-                                        <td><?php echo $datos_registro_compras_sunat['TipoDocumento'] ?></td>
-                                        <td><?php echo $datos_registro_compras_sunat['SerieDcoumento'] ?></td>
-                                        <td><?php echo $datos_registro_compras_sunat['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registro_compras_sunat['LibroNombre']?></td>
-                                        <td><?php echo $datos_registro_compras_sunat['NumeroRegistrosSUNAT']?></td>
-                                        <td><?php echo $datos_registro_compras_sunat['Estado']?></td>
+                                <tbody>
+                                    <?php foreach ($datos as $datos_registros_compras_sunat) {?>
+                                    <tr class="text-center">
+                                        <td>
+                                            <a href="#"
+                                                onclick="verDatosSUNAT(<?php echo $datos_registros_compras_sunat['ID_RegCompSunat']?>)">
+                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
+                                            </a>
+                                        </td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipoDocumento']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['SerieDcoumento']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['NumeroDocumento']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['Ticket']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipDocIdentidad']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['NroDocIdentidad']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['RazonSocial']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoExportacion']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleGravado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleDsct']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['BaseIgvIpm']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['DsctoIgvIpm']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoExonerado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoInafecto']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoISC']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleIvap']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoIvap']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoICBPER']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoOtrostributos']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['MontoTotal']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['Moneda']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipoCambio']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['FecEmisionDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipoDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['SerieDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['NumeroDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['ProyectoOperadosAtribucion']?>
+                                        </td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipodeNota']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['ValorFOBEmbarcado']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['ValorOperacionGratuito']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['TipoOperacion']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['DamCP']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['CLU']?></td>
+                                        <td><?php echo $datos_registros_compras_sunat['CarSunat']?></td>
+                                       
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -95,40 +257,202 @@
                             <table id="example2" class="table table-hover" width="100%">
                                 <thead class="text-center table-light">
                                     <tr>
+                                        <th>
+
+                                        </th>
                                         <th>Tipo Doc.
-                                            <br>
-                                            <select name="busqueda_tipo_documento2" id="busqueda_tipo_documento2" class="form-select">
+                                            <br><br>
+                                            <select name="busqueda_tipo_documento2" id="busqueda_tipo_documento2"
+                                                class="form-select">
                                                 <option value="0">Todos</option>
                                                 <option value="01">DNI</option>
                                                 <option value="02">Pasaporte</option>
                                             </select>
                                         </th>
-                                        <th>Serie
-                                            <br><input type="text" name="busqueda_serie2" id="busqueda_serie2" class="form-control">
+                                        <th>Serie<br>
+                                            <br><input type="text" name="busqueda_serie2" id="busqueda_serie2"
+                                                class="form-control">
                                         </th>
-                                        <th>Comprobante
-                                            <br><input type="text" name="busqueda_comprobante2" id="busqueda_comprobante2" class="form-control">
+                                        <th>Nro de <br> Documento
+                                            <br><input type="text" name="busqueda_nro_de_documento2"
+                                                id="busqueda_nro_de_documento2" class="form-control">
                                         </th>
-                                        <th>Tipo Libro
-                                            <br><input type="text" name="busqueda_tipo_libro2" id="busqueda_tipo_libro2" class="form-control">
+                                        <th>Ticket<br>
+                                            <br><input type="text" name="busqueda_ticket2" id="busqueda_ticket2"
+                                                class="form-control">
                                         </th>
-                                        <th>Nro Registros
-                                            <br><input type="text" name="busqueda_nro_registros2" id="busqueda_nro_registros2" class="form-control">
+                                        <th>Tipo de Documento <br> de Identidad
+                                            <br><input type="text" name="busqueda_tipo_documento_identidad2"
+                                                id="busqueda_tipo_documento_identidad2" class="form-control">
                                         </th>
-                                        <th>Estado
-                                            <br><input type="text" name="busqueda_estado2" id="busqueda_estado2" class="form-control">
+                                        <th>Nro de Documento <br> de Identidad
+                                            <br><input type="text" name="busqueda_nro_documento_identidad2"
+                                                id="busqueda_nro_documento_identidad2" class="form-control">
+                                        </th>
+                                        <th>Razón Social <br>
+                                            <br><input type="text" name="busqueda_razon_social2"
+                                                id="busqueda_razon_social2" class="form-control">
+                                        </th>
+                                        <th>Monto Exportación <br>
+                                            <br><input type="text" name="busqueda_monto_exportacion2"
+                                                id="busqueda_monto_exportacion2" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Gravado
+                                            <br><input type="text" name="busqueda_base_imponible_gravado2"
+                                                id="busqueda_base_imponible_gravado2" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Dsct
+                                            <br><input type="text" name="busqueda_base_imponible_dsct2"
+                                                id="busqueda_base_imponible_dsct2" class="form-control">
+                                        </th>
+                                        <th>Base Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_base_igv_ipm2"
+                                                id="busqueda_base_igv_ipm2" class="form-control">
+                                        </th>
+                                        <th>Dscto Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_dscto_igv_ipm2"
+                                                id="busqueda_dscto_igv_ipm2" class="form-control">
+                                        </th>
+                                        <th>Monto Exonerado <br>
+                                            <br><input type="text" name="busqueda_monto_exonerado2"
+                                                id="busqueda_monto_exonerado2" class="form-control">
+                                        </th>
+                                        <th>Monto Inafecto <br>
+                                            <br><input type="text" name="busqueda_monto_inafecto2"
+                                                id="busqueda_monto_inafecto2" class="form-control">
+                                        </th>
+                                        <th>Monto ISC <br>
+                                            <br><input type="text" name="busqueda_monto_isc2" id="busqueda_monto_isc2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Ivap
+                                            <br><input type="text" name="busqueda_base_imponible_ivap2"
+                                                id="busqueda_base_imponible_ivap2" class="form-control">
+                                        </th>
+                                        <th>Monto Ivap <br>
+                                            <br><input type="text" name="busqueda_monto_ivap2" id="busqueda_monto_ivap2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Monto ICBPER <br>
+                                            <br><input type="text" name="busqueda_monto_icbper2"
+                                                id="busqueda_monto_icbper2" class="form-control">
+                                        </th>
+                                        <th>Monto Otros <br> tributos
+                                            <br><input type="text" name="busqueda_monto_otros_tributos2"
+                                                id="busqueda_monto_otros_tributos2" class="form-control">
+                                        </th>
+                                        <th>Monto Total <br>
+                                            <br><input type="text" name="busqueda_monto_total2"
+                                                id="busqueda_monto_total2" class="form-control">
+                                        </th>
+                                        <th>Moneda <br>
+                                            <br><input type="text" name="busqueda_moneda2" id="busqueda_moneda2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Tipo Cambio<br>
+                                            <br><input type="text" name="busqueda_tipo_cambio2"
+                                                id="busqueda_tipo_cambio2" class="form-control">
+                                        </th>
+                                        <th>Fec Emision <br> Doc Modificado
+                                            <br><input type="text" name="busqueda_fec_emision_doc_modificado2"
+                                                id="busqueda_fec_emision_doc_modificado2" class="form-control">
+                                        </th>
+                                        <th>Tipo Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_tipo_doc_modificado2"
+                                                id="busqueda_tipo_doc_modificado2" class="form-control">
+                                        </th>
+                                        <th>Serie Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_serie_doc_modificado2"
+                                                id="busqueda_serie_doc_modificado2" class="form-control">
+                                        </th>
+                                        <th>Numero Doc <br> Modificado
+                                            <br><input type="text" name="busqueda_numero_doc_modificado2"
+                                                id="busqueda_numero_doc_modificado2" class="form-control">
+                                        </th>
+                                        <th>Proyecto Operados <br> Atribucion
+                                            <br><input type="text" name="busqueda_proyecto_operados_atribucion2"
+                                                id="busqueda_proyecto_operados_atribucion2" class="form-control">
+                                        </th>
+                                        <th>Tipo de Nota <br>
+                                            <br><input type="text" name="busqueda_tipo_de_nota2"
+                                                id="busqueda_tipo_de_nota2" class="form-control">
+                                        </th>
+                                        <th>Estado Comprobante <br>
+                                            <br><input type="text" name="busqueda_estado_comprobante2"
+                                                id="busqueda_estado_comprobante2" class="form-control">
+                                        </th>
+                                        <th>Valor FOB <br> Embarcado
+                                            <br><input type="text" name="busqueda_valor_fob_embarcado2"
+                                                id="busqueda_valor_fob_embarcado2" class="form-control">
+                                        </th>
+                                        <th>Valor Operacion <br> Gratuito
+                                            <br><input type="text" name="busqueda_valor_operacion_gratuito2"
+                                                id="busqueda_valor_operacion_gratuito2" class="form-control">
+                                        </th>
+                                        <th>Tipo Operacion <br>
+                                            <br><input type="text" name="busqueda_tipo_operacion2"
+                                                id="busqueda_tipo_operacion2" class="form-control">
+                                        </th>
+                                        <th>Dam CP <br>
+                                            <br><input type="text" name="busqueda_dam_cp2" id="busqueda_dam_cp2"
+                                                class="form-control">
+                                        </th>
+                                        <th>CLU <br>
+                                            <br><input type="text" name="busqueda_clu2" id="busqueda_clu2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Car Sunat <br>
+                                            <br><input type="text" name="busqueda_car_sunat2" id="busqueda_car_sunat2"
+                                                class="form-control">
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody >
-                                    <?php foreach ($dato as $datos_registro_compras_empresa) {?>
-                                    <tr class="text-center" >
-                                        <td><?php echo $datos_registro_compras_empresa['TipoDocumento'] ?></td>
-                                        <td><?php echo $datos_registro_compras_empresa['SerieDcoumento'] ?></td>
-                                        <td><?php echo $datos_registro_compras_empresa['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registro_compras_empresa['LibroNombre']?></td>
-                                        <td><?php echo $datos_registro_compras_empresa['NumeroRegistrosEmpresa']?></td>
-                                        <td><?php echo $datos_registro_compras_empresa['Estado']?></td>
+                                <tbody>
+                                    <?php foreach ($dato as $datos_registros_compras_empresa) {?>
+                                    <tr class="text-center">
+                                        <td>
+                                            <a href="#"
+                                                onclick="verDatosEmpresa(<?php echo $datos_registros_compras_empresa['ID_RegCompEmpresa']?>)">
+                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
+                                            </a>
+                                        </td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipoDocumento']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['SerieDcoumento']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['NumeroDocumento']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['Ticket']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipDocIdentidad']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['NroDocIdentidad']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['RazonSocial']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoExportacion']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleGravado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleDsct']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['BaseIgvIpm']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['DsctoIgvIpm']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoExonerado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoInafecto']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoISC']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleIvap']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoIvap']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoICBPER']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoOtrostributos']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['MontoTotal']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['Moneda']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipoCambio']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['FecEmisionDocModificado']?>
+                                        </td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipoDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['SerieDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['NumeroDocModificado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['ProyectoOperadosAtribucion']?>
+                                        </td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipodeNota']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['EstadoComprobante']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['ValorFOBEmbarcado']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['ValorOperacionGratuito']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['TipoOperacion']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['DamCP']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['CLU']?></td>
+                                        <td><?php echo $datos_registros_compras_empresa['CarSunat']?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>
@@ -147,14 +471,18 @@
                         <button class="nav-link active" id="nav-agregar-cp-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-agregar-cp" type="button" role="tab" aria-controls="nav-agregar-cp"
                             aria-selected="true">Agregar CP</button>
-                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab" data-bs-target="#nav-excluir-e-incluir"
-                            type="button" role="tab" aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
-                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab" data-bs-target="#nav-completar-o-reubicar"
-                            type="button" role="tab" aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
+                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-excluir-e-incluir" type="button" role="tab"
+                            aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
+                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-completar-o-reubicar" type="button" role="tab"
+                            aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
 
                         <!-- Contenedor con la clase ms-auto para apegar el botón a la izquierda -->
                         <div class="ms-auto mb-1">
-                            <button class="btn btn-primary"><ion-icon name="download-outline"></ion-icon>Exportar</button>
+                            <button class="btn btn-primary">
+                                <ion-icon name="download-outline"></ion-icon>Exportar
+                            </button>
                         </div>
                     </div>
                 </nav>
@@ -191,13 +519,15 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!--Cierre-->
-                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel" aria-labelledby="nav-excluir-e-incluir" tabindex="0">
-                    excluir-e-incluir
+                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel"
+                        aria-labelledby="nav-excluir-e-incluir" tabindex="0">
+                        excluir-e-incluir
                     </div>
-                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel" aria-labelledby="nav-completar-o-reubicar" tabindex="0">
-                      completar-o-reubicar
+                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel"
+                        aria-labelledby="nav-completar-o-reubicar" tabindex="0">
+                        completar-o-reubicar
                     </div>
                 </div>
             </div>
@@ -208,14 +538,18 @@
                         <button class="nav-link active" id="nav-agregar-cp-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-agregar-cp" type="button" role="tab" aria-controls="nav-agregar-cp"
                             aria-selected="true">Agregar CP</button>
-                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab" data-bs-target="#nav-excluir-e-incluir"
-                            type="button" role="tab" aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
-                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab" data-bs-target="#nav-completar-o-reubicar"
-                            type="button" role="tab" aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
+                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-excluir-e-incluir" type="button" role="tab"
+                            aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
+                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-completar-o-reubicar" type="button" role="tab"
+                            aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
 
                         <!-- Contenedor con la clase ms-auto para apegar el botón a la izquierda -->
                         <div class="ms-auto mb-1">
-                            <button class="btn btn-primary"><ion-icon name="download-outline"></ion-icon>Exportar</button>
+                            <button class="btn btn-primary">
+                                <ion-icon name="download-outline"></ion-icon>Exportar
+                            </button>
                         </div>
                     </div>
                 </nav>
@@ -252,31 +586,38 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!--Cierre-->
-                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel" aria-labelledby="nav-excluir-e-incluir" tabindex="0">
-                    excluir-e-incluir
+                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel"
+                        aria-labelledby="nav-excluir-e-incluir" tabindex="0">
+                        excluir-e-incluir
                     </div>
-                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel" aria-labelledby="nav-completar-o-reubicar" tabindex="0">
-                      completar-o-reubicar
+                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel"
+                        aria-labelledby="nav-completar-o-reubicar" tabindex="0">
+                        completar-o-reubicar
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="nav-anexo-10" role="tabpanel" aria-labelledby="nav-anexo-10-tab" tabindex="0">
+            <div class="tab-pane fade" id="nav-anexo-10" role="tabpanel" aria-labelledby="nav-anexo-10-tab"
+                tabindex="0">
                 <!-- ANEXO 8 -->
                 <nav class="mt-3">
                     <div class="d-flex nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-agregar-cp-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-agregar-cp" type="button" role="tab" aria-controls="nav-agregar-cp"
                             aria-selected="true">Agregar CP</button>
-                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab" data-bs-target="#nav-excluir-e-incluir"
-                            type="button" role="tab" aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
-                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab" data-bs-target="#nav-completar-o-reubicar"
-                            type="button" role="tab" aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
+                        <button class="nav-link" id="nav-excluir-e-incluir-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-excluir-e-incluir" type="button" role="tab"
+                            aria-controls="nav-excluir-e-incluir" aria-selected="false">Excluir e Incluir</button>
+                        <button class="nav-link" id="nav-completar-o-reubicar-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-completar-o-reubicar" type="button" role="tab"
+                            aria-controls="nav-completar-o-reubicar" aria-selected="false">Completar o Reubicar</button>
 
                         <!-- Contenedor con la clase ms-auto para apegar el botón a la izquierda -->
                         <div class="ms-auto mb-1">
-                            <button class="btn btn-primary"><ion-icon name="download-outline"></ion-icon>Exportar</button>
+                            <button class="btn btn-primary">
+                                <ion-icon name="download-outline"></ion-icon>Exportar
+                            </button>
                         </div>
                     </div>
                 </nav>
@@ -313,18 +654,20 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!--Cierre-->
-                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel" aria-labelledby="nav-excluir-e-incluir" tabindex="0">
-                    excluir-e-incluir
+                    <div class="tab-pane fade" id="nav-excluir-e-incluir" role="tabpanel"
+                        aria-labelledby="nav-excluir-e-incluir" tabindex="0">
+                        excluir-e-incluir
                     </div>
-                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel" aria-labelledby="nav-completar-o-reubicar" tabindex="0">
-                      completar-o-reubicar
+                    <div class="tab-pane fade" id="nav-completar-o-reubicar" role="tabpanel"
+                        aria-labelledby="nav-completar-o-reubicar" tabindex="0">
+                        completar-o-reubicar
                     </div>
                 </div>
             </div>
 
-          
+
         </div>
 
     </div>
@@ -408,6 +751,7 @@
 
 <!-- JS -->
 <script src="<?= media(); ?>/js/compras/busqueda.js"></script>
+<script src="<?= media(); ?>/js/compras/editar.js"></script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
