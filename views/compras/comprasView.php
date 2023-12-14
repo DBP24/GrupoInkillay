@@ -195,55 +195,6 @@ getModal('compras','editar',$data); ?>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php foreach ($datos as $datos_registros_compras_sunat) {?>
-                                    <tr class="text-center">
-                                        <td>
-                                            <a href="#"
-                                                onclick="verDatosSUNAT(<?php echo $datos_registros_compras_sunat['ID_RegCompSunat']?>)">
-                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
-                                            </a>
-                                        </td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipoDocumento']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['SerieDcoumento']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['NumeroDocumento']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['Ticket']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['NroDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['RazonSocial']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoExportacion']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleGravado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleDsct']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['BaseIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['DsctoIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoExonerado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoInafecto']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoISC']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['BaseImponibleIvap']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoIvap']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoICBPER']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoOtrostributos']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['MontoTotal']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['Moneda']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipoCambio']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['FecEmisionDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipoDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['SerieDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['NumeroDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['ProyectoOperadosAtribucion']?>
-                                        </td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipodeNota']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['ValorFOBEmbarcado']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['ValorOperacionGratuito']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['TipoOperacion']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['DamCP']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['CLU']?></td>
-                                        <td><?php echo $datos_registros_compras_sunat['CarSunat']?></td>
-                                       
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -407,55 +358,6 @@ getModal('compras','editar',$data); ?>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php foreach ($dato as $datos_registros_compras_empresa) {?>
-                                    <tr class="text-center">
-                                        <td>
-                                            <a href="#"
-                                                onclick="verDatosEmpresa(<?php echo $datos_registros_compras_empresa['ID_RegCompEmpresa']?>)">
-                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
-                                            </a>
-                                        </td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipoDocumento']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['SerieDcoumento']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['NumeroDocumento']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['Ticket']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['NroDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['RazonSocial']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoExportacion']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleGravado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleDsct']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['BaseIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['DsctoIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoExonerado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoInafecto']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoISC']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['BaseImponibleIvap']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoIvap']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoICBPER']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoOtrostributos']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['MontoTotal']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['Moneda']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipoCambio']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['FecEmisionDocModificado']?>
-                                        </td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipoDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['SerieDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['NumeroDocModificado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['ProyectoOperadosAtribucion']?>
-                                        </td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipodeNota']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['ValorFOBEmbarcado']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['ValorOperacionGratuito']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['TipoOperacion']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['DamCP']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['CLU']?></td>
-                                        <td><?php echo $datos_registros_compras_empresa['CarSunat']?></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -750,12 +652,12 @@ getModal('compras','editar',$data); ?>
 <?= footerAdmin($data)?>
 
 <!-- JS -->
-<script src="<?= media(); ?>/js/compras/busqueda.js"></script>
+<script src="<?= media(); ?>/js/compras/cargarDatos.js"></script>
+<!-- <script src="<?= media(); ?>/js/compras/busqueda.js"></script> -->
 <script src="<?= media(); ?>/js/compras/editar.js"></script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
-<script src="<?= media();?>/js/dataTables/table-datatable.js"></script>
 
 </body>
 

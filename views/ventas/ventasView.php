@@ -160,52 +160,6 @@ getModal('ventas','editar',$data); ?>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php foreach ($datos as $datos_registros_ventas_sunat) {?>
-                                    <tr class="text-center" >
-                                        <td>
-                                            <a href="#" onclick="verDatosSUNAT(<?php echo $datos_registros_ventas_sunat['ID_RegVentSunat']?>)">
-                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
-                                            </a>
-                                        </td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipoDocumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['SerieDcoumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['NumeroDocumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['Ticket']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['NroDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['RazonSocial']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoExportacion']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['BaseImponibleGravado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['BaseImponibleDsct']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['BaseIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['DsctoIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoExonerado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoInafecto']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoISC']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['BaseImponibleIvap']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoIvap']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoICBPER']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoOtrostributos']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['MontoTotal']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['Moneda']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipoCambio']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['FecEmisionDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipoDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['SerieDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['NumeroDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['ProyectoOperadosAtribucion']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipodeNota']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['ValorFOBEmbarcado']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['ValorOperacionGratuito']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['TipoOperacion']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['DamCP']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['CLU']?></td>
-                                        <td><?php echo $datos_registros_ventas_sunat['CarSunat']?></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -369,55 +323,6 @@ getModal('ventas','editar',$data); ?>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php foreach ($dato as $datos_registros_ventas_empresa) {?>
-                                    <tr class="text-center">
-                                        <td>
-                                            <a href="#"
-                                                onclick="verDatosEmpresa(<?php echo $datos_registros_ventas_empresa['ID_RegVentEmpresa']?>)">
-                                                <ion-icon class="icon__e" name="eye-outline"></ion-icon>
-                                            </a>
-                                        </td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipoDocumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['SerieDcoumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['NumeroDocumento']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['Ticket']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['NroDocIdentidad']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['RazonSocial']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoExportacion']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['BaseImponibleGravado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['BaseImponibleDsct']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['BaseIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['DsctoIgvIpm']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoExonerado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoInafecto']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoISC']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['BaseImponibleIvap']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoIvap']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoICBPER']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoOtrostributos']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['MontoTotal']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['Moneda']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipoCambio']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['FecEmisionDocModificado']?>
-                                        </td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipoDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['SerieDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['NumeroDocModificado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['ProyectoOperadosAtribucion']?>
-                                        </td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipodeNota']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['EstadoComprobante']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['ValorFOBEmbarcado']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['ValorOperacionGratuito']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['TipoOperacion']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['DamCP']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['CLU']?></td>
-                                        <td><?php echo $datos_registros_ventas_empresa['CarSunat']?></td>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -692,12 +597,12 @@ getModal('ventas','editar',$data); ?>
 
 <?= footerAdmin($data)?>
 <!-- JS -->
-<script src="<?= media(); ?>/js/ventas/busqueda.js"></script>
+<script src="<?= media(); ?>/js/ventas/cargarDatos.js"></script>
+<!-- <script src="<?= media(); ?>/js/ventas/busqueda.js"></script> -->
 <script src="<?= media(); ?>/js/ventas/editar.js"></script>
 <!-- DataTables -->
 <script src="<?= media();?>/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="<?= media();?>/js/dataTables/dataTables.bootstrap5.min.js"></script>
-<script src="<?= media();?>/js/dataTables/table-datatable.js"></script>
 </body>
 
 </html>

@@ -179,8 +179,8 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="<?= base_url();?>/paginas/pagina2">
-                                <ion-icon name="ellipse-outline"></ion-icon>x definir
+                            <a href="<?= base_url();?>/reportes">
+                                <ion-icon name="ellipse-outline"></ion-icon>Reportes
                             </a>
                         </li>
                     </ul>

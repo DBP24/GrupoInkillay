@@ -16,6 +16,7 @@ class Conexion{
 
             //Detecta errores específicos
 			$this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			
 		    // echo "conexión exitosa";
 		}catch(PDOException $e){
 			$this->conect = 'Error de conexión';
@@ -25,6 +26,12 @@ class Conexion{
 
 	public function conect(){
 		return $this->conect;
+	}
+
+	// Cierra la conexión
+	public function __destruct()
+	{
+		return $this->conect = null;
 	}
 }
 

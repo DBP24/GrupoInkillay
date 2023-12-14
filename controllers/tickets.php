@@ -560,22 +560,18 @@
 		
 			// Verifica si hay al menos una línea en el archivo
 			if (!empty($lineas)) {
-				// Obtén la primera línea del archivo para determinar la cantidad de columnas
-				$primeraLinea = reset($lineas);
+				// Itera sobre cada línea (omitir la primera línea)
+				foreach ($lineas as $index => $linea) {
+					// Omitir la primera línea (encabezado)
+					if ($index === 0) {
+						continue;
+					}
 		
-				// Divide la primera línea en columnas usando el delimitador
-				$columnasPrimeraLinea = explode($delimitador, $primeraLinea);
-		
-				// Obtén la cantidad de columnas
-				$cantidadColumnas = count($columnasPrimeraLinea);
-		
-				// Itera sobre cada línea y obtiene los datos de la columna 37
-				foreach ($lineas as $linea) {
 					// Divide la línea en columnas usando el delimitador
 					$columnas = explode($delimitador, $linea);
 		
 					// Obtiene los datos de la columna 37 (ajusta el índice según sea necesario)
-					$datoColumna37 = isset($columnas[$cantidadColumnas - 1]) ? trim($columnas[$cantidadColumnas - 1]) : null;
+					$datoColumna37 = end($columnas);
 		
 					// Extrae los 11 primeros dígitos
 					$primeros11Digitos = substr($datoColumna37, 0, 11);
@@ -584,19 +580,16 @@
 					$datosColumna37[] = $primeros11Digitos;
 				}
 		
-				foreach ($datosColumna37 as $datoColumna37) {
-					if ($datoColumna37 != $companiacodigo) {
-						$bandera = true;
-						break;
-					} else {
-						$bandera = false;
-						break;
-					}
+				// Verifica si hay al menos un dato en la columna 37
+				if (!empty($datosColumna37)) {
+					// Verifica si todos los datos son diferentes a $companiacodigo
+					$bandera = !in_array($companiacodigo, $datosColumna37);
 				}
 			}
 		
 			return $bandera;
 		}
+		
 		
 
 		

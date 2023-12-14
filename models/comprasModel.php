@@ -7,193 +7,203 @@ class ComprasModel extends Mysql
 			parent::__construct();
 		}
 
-		public function selectAllRegistrationOfSUNATPurchases()
-		{
-			$query="SELECT
-			ID_RegCompSunat
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
-			,Ticket
-			,TipDocIdentidad
-			,NroDocIdentidad
-			,RazonSocial
-			,MontoExportacion
-			,BaseImponibleGravado
-			,BaseImponibleDsct
-			,BaseIgvIpm
-			,DsctoIgvIpm
-			,MontoExonerado
-			,MontoInafecto
-			,MontoISC
-			,BaseImponibleIvap
-			,MontoIvap
-			,MontoICBPER
-			,MontoOtrostributos
-			,MontoTotal
-			,Moneda
-			,TipoCambio
-			,FecEmisionDocModificado
-			,TipoDocModificado
-			,SerieDocModificado
-			,NumeroDocModificado
-			,ProyectoOperadosAtribucion
-			,TipodeNota
-			,EstadoComprobante
-			,ValorFOBEmbarcado
-			,ValorOperacionGratuito
-			,TipoOperacion
-			,DamCP
-			,CLU
-			,CarSunat
-			FROM SIRE_RegistroCompras_SUNAT srs 
-			INNER JOIN SIRE_Ticket st ON st.ID_Ticket=srs.ID_Ticket
-			INNER JOIN LibroMast lm ON lm.IdLibro=st.IdLibroSUNAT
-			WHERE st.IdLibroSUNAT=1
-  			AND st.Periodo = (SELECT MAX(Periodo) FROM SIRE_Ticket WHERE IdLibroSUNAT = 1)
-			ORDER BY 3 ASC";
-			$request=$this->select_all($query);
-			return $request;
+		public function selectAllRegistrationOfSUNATPurchases($start, $length, $searchFields) {
+			// Consulta para contar el número total de registros
+			$countQuery = "SELECT COUNT(*) as total FROM SIRE_RegistroCompras_SUNAT srs
+						INNER JOIN SIRE_Ticket st ON st.ID_Ticket = srs.ID_Ticket
+						WHERE st.IdLibroSUNAT = 1";
+
+		    // Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					// Verifica si el campo es 'periodo' y ajusta la condición en consecuencia
+					if ($field === 'Periodo') {
+						$countQuery .= " AND st.Periodo = '$value'";
+					} else {
+						$countQuery .= " AND ($field LIKE '%$value%')";
+					}
+				}
+			}
+
+			// Ejecutar la consulta para obtener el total de registros
+			$totalCount = $this->select_all($countQuery);
+			$totalRecords = $totalCount[0]['total'];
+
+			// Consulta principal con paginación
+			$query = "SELECT
+						ID_RegCompSunat,
+						TipoDocumento,
+						SerieDcoumento,
+						NumeroDocumento,
+						Ticket,
+						TipDocIdentidad,
+						NroDocIdentidad,
+						RazonSocial,
+						MontoExportacion,
+						BaseImponibleGravado,
+						BaseImponibleDsct,
+						BaseIgvIpm,
+						DsctoIgvIpm,
+						MontoExonerado,
+						MontoInafecto,
+						MontoISC,
+						BaseImponibleIvap,
+						MontoIvap,
+						MontoICBPER,
+						MontoOtrostributos,
+						MontoTotal,
+						Moneda,
+						TipoCambio,
+						FecEmisionDocModificado,
+						TipoDocModificado,
+						SerieDocModificado,
+						NumeroDocModificado,
+						ProyectoOperadosAtribucion,
+						TipodeNota,
+						EstadoComprobante,
+						ValorFOBEmbarcado,
+						ValorOperacionGratuito,
+						TipoOperacion,
+						DamCP,
+						CLU,
+						CarSunat
+					FROM SIRE_RegistroCompras_SUNAT srs
+					INNER JOIN SIRE_Ticket st ON st.ID_Ticket = srs.ID_Ticket
+					WHERE st.IdLibroSUNAT = 1";
+
+
+			 // Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					// Verifica si el campo es 'periodo' y ajusta la condición en consecuencia
+					if ($field === 'Periodo') {
+						$countQuery .= " AND st.Periodo = '$value'";
+					} else {
+						$countQuery .= " AND ($field LIKE '%$value%')";
+					}
+				}
+			}
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					$query .= " AND ($field LIKE '%$value%')";
+				}
+			}
+
+			$query .= " ORDER BY 1 ASC
+						OFFSET $start ROWS
+						FETCH NEXT $length ROWS ONLY";
+
+			// Ejecutar la consulta principal utilizando tu método select_all
+			$result = $this->select_all($query);
+
+			// Devuelve el resultado junto con el total de registros
+			return array('total' => $totalRecords, 'data' => $result);
 		}
 
-		public function selectAllRegistrationOfCompanyPurchases()
-		{
-			$query="SELECT 
-			ID_RegCompEmpresa
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
-			,Ticket
-			,TipDocIdentidad
-			,NroDocIdentidad
-			,RazonSocial
-			,MontoExportacion
-			,BaseImponibleGravado
-			,BaseImponibleDsct
-			,BaseIgvIpm
-			,DsctoIgvIpm
-			,MontoExonerado
-			,MontoInafecto
-			,MontoISC
-			,BaseImponibleIvap
-			,MontoIvap
-			,MontoICBPER
-			,MontoOtrostributos
-			,MontoTotal
-			,Moneda
-			,TipoCambio
-			,FecEmisionDocModificado
-			,TipoDocModificado
-			,SerieDocModificado
-			,NumeroDocModificado
-			,ProyectoOperadosAtribucion
-			,TipodeNota
-			,EstadoComprobante
-			,ValorFOBEmbarcado
-			,ValorOperacionGratuito
-			,TipoOperacion
-			,DamCP
-			,CLU
-			,CarSunat
-			FROM SIRE_RegistroCompras_EMPRESA sre 
-			INNER JOIN SIRE_Ticket st ON st.ID_Ticket=sre.ID_Ticket
-			WHERE st.IdLibroEmpresa=2
-			AND st.Periodo = (SELECT MAX(Periodo) FROM SIRE_Ticket WHERE IdLibroEmpresa = 2)
-			ORDER BY 3 ASC";
-			$request=$this->select_all($query);
-			return $request;
+        public function selectAllRegistrationOfCompanyPurchases($start, $length, $searchFields) {
+			// Consulta para contar el número total de registros
+			$countQuery = "SELECT COUNT(*) as total FROM SIRE_RegistroCompras_EMPRESA sre 
+						INNER JOIN SIRE_Ticket st ON st.ID_Ticket = sre.ID_Ticket
+						WHERE st.IdLibroEmpresa = 2";
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					// Verifica si el campo es 'periodo' y ajusta la condición en consecuencia
+					if ($field === 'Periodo') {
+						$countQuery .= " AND st.Periodo = '$value'";
+					} else {
+						$countQuery .= " AND ($field LIKE '%$value%')";
+					}
+				}
+			}
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					$countQuery .= " AND ($field LIKE '%$value%')";
+				}
+			}
+
+			// Ejecutar la consulta para obtener el total de registros
+			$totalCount = $this->select_all($countQuery);
+			$totalRecords = $totalCount[0]['total'];
+
+			// Consulta principal con paginación
+			$query = "SELECT
+						ID_RegCompEmpresa,
+						TipoDocumento,
+						SerieDcoumento,
+						NumeroDocumento,
+						Ticket,
+						TipDocIdentidad,
+						NroDocIdentidad,
+						RazonSocial,
+						MontoExportacion,
+						BaseImponibleGravado,
+						BaseImponibleDsct,
+						BaseIgvIpm,
+						DsctoIgvIpm,
+						MontoExonerado,
+						MontoInafecto,
+						MontoISC,
+						BaseImponibleIvap,
+						MontoIvap,
+						MontoICBPER,
+						MontoOtrostributos,
+						MontoTotal,
+						Moneda,
+						TipoCambio,
+						FecEmisionDocModificado,
+						TipoDocModificado,
+						SerieDocModificado,
+						NumeroDocModificado,
+						ProyectoOperadosAtribucion,
+						TipodeNota,
+						EstadoComprobante,
+						ValorFOBEmbarcado,
+						ValorOperacionGratuito,
+						TipoOperacion,
+						DamCP,
+						CLU,
+						CarSunat
+					FROM SIRE_RegistroCompras_EMPRESA sre 
+					INNER JOIN SIRE_Ticket st ON st.ID_Ticket = sre.ID_Ticket
+					WHERE st.IdLibroEmpresa = 2";
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					// Verifica si el campo es 'periodo' y ajusta la condición en consecuencia
+					if ($field === 'Periodo') {
+						$countQuery .= " AND st.Periodo = '$value'";
+					} else {
+						$countQuery .= " AND ($field LIKE '%$value%')";
+					}
+				}
+			}
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					$query .= " AND ($field LIKE '%$value%')";
+				}
+			}
+
+			$query .= " ORDER BY 1 ASC
+						OFFSET $start ROWS
+						FETCH NEXT $length ROWS ONLY";
+
+			// Ejecutar la consulta principal utilizando tu método select_all
+			$result = $this->select_all($query);
+
+			// Devuelve el resultado junto con el total de registros
+			return array('total' => $totalRecords, 'data' => $result);
 		}
 
-		public function viewRegistrationOfSUNATPurchasesXPeriod($periodo)
-		{
-			$query="SELECT
-			ID_RegCompSunat
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
-			,Ticket
-			,TipDocIdentidad
-			,NroDocIdentidad
-			,RazonSocial
-			,MontoExportacion
-			,BaseImponibleGravado
-			,BaseImponibleDsct
-			,BaseIgvIpm
-			,DsctoIgvIpm
-			,MontoExonerado
-			,MontoInafecto
-			,MontoISC
-			,BaseImponibleIvap
-			,MontoIvap
-			,MontoICBPER
-			,MontoOtrostributos
-			,MontoTotal
-			,Moneda
-			,TipoCambio
-			,FecEmisionDocModificado
-			,TipoDocModificado
-			,SerieDocModificado
-			,NumeroDocModificado
-			,ProyectoOperadosAtribucion
-			,TipodeNota
-			,EstadoComprobante
-			,ValorFOBEmbarcado
-			,ValorOperacionGratuito
-			,TipoOperacion
-			,DamCP
-			,CLU
-			,CarSunat FROM SIRE_RegistroCompras_SUNAT srs
-			INNER JOIN SIRE_Ticket st ON st.ID_Ticket = srs.ID_Ticket
-			WHERE st.Periodo='$periodo';";
-			$request=$this->select_all($query);
-			return $request;
-		}
-
-		public function viewRegistrationOfCompanyPurchasesXPeriod($periodo)
-		{
-			$query="SELECT
-			ID_RegCompEmpresa
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
-			,Ticket
-			,TipDocIdentidad
-			,NroDocIdentidad
-			,RazonSocial
-			,MontoExportacion
-			,BaseImponibleGravado
-			,BaseImponibleDsct
-			,BaseIgvIpm
-			,DsctoIgvIpm
-			,MontoExonerado
-			,MontoInafecto
-			,MontoISC
-			,BaseImponibleIvap
-			,MontoIvap
-			,MontoICBPER
-			,MontoOtrostributos
-			,MontoTotal
-			,Moneda
-			,TipoCambio
-			,FecEmisionDocModificado
-			,TipoDocModificado
-			,SerieDocModificado
-			,NumeroDocModificado
-			,ProyectoOperadosAtribucion
-			,TipodeNota
-			,EstadoComprobante
-			,ValorFOBEmbarcado
-			,ValorOperacionGratuito
-			,TipoOperacion
-			,DamCP
-			,CLU
-			,CarSunat FROM SIRE_RegistroCompras_Empresa sre
-			INNER JOIN SIRE_Ticket st ON st.ID_Ticket = sre.ID_Ticket
-			WHERE st.Periodo='$periodo';";
-			$request=$this->select_all($query);
-			return $request;
-		}
-		
 		public function viewRegistrationOfSUNATPurchases($id)
 		{
 			$query="SELECT * FROM SIRE_RegistroCompras_SUNAT WHERE ID_RegCompSunat=$id;";

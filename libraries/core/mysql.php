@@ -4,6 +4,7 @@
 	class Mysql extends Conexion
 	{
 		private $conexion;
+		private $cerrar_conexion;
 		private $strquery;
 		private $arrValues;
 
@@ -26,6 +27,7 @@
 	        }else{
 	        	$lastInsert = 0;
 	        }
+
 	        return $lastInsert; 
 		}
 
@@ -42,6 +44,7 @@
 	        }else{
 	        	$lastInsert = 0;
 	        }
+
 	        return $lastInsert; 
 		}
 
@@ -53,7 +56,14 @@
 			$result->execute();
             //(fetch) Solo me retorna un arreglo
         	$data = $result->fetch(PDO::FETCH_ASSOC);
+
         	return $data;
+		}
+
+		public function select_single(string $query)
+		{
+			$result = $this->select($query);
+			return ($result) ? $result : null;
 		}
 
 		//Devuelve todos los registros
@@ -64,6 +74,7 @@
 			$result->execute();
             //(fetchall) Me retorna varios arreglos
         	$data = $result->fetchall(PDO::FETCH_ASSOC);
+
         	return $data;
 		}
 
@@ -80,6 +91,7 @@
 			}else{
 				return 0; // Devuelve 0 si la consulta no afectó a ninguna fila
 			}
+
 		}
 
 		//Eliminar un registro
@@ -88,6 +100,7 @@
 			$this->strquery = $query;
         	$result = $this->conexion->prepare($this->strquery);
 			$del = $result->execute();
+
         	return $del;
 		}	
 
@@ -102,7 +115,10 @@
 			$this->strquery = $query;
 			$result = $this->conexion->prepare($this->strquery);
 			$result->execute($params);
+
 		}
+
+
 		
 	}
 
