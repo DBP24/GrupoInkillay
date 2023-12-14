@@ -70,9 +70,9 @@
 
                 $search = array (
                     'Periodo' => $busqueda_periodo1,
-                    'TipoDocumento' => $busqueda_tipo_documento1, 
-                    'SerieDcoumento' => $busqueda_serie1, 
-                    'NumeroDocumento' => $busqueda_nro_de_documento1, 
+                    'TipoComprobante' => $busqueda_tipo_documento1, 
+                    'SerieComprobante' => $busqueda_serie1, 
+                    'NumeroComprobante' => $busqueda_nro_de_documento1, 
                     'Ticket' => $busqueda_ticket1, 
                     'TipDocIdentidad' => $busqueda_tipo_documento_identidad1, 
                     'NroDocIdentidad' => $busqueda_nro_documento_identidad1, 
@@ -169,9 +169,9 @@
 
                 $search = array (
                     'Periodo' => $busqueda_periodo2,
-                    'TipoDocumento' => $busqueda_tipo_documento2, 
-                    'SerieDcoumento' => $busqueda_serie2, 
-                    'NumeroDocumento' => $busqueda_nro_de_documento2, 
+                    'TipoComprobante' => $busqueda_tipo_documento2, 
+                    'SerieComprobante' => $busqueda_serie2, 
+                    'NumeroComprobante' => $busqueda_nro_de_documento2, 
                     'Ticket' => $busqueda_ticket2, 
                     'TipDocIdentidad' => $busqueda_tipo_documento_identidad2, 
                     'NroDocIdentidad' => $busqueda_nro_documento_identidad2, 
@@ -221,51 +221,6 @@
             die();
             
         }
-
-		//Ver todos los registros perteneciente al periodo
-		/*public function buscarXPeriodoSUNAT()
-		{
-			if($_POST)
-			{
-                $start = $_POST['start'] ?? 0;
-                $length = $_POST['length'] ?? 10;
-                $periodo = $_POST['periodo']; 
-
-			  $arrResponse = $this->model->viewRegistrationOfSUNATPurchasesXPeriod($start,$length,$periodo);
-              $totalRecords = $this->model->countTotalRecords($start,$length,$periodo);
-
-              $response = array(
-                "data" => $arrResponse,
-                "recordsTotal" => $totalRecords,
-                "recordsFiltered" => $totalRecords
-              );
-
-
-			  echo json_encode($response,JSON_UNESCAPED_UNICODE);
-			  
-			}
-
-			die();
-		}*/
-
-		public function buscarXPeriodoEmpresa()
-		{
-			if($_POST)
-			{
-              $periodo = $_POST['periodo'];
-
-			  //var_dump($periodo);
-
-			  $arrResponse = $this->model->viewRegistrationOfCompanyPurchasesXPeriod($start,$length,$periodo);
-
-			  //var_dump($arrResponse);
-
-			  echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-			  
-			}
-
-			die();
-		}
 
 		public function editar_compras_sunat(){
 			$idd = intval($_POST['id']);

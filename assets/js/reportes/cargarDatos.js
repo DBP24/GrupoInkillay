@@ -95,9 +95,9 @@ $(document).ready(function () {
           return enlace;
         },
       },
-      { data: "TipoDocumento" },
-      { data: "SerieDcoumento" },
-      { data: "NumeroDocumento" },
+      { data: "TipoComprobante" },
+      { data: "SerieComprobante" },
+      { data: "NumeroComprobante" },
       { data: "Ticket" },
       { data: "TipDocIdentidad" },
       { data: "NroDocIdentidad" },

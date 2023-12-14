@@ -39,9 +39,9 @@ class VentasModel extends Mysql
 			// Consulta principal con paginación
 			$query = "SELECT
 						ID_RegVentSunat,
-						TipoDocumento,
-						SerieDcoumento,
-						NumeroDocumento,
+						TipoComprobante,
+						SerieComprobante,
+						NumeroComprobante,
 						Ticket,
 						TipDocIdentidad,
 						NroDocIdentidad,
@@ -141,9 +141,9 @@ class VentasModel extends Mysql
 			// Consulta principal con paginación
 			$query = "SELECT
 						ID_RegVentEmpresa,
-						TipoDocumento,
-						SerieDcoumento,
-						NumeroDocumento,
+						TipoComprobante,
+						SerieComprobante,
+						NumeroComprobante,
 						Ticket,
 						TipDocIdentidad,
 						NroDocIdentidad,

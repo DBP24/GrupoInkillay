@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var table1 = $("#example1").DataTable({
         serverSide: true,
         searching: true,
@@ -96,9 +97,9 @@ $(document).ready(function () {
               return enlace;
             },
           },
-          { data: "TipoDocumento" },
-          { data: "SerieDcoumento" },
-          { data: "NumeroDocumento" },
+          { data: "TipoComprobante" },
+          { data: "SerieComprobante" },
+          { data: "NumeroComprobante" },
           { data: "Ticket" },
           { data: "TipDocIdentidad" },
           { data: "NroDocIdentidad" },
@@ -392,9 +393,9 @@ $(document).ready(function () {
           return enlace;
         },
       },
-      { data: "TipoDocumento" },
-      { data: "SerieDcoumento" },
-      { data: "NumeroDocumento" },
+      { data: "TipoComprobante" },
+      { data: "SerieComprobante" },
+      { data: "NumeroComprobante" },
       { data: "Ticket" },
       { data: "TipDocIdentidad" },
       { data: "NroDocIdentidad" },

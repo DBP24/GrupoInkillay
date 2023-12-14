@@ -17,7 +17,9 @@ $(document).ready(function () {
             busqueda_ticket1:$('#busqueda_ticket1').val().toUpperCase(),
             busqueda_tipo_documento_identidad1:$('#busqueda_tipo_documento_identidad1').val().toUpperCase(),
             busqueda_nro_documento_identidad1:$('#busqueda_nro_documento_identidad1').val().toUpperCase(),
+            // error al cargar datos
             busqueda_razon_social1:$('#busqueda_razon_social1').val().toUpperCase(),
+            // end
             busqueda_monto_exportacion1:$('#busqueda_monto_exportacion1').val().toUpperCase(),
             busqueda_base_imponible_gravado1:$('#busqueda_base_imponible_gravado1').val().toUpperCase(),
             busqueda_base_imponible_dsct1:$('#busqueda_base_imponible_dsct1').val().toUpperCase(),
@@ -95,9 +97,9 @@ $(document).ready(function () {
               return enlace;
             },
           },
-          { data: "TipoDocumento" },
-          { data: "SerieDcoumento" },
-          { data: "NumeroDocumento" },
+          { data: "TipoComprobante" },
+          { data: "SerieComprobante" },
+          { data: "NumeroComprobante" },
           { data: "Ticket" },
           { data: "TipDocIdentidad" },
           { data: "NroDocIdentidad" },
@@ -141,15 +143,18 @@ $(document).ready(function () {
     });
 
     $('#busqueda_tipo_documento1,#busqueda_serie1,#busqueda_nro_de_documento1,#busqueda_ticket1,#busqueda_tipo_documento_identidad1,#busqueda_nro_documento_identidad1,#busqueda_razon_social1,#busqueda_monto_exportacion1,#busqueda_base_imponible_gravado1,#busqueda_base_imponible_dsct1,#busqueda_base_igv_ipm1,#busqueda_dscto_igv_ipm1,#busqueda_monto_exonerado1,#busqueda_monto_inafecto1,#busqueda_monto_isc1,#busqueda_base_imponible_ivap1,#busqueda_monto_ivap1,#busqueda_monto_icbper1,#busqueda_monto_otros_tributos1,#busqueda_monto_total1,#busqueda_moneda1,#busqueda_tipo_cambio1,#busqueda_fec_emision_doc_modificado1,#busqueda_tipo_doc_modificado1,#busqueda_serie_doc_modificado1,#busqueda_numero_doc_modificado1,#busqueda_proyecto_operados_atribucion1,#busqueda_tipo_de_nota1,#busqueda_estado_comprobante1,#busqueda_valor_fob_embarcado1,#busqueda_valor_operacion_gratuito1,#busqueda_tipo_operacion1,#busqueda_dam_cp1,#busqueda_clu1,#busqueda_car_sunat1').on('input', function () {
+
         // Obtener el valor de los campos de búsqueda
-        var busqueda_tipo_documento1=$('#busqueda_tipo_documento1').val().toUpperCase();
+        //var busqueda_tipo_documento1=$('#busqueda_tipo_documento1').val().toUpperCase();
         var busqueda_tipo_documento1=$('#busqueda_tipo_documento1').val().toUpperCase();
         var busqueda_serie1=$('#busqueda_serie1').val().toUpperCase();
         var busqueda_nro_de_documento1=$('#busqueda_nro_de_documento1').val().toUpperCase();
         var busqueda_ticket1=$('#busqueda_ticket1').val().toUpperCase();
         var busqueda_tipo_documento_identidad1=$('#busqueda_tipo_documento_identidad1').val().toUpperCase();
         var busqueda_nro_documento_identidad1=$('#busqueda_nro_documento_identidad1').val().toUpperCase();
+
         var busqueda_razon_social1=$('#busqueda_razon_social1').val().toUpperCase();
+
         var busqueda_monto_exportacion1=$('#busqueda_monto_exportacion1').val().toUpperCase();
         var busqueda_base_imponible_gravado1=$('#busqueda_base_imponible_gravado1').val().toUpperCase();
         var busqueda_base_imponible_dsct1=$('#busqueda_base_imponible_dsct1').val().toUpperCase();
@@ -178,6 +183,7 @@ $(document).ready(function () {
         var busqueda_dam_cp1=$('#busqueda_dam_cp1').val().toUpperCase();
         var busqueda_clu1=$('#busqueda_clu1').val().toUpperCase();
         var busqueda_car_sunat1=$('#busqueda_car_sunat1').val().toUpperCase();
+
 
         // Limpiar la búsqueda actual
         table1.search('').draw();
@@ -392,9 +398,9 @@ $(document).ready(function () {
           return enlace;
         },
       },
-      { data: "TipoDocumento" },
-      { data: "SerieDcoumento" },
-      { data: "NumeroDocumento" },
+      { data: "TipoComprobante" },
+      { data: "SerieComprobante" },
+      { data: "NumeroComprobante" },
       { data: "Ticket" },
       { data: "TipDocIdentidad" },
       { data: "NroDocIdentidad" },
@@ -594,7 +600,7 @@ $(document).ready(function () {
     // Asigna un controlador de eventos al botón de búsqueda
     function realizarBusqueda(){
         // Obtén el valor del campo de búsqueda de periodo
-        var busqueda_periodo1 = $('#busqueda_periodo').val().toUpperCase();
+        var busqueda_periodo_ = $('#busqueda_periodo').val().toUpperCase();
 
         // Limpia la búsqueda actual
         table1.search('').draw();
@@ -612,12 +618,12 @@ $(document).ready(function () {
         });
         
         // Aplica el filtro de periodo si hay un valor
-        if (busqueda_periodo1 !== '') {
+        if (busqueda_periodo_ !== '') {
             // Añade el valor del periodo al objeto de búsqueda
-            table1.settings()[0].ajax.data.busqueda_periodo1 = busqueda_periodo1;
+            table1.settings()[0].ajax.data.busqueda_periodo1 = busqueda_periodo_;
         
             // Añade el valor del periodo al objeto de búsqueda
-            table2.settings()[0].ajax.data.busqueda_periodo1 = busqueda_periodo1;
+            table2.settings()[0].ajax.data.busqueda_periodo2 = busqueda_periodo_;
         
             // Realiza la solicitud AJAX para cargar los datos con los nuevos criterios de búsqueda
             table1.ajax.reload();

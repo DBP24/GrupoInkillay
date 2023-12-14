@@ -78,27 +78,27 @@ class TicketsModel extends Mysql
 		}
 		
 		//Insertar
-		public function insertNewRegistrationOfSUNATPurchases($archivo,$name_table){
-			$query = "EXEC SIRE_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?";
-			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+		public function insertNewRegistrationOfSUNATPurchases($archivo,$name_table,$compania_codigo){
+			$query = "EXEC SIRE_SP_RegistroCompras_SUNAT @ruta_archivo = ?,@name_table = ?,@compania_codigo=?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table,$compania_codigo]);
 			return $request;
 		}
 
-		public function insertNewRegistrationOfSUNATSales($archivo,$name_table){
-			$query = "EXEC SIRE_SP_RegistroVentas_SUNAT @ruta_archivo = ?,@name_table = ?";
-			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+		public function insertNewRegistrationOfSUNATSales($archivo,$name_table,$compania_codigo){
+			$query = "EXEC SIRE_SP_RegistroVentas_SUNAT @ruta_archivo = ?,@name_table = ?,@compania_codigo=?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table,$compania_codigo]);
 			return $request;
 		}
 
-		public function insertNewRegistrationOfCompanyPurchases($archivo,$name_table){
-			$query = "EXEC SIRE_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?";
-			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+		public function insertNewRegistrationOfCompanyPurchases($archivo,$name_table,$compania_codigo){
+			$query = "EXEC SIRE_SP_RegistroCompras_EMPRESA @ruta_archivo = ?,@name_table = ?,@compania_codigo=?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table,$compania_codigo]);
 			return $request;
 		}
 
-		public function insertNewRegistrationOfCompanySales($archivo,$name_table){
-			$query = "EXEC SIRE_SP_RegistroVentas_EMPRESA @ruta_archivo = ?,@name_table = ?";
-			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table]);
+		public function insertNewRegistrationOfCompanySales($archivo,$name_table,$compania_codigo){
+			$query = "EXEC SIRE_SP_RegistroVentas_EMPRESA @ruta_archivo = ?,@name_table = ?,@compania_codigo=?";
+			$request = $this->bulkinsert_prueba($query, [$archivo,$name_table,$compania_codigo]);
 			return $request;
 		}
 
@@ -110,7 +110,7 @@ class TicketsModel extends Mysql
 		}
 
 		public function updateNewRegistrationOfSUNATSales($arrData){
-			$query = "EXEC SIRE_SP_ActualizarVentas_SUNAT @ruta_archivo = ?,@name_table = ?,@id_ticket = ?";
+			$query = "EXEC SIRE_SP_ActualizarVentas_SUNAT @ruta_archivo = ?,@name_table = ?,@compania_codigo = ?, @id_ticket = ?";
 			$request = $this->update($query, $arrData);
 			return $request;
 		}

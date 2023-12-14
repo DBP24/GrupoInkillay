@@ -132,9 +132,9 @@
                 $busqueda_car_sunat2= $_POST['search']['busqueda_car_sunat2'] ?? '';
 
                 $search = array (
-                    'TipoDocumento' => $busqueda_tipo_documento2, 
-                    'SerieDcoumento' => $busqueda_serie2, 
-                    'NumeroDocumento' => $busqueda_nro_de_documento2, 
+                    'TipoComprobante' => $busqueda_tipo_documento2, 
+                    'SerieComprobante' => $busqueda_serie2, 
+                    'NumeroComprobante' => $busqueda_nro_de_documento2, 
                     'Ticket' => $busqueda_ticket2, 
                     'TipDocIdentidad' => $busqueda_tipo_documento_identidad2, 
                     'NroDocIdentidad' => $busqueda_nro_documento_identidad2, 

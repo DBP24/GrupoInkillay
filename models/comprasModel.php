@@ -18,10 +18,18 @@ class ComprasModel extends Mysql
 				if (!empty($value)) {
 					// Verifica si el campo es 'periodo' y ajusta la condición en consecuencia
 					if ($field === 'Periodo') {
+						// FALTA EL ULTIMO PERIODO POR DEFECTO
 						$countQuery .= " AND st.Periodo = '$value'";
 					} else {
 						$countQuery .= " AND ($field LIKE '%$value%')";
 					}
+				}
+			}
+
+			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
+			foreach ($searchFields as $field => $value) {
+				if (!empty($value)) {
+					$countQuery .= " AND ($field LIKE '%$value%')";
 				}
 			}
 
@@ -32,9 +40,9 @@ class ComprasModel extends Mysql
 			// Consulta principal con paginación
 			$query = "SELECT
 						ID_RegCompSunat,
-						TipoDocumento,
-						SerieDcoumento,
-						NumeroDocumento,
+						TipoComprobante,
+						SerieComprobante,
+						NumeroComprobante,
 						Ticket,
 						TipDocIdentidad,
 						NroDocIdentidad,
@@ -135,9 +143,9 @@ class ComprasModel extends Mysql
 			// Consulta principal con paginación
 			$query = "SELECT
 						ID_RegCompEmpresa,
-						TipoDocumento,
-						SerieDcoumento,
-						NumeroDocumento,
+						TipoComprobante,
+						SerieComprobante,
+						NumeroComprobante,
 						Ticket,
 						TipDocIdentidad,
 						NroDocIdentidad,

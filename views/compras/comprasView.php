@@ -79,7 +79,7 @@ getModal('compras','editar',$data); ?>
                                         </th>
                                         <th>Razón Social <br>
                                             <br><input type="text" name="busqueda_razon_social1"
-                                                id="busqueda_razon_social1" class="form-control">
+                                                id="busqueda_razon_social1" class="form-control" value="">
                                         </th>
                                         <th>Monto Exportación <br>
                                             <br><input type="text" name="busqueda_monto_exportacion1"

@@ -29,9 +29,9 @@ class ReportesModel extends Mysql
 			// Consulta principal con paginación
 			$query = "SELECT
 						ID_RegCompEmpresa,
-						TipoDocumento,
-						SerieDcoumento,
-						NumeroDocumento,
+						TipoComprobante,
+						SerieComprobante,
+						NumeroComprobante,
 						Ticket,
 						TipDocIdentidad,
 						NroDocIdentidad,
@@ -93,9 +93,9 @@ class ReportesModel extends Mysql
 		{
 			$query="SELECT
 			ID_RegCompEmpresa
-			,TipoDocumento
-			,SerieDcoumento
-			,NumeroDocumento
+			,TipoComprobante
+			,SerieComprobante
+			,NumeroComprobante
 			,Ticket
 			,TipDocIdentidad
 			,NroDocIdentidad

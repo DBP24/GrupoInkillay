@@ -185,13 +185,13 @@
 							
                             //Registro Compras Propuesto
 							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
-							$this->model->insertNewRegistrationOfSUNATPurchases($temp_sunat, $name_table);
+							$this->model->insertNewRegistrationOfSUNATPurchases($temp_sunat, $name_table, $companiacodigo, $correlativo);
 
 						} else if($idlibro == 3){
 
 						    //Registro Ventas Propuesto
 							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
-							$this->model->insertNewRegistrationOfSUNATSales($temp_sunat, $name_table);
+							$this->model->insertNewRegistrationOfSUNATSales($temp_sunat, $name_table, $companiacodigo, $correlativo);
 						}
 
 									
@@ -373,7 +373,7 @@
 
 							//Registro Compras Empresa
 							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
-							$this->model->insertNewRegistrationOfCompanyPurchases($temp_empresa,$name_table);
+							$this->model->insertNewRegistrationOfCompanyPurchases($temp_empresa,$name_table,$companiacodigo);
 
 							$arrResponse = array('status' => true, 'msg' => 'Se ha insertado correctamente', 'type'=> 'success');
 
@@ -382,7 +382,7 @@
 
 							//Actualización Ventas SUNAT
 							$name_table = "SIRE_RegistroTemporalVentas_SUNAT_".$companiacodigo ;
-							$this->model->updateNewRegistrationOfSUNATSales(array($temp_sunat,$name_table,$id));
+							$this->model->updateNewRegistrationOfSUNATSales(array($temp_sunat,$name_table,$companiacodigo,$id));
 
 							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
 
@@ -398,7 +398,7 @@
 	
 							//Registro Ventas Empresa
 							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
-							$this->model->insertNewRegistrationOfCompanySales($temp_empresa,$name_table);
+							$this->model->insertNewRegistrationOfCompanySales($temp_empresa,$name_table,$companiacodigo);
 	
 							$arrResponse = array('status' => true, 'msg' => 'Se ha insertado correctamente', 'type'=> 'success');
 	
