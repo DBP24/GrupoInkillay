@@ -597,6 +597,31 @@ getModal('ventas','editar',$data); ?>
 
 <?= footerAdmin($data)?>
 <!-- JS -->
+<script>
+    // Obtener todos los elementos de entrada
+// Deshabilitar inputs en el primer modal
+desactivarInputs('modalEditarVentasSUNAT');
+
+// Deshabilitar inputs en el segundo modal
+desactivarInputs('modalEditarVentasEmpresa');
+
+//Función
+function desactivarInputs(modalId) {
+    var modal = document.getElementById(modalId);
+
+    // Verificar si se encontró el modal
+    if (modal) {
+        // Obtener todos los elementos de entrada dentro del modal
+        var inputs = modal.querySelectorAll('input');
+
+        // Iterar sobre los elementos y deshabilitarlos
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = true;
+        }
+    }
+}
+</script>
+
 <script src="<?= media(); ?>/js/ventas/cargarDatos.js"></script>
 <!-- <script src="<?= media(); ?>/js/ventas/busqueda.js"></script> -->
 <script src="<?= media(); ?>/js/ventas/editar.js"></script>

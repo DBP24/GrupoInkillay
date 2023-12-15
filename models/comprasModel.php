@@ -7,11 +7,11 @@ class ComprasModel extends Mysql
 			parent::__construct();
 		}
 
-		public function selectAllRegistrationOfSUNATPurchases($start, $length, $searchFields) {
+		public function selectAllRegistrationOfSUNATPurchases($start, $length, $searchFields,$compania_codigo) {
 			// Consulta para contar el número total de registros
 			$countQuery = "SELECT COUNT(*) as total FROM SIRE_RegistroCompras_SUNAT srs
 						INNER JOIN SIRE_Ticket st ON st.ID_Ticket = srs.ID_Ticket
-						WHERE st.IdLibroSUNAT = 1";
+						WHERE st.IdLibroSUNAT = 1 AND st.CompaniaCodigo = '$compania_codigo'";
 
 		    // Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
 			foreach ($searchFields as $field => $value) {
@@ -39,7 +39,8 @@ class ComprasModel extends Mysql
 
 			// Consulta principal con paginación
 			$query = "SELECT
-						ID_RegCompSunat,
+						--ID_RegCompSunat,
+						Secuencia,
 						TipoComprobante,
 						SerieComprobante,
 						NumeroComprobante,
@@ -77,7 +78,7 @@ class ComprasModel extends Mysql
 						CarSunat
 					FROM SIRE_RegistroCompras_SUNAT srs
 					INNER JOIN SIRE_Ticket st ON st.ID_Ticket = srs.ID_Ticket
-					WHERE st.IdLibroSUNAT = 1";
+					WHERE st.IdLibroSUNAT = 1 AND st.CompaniaCodigo = '$compania_codigo'";
 
 
 			 // Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
@@ -100,7 +101,7 @@ class ComprasModel extends Mysql
 				}
 			}
 
-			$query .= " ORDER BY 1 ASC
+			$query .= " ORDER BY FechaEmision ASC, TipoComprobante ASC, SerieComprobante ASC, NumeroComprobante ASC
 						OFFSET $start ROWS
 						FETCH NEXT $length ROWS ONLY";
 
@@ -111,11 +112,11 @@ class ComprasModel extends Mysql
 			return array('total' => $totalRecords, 'data' => $result);
 		}
 
-        public function selectAllRegistrationOfCompanyPurchases($start, $length, $searchFields) {
+        public function selectAllRegistrationOfCompanyPurchases($start, $length, $searchFields,$compania_codigo) {
 			// Consulta para contar el número total de registros
 			$countQuery = "SELECT COUNT(*) as total FROM SIRE_RegistroCompras_EMPRESA sre 
 						INNER JOIN SIRE_Ticket st ON st.ID_Ticket = sre.ID_Ticket
-						WHERE st.IdLibroEmpresa = 2";
+						WHERE st.IdLibroEmpresa = 2 AND st.CompaniaCodigo = '$compania_codigo'";
 
 			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
 			foreach ($searchFields as $field => $value) {
@@ -142,7 +143,8 @@ class ComprasModel extends Mysql
 
 			// Consulta principal con paginación
 			$query = "SELECT
-						ID_RegCompEmpresa,
+						--ID_RegCompEmpresa,
+						Secuencia,
 						TipoComprobante,
 						SerieComprobante,
 						NumeroComprobante,
@@ -180,7 +182,7 @@ class ComprasModel extends Mysql
 						CarSunat
 					FROM SIRE_RegistroCompras_EMPRESA sre 
 					INNER JOIN SIRE_Ticket st ON st.ID_Ticket = sre.ID_Ticket
-					WHERE st.IdLibroEmpresa = 2";
+					WHERE st.IdLibroEmpresa = 2 AND st.CompaniaCodigo = '$compania_codigo'";
 
 			// Agrega la lógica de búsqueda si se proporciona algún valor de búsqueda
 			foreach ($searchFields as $field => $value) {
@@ -201,7 +203,7 @@ class ComprasModel extends Mysql
 				}
 			}
 
-			$query .= " ORDER BY 1 ASC
+			$query .= " ORDER BY FechaEmision ASC, TipoComprobante ASC, SerieComprobante ASC, NumeroComprobante ASC
 						OFFSET $start ROWS
 						FETCH NEXT $length ROWS ONLY";
 
@@ -214,14 +216,14 @@ class ComprasModel extends Mysql
 
 		public function viewRegistrationOfSUNATPurchases($id)
 		{
-			$query="SELECT * FROM SIRE_RegistroCompras_SUNAT WHERE ID_RegCompSunat=$id;";
+			$query="SELECT * FROM SIRE_RegistroCompras_SUNAT WHERE Secuencia=$id;";
 			$request=$this->select($query);
 			return $request;
 		}
 
 		public function viewRegistrationOfCompanyPurchases($id)
 		{
-			$query="SELECT * FROM SIRE_RegistroCompras_EMPRESA WHERE ID_RegCompEmpresa=$id;";
+			$query="SELECT * FROM SIRE_RegistroCompras_EMPRESA WHERE Secuencia=$id;";
 			$request=$this->select($query);
 			return $request;
 		}

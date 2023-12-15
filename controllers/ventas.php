@@ -68,6 +68,8 @@
                 $busqueda_clu1= $_POST['search']['busqueda_clu1'] ?? '';
                 $busqueda_car_sunat1= $_POST['search']['busqueda_car_sunat1'] ?? '';
 
+                $compania_codigo = $_SESSION['Usuario']['DocumentoFiscal'];
+
                 $search = array (
                     'Periodo' => $busqueda_periodo1,
                     'TipoComprobante' => $busqueda_tipo_documento1, 
@@ -107,7 +109,7 @@
                     'CarSunat' => $busqueda_car_sunat1
                 );
 
-                $arrResponse = $this->model->selectAllRegistrationOfSUNATSales($start, $length, $search);
+                $arrResponse = $this->model->selectAllRegistrationOfSUNATSales($start, $length, $search, $compania_codigo);
 
                 $response = array(
                     "data" => $arrResponse['data'],
@@ -167,6 +169,8 @@
                 $busqueda_clu2= $_POST['search']['busqueda_clu2'] ?? '';
                 $busqueda_car_sunat2= $_POST['search']['busqueda_car_sunat2'] ?? '';
 
+                $compania_codigo = $_SESSION['Usuario']['DocumentoFiscal'];
+
                 $search = array (
                     'Periodo' => $busqueda_periodo2,
                     'TipoComprobante' => $busqueda_tipo_documento2, 
@@ -206,7 +210,7 @@
                     'CarSunat' => $busqueda_car_sunat2
                 );
 
-                $arrResponse = $this->model->selectAllRegistrationOfCompanySales($start, $length, $search);
+                $arrResponse = $this->model->selectAllRegistrationOfCompanySales($start, $length, $search, $compania_codigo);
 
                 $response = array(
                     "data" => $arrResponse['data'],

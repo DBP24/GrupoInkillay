@@ -365,7 +365,92 @@ getModal('compras','editar',$data); ?>
             </div>
             <div class="tab-pane fade" id="nav-analisis" role="tabpanel" aria-labelledby="nav-analisis-tab"
                 tabindex="0">
-                Analisis</div>
+                <div class="card radius-10 w-100">
+                    <div class="card-body">
+                        <div class="table-responsive mt-2">
+                            <table id="example3" class="table table-hover" width="100%">
+                                <thead class="text-center table-light">
+                                    <tr>
+                                        <th>Compañia Código<br>
+                                            <br><input type="text" name="busqueda_ticket2" id="busqueda_ticket2"
+                                                class="form-control">
+                                        </th>
+                                        <th>ID Ticket<br>
+                                            <br><input type="text" name="busqueda_ticket2" id="busqueda_ticket2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Tipo Doc.
+                                            <br><br>
+                                            <select name="busqueda_tipo_documento2" id="busqueda_tipo_documento2"
+                                                class="form-select">
+                                                <option value="0">Todos</option>
+                                                <option value="01">DNI</option>
+                                                <option value="02">Pasaporte</option>
+                                            </select>
+                                        </th>
+                                        <th>Total de <br> Documentos
+                                            <br><input type="text" name="busqueda_tipo_documento_identidad2"
+                                                id="busqueda_tipo_documento_identidad2" class="form-control">
+                                        </th>
+                                        <th>Monto Exportación <br>
+                                            <br><input type="text" name="busqueda_monto_exportacion2"
+                                                id="busqueda_monto_exportacion2" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Gravado
+                                            <br><input type="text" name="busqueda_base_imponible_gravado2"
+                                                id="busqueda_base_imponible_gravado2" class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Dsct
+                                            <br><input type="text" name="busqueda_base_imponible_dsct2"
+                                                id="busqueda_base_imponible_dsct2" class="form-control">
+                                        </th>
+                                        <th>Base Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_base_igv_ipm2"
+                                                id="busqueda_base_igv_ipm2" class="form-control">
+                                        </th>
+                                        <th>Dscto Igv Ipm <br>
+                                            <br><input type="text" name="busqueda_dscto_igv_ipm2"
+                                                id="busqueda_dscto_igv_ipm2" class="form-control">
+                                        </th>
+                                        <th>Monto Exonerado <br>
+                                            <br><input type="text" name="busqueda_monto_exonerado2"
+                                                id="busqueda_monto_exonerado2" class="form-control">
+                                        </th>
+                                        <th>Monto Inafecto <br>
+                                            <br><input type="text" name="busqueda_monto_inafecto2"
+                                                id="busqueda_monto_inafecto2" class="form-control">
+                                        </th>
+                                        <th>Monto ISC <br>
+                                            <br><input type="text" name="busqueda_monto_isc2" id="busqueda_monto_isc2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Base Imponible <br> Ivap
+                                            <br><input type="text" name="busqueda_base_imponible_ivap2"
+                                                id="busqueda_base_imponible_ivap2" class="form-control">
+                                        </th>
+                                        <th>Monto Ivap <br>
+                                            <br><input type="text" name="busqueda_monto_ivap2" id="busqueda_monto_ivap2"
+                                                class="form-control">
+                                        </th>
+                                        <th>Monto ICBPER <br>
+                                            <br><input type="text" name="busqueda_monto_icbper2"
+                                                id="busqueda_monto_icbper2" class="form-control">
+                                        </th>
+                                        <th>Monto Otros <br> tributos
+                                            <br><input type="text" name="busqueda_monto_otros_tributos2"
+                                                id="busqueda_monto_otros_tributos2" class="form-control">
+                                        </th>
+                                        <th>Monto Total <br>
+                                            <br><input type="text" name="busqueda_monto_total2"
+                                                id="busqueda_monto_total2" class="form-control">
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane fade" id="nav-anexo-8" role="tabpanel" aria-labelledby="nav-anexo-8-tab" tabindex="0">
                 <!-- ANEXO 8 -->
                 <nav class="mt-3">
@@ -650,8 +735,31 @@ getModal('compras','editar',$data); ?>
 </div>
 
 <?= footerAdmin($data)?>
-
 <!-- JS -->
+<script>
+    // Obtener todos los elementos de entrada
+// Deshabilitar inputs en el primer modal
+desactivarInputs('modalEditarComprasSUNAT');
+
+// Deshabilitar inputs en el segundo modal
+desactivarInputs('modalEditarComprasEmpresa');
+
+//Función
+function desactivarInputs(modalId) {
+    var modal = document.getElementById(modalId);
+
+    // Verificar si se encontró el modal
+    if (modal) {
+        // Obtener todos los elementos de entrada dentro del modal
+        var inputs = modal.querySelectorAll('input');
+
+        // Iterar sobre los elementos y deshabilitarlos
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = true;
+        }
+    }
+}
+</script>
 <script src="<?= media(); ?>/js/compras/cargarDatos.js"></script>
 <!-- <script src="<?= media(); ?>/js/compras/busqueda.js"></script> -->
 <script src="<?= media(); ?>/js/compras/editar.js"></script>

@@ -3,7 +3,7 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form id="formularioActualizarComprasSUNAT" name="formularioActualizarComprasSUNAT" method="POST"
+            <form method="POST"
                 enctype="multipart/form-data">
                 <div class="modal-header bg-success">
                     <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Edición o Consulta de un comprobante</h1>
@@ -20,11 +20,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="mt-3">Nro Doc Identidad</label>
-                                <input type="text" class="form-control" id="nrodocidentidad" name="nrodocidentidad" disabled>
+                                <input type="text" class="form-control" id="nrodocidentidad" name="nrodocidentidad">
                             </div>
                             <div class="col-md-4">
                                 <label class="mt-3">Apellidos Nombres / Razón Social</label>
-                                <input type="text" class="form-control" id="razonsocial" name="razonsocial" disabled>
+                                <input type="text" class="form-control" id="razonsocial" name="razonsocial">
                             </div>
                         </div>
                         <div class="row detalles_del_cp mb-4">
@@ -127,10 +127,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" onclick="actualizarDatos();" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                </div>
             </form>
         </div>
     </div>
@@ -142,7 +138,7 @@
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <form id="formularioActualizarComprasEmpresa" name="formularioActualizarComprasEmpresa" method="POST"
+            <form method="POST"
                 enctype="multipart/form-data">
                 <div class="modal-header bg-success">
                     <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">Edición o Consulta de un comprobante</h1>
@@ -159,11 +155,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label class="mt-3">Nro Doc Identidad</label>
-                                <input type="text" class="form-control" id="nrodocidentidad1" name="nrodocidentidad1" disabled>
+                                <input type="text" class="form-control" id="nrodocidentidad1" name="nrodocidentidad1">
                             </div>
                             <div class="col-md-4">
                                 <label class="mt-3">Apellidos Nombres / Razón Social</label>
-                                <input type="text" class="form-control" id="razonsocial1" name="razonsocial1" disabled>
+                                <input type="text" class="form-control" id="razonsocial1" name="razonsocial1">
                             </div>
                         </div>
                         <div class="row detalles_del_cp mb-4">
@@ -265,10 +261,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" onclick="actualizarDatos();" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </form>
         </div>

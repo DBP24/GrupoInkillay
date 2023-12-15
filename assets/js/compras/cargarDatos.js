@@ -17,9 +17,7 @@ $(document).ready(function () {
             busqueda_ticket1:$('#busqueda_ticket1').val().toUpperCase(),
             busqueda_tipo_documento_identidad1:$('#busqueda_tipo_documento_identidad1').val().toUpperCase(),
             busqueda_nro_documento_identidad1:$('#busqueda_nro_documento_identidad1').val().toUpperCase(),
-            // error al cargar datos
             busqueda_razon_social1:$('#busqueda_razon_social1').val().toUpperCase(),
-            // end
             busqueda_monto_exportacion1:$('#busqueda_monto_exportacion1').val().toUpperCase(),
             busqueda_base_imponible_gravado1:$('#busqueda_base_imponible_gravado1').val().toUpperCase(),
             busqueda_base_imponible_dsct1:$('#busqueda_base_imponible_dsct1').val().toUpperCase(),
@@ -87,12 +85,12 @@ $(document).ready(function () {
         },
         columns: [
           {
-            data: "ID_RegCompSunat",
+            data: "Secuencia",
             render: function (data, type, row, meta) {
               // Construir el enlace para ver datos en SUNAT
               var enlace =
                 '<a href="#" onclick="verDatosSUNAT(' +
-                row.ID_RegCompSunat +
+                row.Secuencia +
                 ')"><ion-icon class="icon__e" name="eye-outline"></ion-icon></a>';
               return enlace;
             },
@@ -388,12 +386,12 @@ $(document).ready(function () {
     },
     columns: [
       {
-        data: "ID_RegCompEmpresa",
+        data: "Secuencia",
         render: function (data, type, row, meta) {
           // Construir el enlace para ver datos en SUNAT
           var enlace =
             '<a href="#" onclick="verDatosEmpresa(' +
-            row.ID_RegCompEmpresa +
+            row.Secuencia +
             ')"><ion-icon class="icon__e" name="eye-outline"></ion-icon></a>';
           return enlace;
         },

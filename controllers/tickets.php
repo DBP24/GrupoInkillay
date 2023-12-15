@@ -22,7 +22,8 @@
 			$data['page_author'] = "";
 			$data['page_description'] = "";
 			$data['page_keywords'] = "";
-            $datos=$this->model->selectAllTickets();
+			$compania_codigo = $_SESSION['Usuario']['DocumentoFiscal'];
+            $datos=$this->model->selectAllTickets($compania_codigo);
 			$selectMaxIDTicket=$this->model->selectMaxIDTicket();
 			$dato=$selectMaxIDTicket['ID']+1;
 			$this->views->getView($this,"tickets", $data,$datos,$dato);
@@ -357,7 +358,7 @@
 						{
 							//Actualización Compras SUNAT
 							$name_table = "SIRE_RegistroTemporalCompras_SUNAT_".$companiacodigo ;
-							$this->model->updateNewRegistrationOfSUNATPurchases(array($temp_sunat,$name_table,$id));
+							$this->model->updateNewRegistrationOfSUNATPurchases(array($temp_sunat,$name_table,$companiacodigo,$id));
 
 							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
 
@@ -365,7 +366,7 @@
 						{
 							//Actualización Compras Empresa
 							$name_table = "SIRE_RegistroTemporalCompras_EMPRESA_".$companiacodigo ;
-							$this->model->updateNewRegistrationOfCompanyPurchases(array($temp_empresa,$name_table,$id));
+							$this->model->updateNewRegistrationOfCompanyPurchases(array($temp_sunat,$name_table,$companiacodigo,$id));
 
 							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
 
@@ -390,7 +391,7 @@
 						{
 							//Actualización Ventas Empresa
 							$name_table = "SIRE_RegistroTemporalVentas_EMPRESA_".$companiacodigo ;
-							$this->model->updateNewRegistrationOfCompanySales(array($temp_empresa,$name_table,$id));
+							$this->model->updateNewRegistrationOfCompanySales(array($temp_sunat,$name_table,$companiacodigo,$id));
 	
 							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado correctamente los registros', 'type'=> 'success');
 	

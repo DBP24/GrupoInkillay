@@ -87,12 +87,12 @@ $(document).ready(function () {
         },
         columns: [
           {
-            data: "ID_RegVentSunat",
+            data: "Secuencia",
             render: function (data, type, row, meta) {
               // Construir el enlace para ver datos en SUNAT
               var enlace =
                 '<a href="#" onclick="verDatosSUNAT(' +
-                row.ID_RegVentSunat +
+                row.Secuencia +
                 ')"><ion-icon class="icon__e" name="eye-outline"></ion-icon></a>';
               return enlace;
             },
@@ -383,12 +383,12 @@ $(document).ready(function () {
     },
     columns: [
       {
-        data: "ID_RegVentEmpresa",
+        data: "Secuencia",
         render: function (data, type, row, meta) {
           // Construir el enlace para ver datos en SUNAT
           var enlace =
             '<a href="#" onclick="verDatosEmpresa(' +
-            row.ID_RegVentEmpresa +
+            row.Secuencia +
             ')"><ion-icon class="icon__e" name="eye-outline"></ion-icon></a>';
           return enlace;
         },
