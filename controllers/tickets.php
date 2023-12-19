@@ -337,6 +337,9 @@
 							$nombre_archivo_empresa=$nombrearchivo_empresa;
 						}
 
+						//var_dump($idlibroempresa);
+
+
 						//Capturar el id para IdLibroEmpresa
 						if($idlibro == 2 || $idlibro == 4)
 						{
@@ -349,10 +352,9 @@
 
 						}
 
-						$arrData = array(intval($numeroregistros_sunat), intval($numeroregistros_empresa),$nombre_archivo_sunat,$nombre_archivo_empresa,intval($id_libro_empresa),$id);
-
 						//Ver si COMPRAS (SUNAT - EMPRESA) tiene registros
 						$viewTicket = $this->model->viewTicket($id);
+
 
 						if($viewTicket['IdLibroSUNAT'] !=null && $idlibro == 1)
 						{
@@ -405,21 +407,14 @@
 	
 						}
 
+						$arrData = array(intval($numeroregistros_sunat), intval($numeroregistros_empresa),$nombre_archivo_sunat,$nombre_archivo_empresa,$id_libro_empresa,$id);
+
+
 						$this->model->updateTicket($arrData);
-
-						/*$requestUpd = $this->model->updateTicket($arrData);
-
-						if($requestUpd)
-						{
-
-							$arrResponse = array('status' => true, 'msg' => 'Se ha actualizado el ticket', 'type' => 'success');
-
-						} else {
-							$arrResponse = array('status' => false, 'msg' => 'Error al actualizar el ticket', 'type' => 'error');
-						}*/
+						
 					} catch (Exception $e)
 					{
-						$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error: '.$e->getMessage(), 'type' => 'error');
+						$arrResponse = array('status' => false, 'msg' => 'Ocurrió un error', 'type' => 'error');
 					}
 
 				}
